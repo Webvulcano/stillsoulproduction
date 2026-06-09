@@ -1,11 +1,16 @@
 import Link from "next/link";
 
 const navLinks = [
-  { label: "Portfolio", href: "#portfolio" },
   { label: "Rólunk", href: "#rolunk" },
+  { label: "Portfolio", href: "#portfolio" },
   { label: "Szolgáltatások", href: "#szolgaltatasok" },
+  { label: "Árajánlat", href: "#arajanlat" },
   { label: "Kapcsolat", href: "#kapcsolat" },
+  { label: "🇭🇺", href: "#magyar" },
+  { label: "🇬🇧", href: "#english" },
 ];
+
+
 
 export default function Hero() {
   return (

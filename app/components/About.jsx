@@ -8,6 +8,12 @@ export default function About() {
           </h2>
           <div className="border-l-2 border-white/30 pl-6 space-y-4">
             <p className="text-sm leading-7 text-gray-300">
+              A StillSoul Production egy kreatív tartalmakat gyártó csapat. 
+              Legyen szó márka megkeresésről, reklámfilmről, social média tartalom gyártásáról, kreatív fotózásról vagy céges eseményről, fordulj felénk bizalommal.
+              Elsődlegesen Budapesten, Győrben és Esztergomban vagyunk megtalálhatóak, de egy izagalmas projekt érdekében a távolság számunkra nem akadály. Az ország bármely pontjára vagy határon kívülre is elmegyünk. Nálunk a vevői igények az elsők, ezért az árazásunk is mindig személyre szabott.
+            </p>
+
+            <p className="text-sm leading-7 text-gray-300">
               A vizuális történetmesélés számunkra több mint munka, szenvedély.
               Célunk, hogy olyan képeket és filmeket készítsünk, amelyek nemcsak
               megőrzik a pillanatokat, hanem újra átélhetővé is teszik őket.

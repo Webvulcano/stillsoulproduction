@@ -3,29 +3,54 @@ import Image from "next/image";
 const services = [
   {
     num: "01",
-    title: "Esküvők, rendezvények és különleges alkalmak",
-    img: "/services/eskuvo.jpg",
-    imgAlt: "Esküvő fotózás",
+    title: "Digitális és analóg fotózás",
+    img: "/services/analog.jpeg",
+    imgAlt: "Digitális és analóg fotózás",
   },
   {
     num: "02",
-    title: "Digitális és analóg fotózás",
-    img: "/services/analog.jpeg",
-    imgAlt: "Analóg fotózás",
+    title: "Brand építés & reklámanyagok készítése",
+    img: "/services/eskuvo.jpg",
+    imgAlt: "Brand építés & reklámanyagok készítése",
   },
   {
     num: "03",
-    title: "Kreatív tartalomgyártás",
+    title: "Kreatív tartalomgyártás, socialmedia tartamak és short videók",
     img: "/services/kreativ.JPG",
     imgAlt: "Kreatív tartalom",
   },
   {
     num: "04",
-    title: "Videók és reklámanyagok vágása",
+    title: "Események és rendezvények",
     img: "/services/reklam.JPG",
-    imgAlt: "Videó vágás",
+    imgAlt: "Események és rendezvények",
+  },
+  {
+    num: "05",
+    title: "Eseti megkeresések, besegítés filmes munkákban",
+    details: "(vágó, rendezőasszisztens, gyártásvezető, világosító, látványtervező, art director, berendező)",
+    img: "/services/reklam.JPG",
+    imgAlt: "Eseti megkeresések, besegítés filmes munkákban",
+  },
+  {
+    num: "06",
+    title: "Dokumentumfilm és fikciós játékfilmek készítése",
+    img: "/services/reklam.JPG",
+    imgAlt: "Dokumentumfilm és fikciós játékfilmek készítése",
   },
 ];
+
+
+{/** Szolgáltatások
+1 Digitális és analóg fotózás
+2 Brand építés & reklámanyagok készítése
+3 Kreatív tartalomgyártás, socialmedia tartamak és short videók
+4 Események és rendezvények
+5 Eseti megkeresések, besegítés filmes munkákban (vágó, rendezőasszisztens, gyártásvezető, világosító, látványtervező, art director, berendező) (A ZÁRÓJELBEN LÉVŐ SZAVAKAT KISEBB BETŰVEL ÍRNI A CÍM MELLÉ ZÁRÓJELBEN)
+6 Dokumentumfilm és fikciós játékfilmek készítése
+  
+  
+  */}
 
 export default function Services() {
   return (
@@ -44,6 +69,11 @@ export default function Services() {
             </span>
             <h3 className="text-xl md:text-2xl font-semibold uppercase tracking-wider border-l-2 border-white pl-4">
               {service.title}
+              {service.details && (
+                <span className="block text-xs font-normal normal-case tracking-normal text-white/60 mt-1">
+                  {service.details}
+                </span>
+              )}
             </h3>
           </div>
         );
