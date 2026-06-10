@@ -3,15 +3,22 @@ import About from "./components/About";
 import Services from "./components/Services";
 import Team from "./components/Team";
 import Contact from "./components/Contact";
+import ContactInfo from "./components/ContactInfo";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
     <>
-      <Hero />
-      <About />
-      <Services />
-      {/* <Team /> */}
-      <Contact />
+      <div className="relative z-10 bg-black mb-[30vw] md:mb-[22vw]">
+        <Hero />
+        <About />
+        <Services />
+        {/* <Team /> */}
+        <Contact />
+        <ContactInfo />
+        <div id="kapcsolat" />
+      </div>
+      <Footer />
     </>
   );
 }
