@@ -1,29 +1,21 @@
+"use client";
+
+import { useLanguage } from "../i18n/LanguageProvider";
+
 export default function About() {
+  const { t } = useLanguage();
+
   return (
     <section id="rolunk" className="relative h-screen w-full overflow-hidden bg-black">
       <div className="absolute inset-0 z-10 flex items-center justify-center px-8">
         <div className="max-w-xl space-y-8">
           <h2 className="text-5xl md:text-7xl font-light tracking-tight text-white">
-            Rólunk
+            {t.about.title}
           </h2>
           <div className="border-l-2 border-white/30 pl-6 space-y-4">
-            <p className="text-sm leading-7 text-gray-300">
-              A StillSoul Production egy kreatív tartalmakat gyártó csapat. 
-              Legyen szó márka megkeresésről, reklámfilmről, social média tartalom gyártásáról, kreatív fotózásról vagy céges eseményről, fordulj felénk bizalommal.
-              Elsődlegesen Budapesten, Győrben és Esztergomban vagyunk megtalálhatóak, de egy izagalmas projekt érdekében a távolság számunkra nem akadály. Az ország bármely pontjára vagy határon kívülre is elmegyünk. Nálunk a vevői igények az elsők, ezért az árazásunk is mindig személyre szabott.
-            </p>
-
-            <p className="text-sm leading-7 text-gray-300">
-              A vizuális történetmesélés számunkra több mint munka, szenvedély.
-              Célunk, hogy olyan képeket és filmeket készítsünk, amelyek nemcsak
-              megőrzik a pillanatokat, hanem újra átélhetővé is teszik őket.
-              Digitális és analóg technikával is dolgozunk, így minden projekt
-              egyedi hangulatot és időtálló karaktert kap.
-            </p>
-            <p className="text-sm leading-7 text-gray-300">
-              Minden munkánk alapja az alkotás szeretete, az őszinte kapcsolódás
-              és a maradandó vizuális élmények létrehozása.
-            </p>
+            <p className="text-sm leading-7 text-gray-300">{t.about.p1}</p>
+            <p className="text-sm leading-7 text-gray-300">{t.about.p2}</p>
+            <p className="text-sm leading-7 text-gray-300">{t.about.p3}</p>
           </div>
         </div>
       </div>

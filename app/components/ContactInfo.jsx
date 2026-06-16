@@ -1,4 +1,7 @@
+"use client";
+
 import { FaPhone, FaEnvelope, FaInstagram } from "react-icons/fa";
+import { useLanguage } from "../i18n/LanguageProvider";
 
 const contacts = [
   {
@@ -20,10 +23,11 @@ const contacts = [
 ];
 
 export default function ContactInfo() {
+  const { t } = useLanguage();
   return (
     <section className="bg-black text-white py-16">
       <span className="block text-xs uppercase tracking-[0.3em] text-white/40 text-center mb-8">
-        — Kapcsolat —
+        {t.contactInfo.label}
       </span>
       <div className="flex flex-wrap justify-center gap-8 md:gap-14 px-6">
         {contacts.map(({ icon: Icon, label, href, external }) => (

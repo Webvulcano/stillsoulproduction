@@ -1,63 +1,27 @@
-import Image from "next/image";
+"use client";
 
-const services = [
-  {
-    num: "01",
-    title: "Digitális és analóg fotózás",
-    img: "/services/1.jpeg",
-    imgAlt: "Digitális és analóg fotózás",
-  },
-  {
-    num: "02",
-    title: "Brand építés & reklámanyagok készítése",
-    img: "/services/2.jpg",
-    imgAlt: "Brand építés & reklámanyagok készítése",
-  },
-  {
-    num: "03",
-    title: "Kreatív tartalomgyártás, socialmedia tartamak és short videók",
-    img: "/services/3.jpg",
-    imgAlt: "Kreatív tartalom",
-  },
-  {
-    num: "04",
-    title: "Események és rendezvények",
-    img: "/services/4.jpg",
-    imgAlt: "Események és rendezvények",
-  },
-  {
-    num: "05",
-    title: "Eseti megkeresések, besegítés filmes munkákban",
-    details: "(vágó, rendezőasszisztens, gyártásvezető, világosító, látványtervező, art director, berendező)",
-    img: "/services/5.jpg",
-    imgAlt: "Eseti megkeresések, besegítés filmes munkákban",
-  },
-  {
-    num: "06",
-    title: "Dokumentumfilm és fikciós játékfilmek készítése",
-    img: "/services/6.jpg",
-    imgAlt: "Dokumentumfilm és fikciós játékfilmek készítése",
-  },
+import Image from "next/image";
+import { useLanguage } from "../i18n/LanguageProvider";
+
+// nyelvfüggetlen: sorszám + kép (a címek a szótárból, index szerint)
+const media = [
+  { num: "01", img: "/services/1.jpeg" },
+  { num: "02", img: "/services/2.jpg" },
+  { num: "03", img: "/services/3.jpg" },
+  { num: "04", img: "/services/4.jpg" },
+  { num: "05", img: "/services/5.jpg" },
+  { num: "06", img: "/services/6.jpg" },
 ];
 
-
-{/** Szolgáltatások
-1 Digitális és analóg fotózás
-2 Brand építés & reklámanyagok készítése
-3 Kreatív tartalomgyártás, socialmedia tartamak és short videók
-4 Események és rendezvények
-5 Eseti megkeresések, besegítés filmes munkákban (vágó, rendezőasszisztens, gyártásvezető, világosító, látványtervező, art director, berendező) (A ZÁRÓJELBEN LÉVŐ SZAVAKAT KISEBB BETŰVEL ÍRNI A CÍM MELLÉ ZÁRÓJELBEN)
-6 Dokumentumfilm és fikciós játékfilmek készítése
-  
-  
-  */}
-
 export default function Services() {
+  const { t } = useLanguage();
+  const services = media.map((m, i) => ({ ...m, ...t.services.items[i] }));
+
   return (
     <section id="szolgaltatasok" className="bg-black text-white">
       <div className="px-8 md:px-16 py-8 text-center">
         <span className="text-xs uppercase tracking-[0.3em] text-white/40">
-          — Szolgáltatások —
+          {t.services.label}
         </span>
       </div>
       {services.map((service, i) => {
@@ -81,7 +45,7 @@ export default function Services() {
           <div className="relative w-full overflow-hidden">
             <Image
               src={service.img}
-              alt={service.imgAlt}
+              alt={service.title}
               fill
               className="object-cover object-center"
               sizes="50vw"
