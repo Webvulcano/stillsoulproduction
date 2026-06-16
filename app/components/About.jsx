@@ -6,10 +6,10 @@ export default function About() {
   const { t } = useLanguage();
 
   return (
-    <section id="rolunk" className="relative h-screen w-full overflow-hidden bg-black">
-      <div className="absolute inset-0 z-10 flex items-center justify-center px-8">
+    <section id="rolunk" className="relative min-h-screen w-full overflow-hidden bg-black">
+      <div className="flex min-h-screen items-center justify-center px-8 py-24">
         <div className="max-w-xl space-y-8">
-          <h2 className="text-5xl md:text-7xl font-light tracking-tight text-white">
+          <h2 className="text-4xl md:text-7xl font-light tracking-tight text-white">
             {t.about.title}
           </h2>
           <div className="border-l-2 border-white/30 pl-6 space-y-4">

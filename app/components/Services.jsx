@@ -26,48 +26,44 @@ export default function Services() {
       </div>
       {services.map((service, i) => {
         const isEven = i % 2 === 1;
-        const textBlock = (
-          <div className="flex flex-col justify-center space-y-3 px-8 md:px-16">
-            <span className="text-xs font-mono text-white/40">
-              {service.num}
-            </span>
-            <h3 className="text-xl md:text-2xl font-semibold uppercase tracking-wider border-l-2 border-white pl-4">
-              {service.title}
-              {service.details && (
-                <span className="block text-xs font-normal normal-case tracking-normal text-white/60 mt-1">
-                  {service.details}
-                </span>
-              )}
-            </h3>
-          </div>
-        );
-        const imgBlock = (
-          <div className="relative w-full overflow-hidden">
-            <Image
-              src={service.img}
-              alt={service.title}
-              fill
-              className="object-cover object-center"
-              sizes="50vw"
-            />
-          </div>
-        );
         return (
           <div
             key={service.num}
-            className="grid grid-cols-1 md:grid-cols-2  h-[280px]"
+            className="flex flex-col md:grid md:grid-cols-2 md:h-[280px]"
           >
-            {isEven ? (
-              <>
-                {imgBlock}
-                {textBlock}
-              </>
-            ) : (
-              <>
-                {textBlock}
-                {imgBlock}
-              </>
-            )}
+            {/* Szöveg — mobilon mindig elöl; asztalon páros sornál jobbra (order-2) */}
+            <div
+              className={`flex flex-col justify-center space-y-3 px-8 md:px-16 py-8 md:py-0 ${
+                isEven ? "md:order-2" : ""
+              }`}
+            >
+              <span className="text-xs font-mono text-white/40">
+                {service.num}
+              </span>
+              <h3 className="text-xl md:text-2xl font-semibold uppercase tracking-wider border-l-2 border-white pl-4">
+                {service.title}
+                {service.details && (
+                  <span className="block text-xs font-normal normal-case tracking-normal text-white/60 mt-1">
+                    {service.details}
+                  </span>
+                )}
+              </h3>
+            </div>
+
+            {/* Kép — mobilon a szöveg alatt; asztalon páros sornál balra (order-1) */}
+            <div
+              className={`relative w-full h-56 md:h-full overflow-hidden ${
+                isEven ? "md:order-1" : ""
+              }`}
+            >
+              <Image
+                src={service.img}
+                alt={service.title}
+                fill
+                className="object-cover object-center"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
           </div>
         );
       })}

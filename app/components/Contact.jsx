@@ -20,7 +20,7 @@ export default function Contact() {
   return (
     <section id="arajanlat" className="bg-black text-white">
       <div className="grid grid-cols-1 md:grid-cols-2">
-        <div className="flex flex-col justify-center items-center px-8 md:px-16 py-24 min-h-screen">
+        <div className="flex flex-col justify-center items-center px-8 md:px-16 py-16 md:py-24 min-h-[auto] md:min-h-screen">
           <div className="mb-12">
             <span className="text-xs uppercase tracking-[0.3em] text-white/40">
               {t.contact.label}
@@ -70,12 +70,12 @@ export default function Contact() {
                 ref={textareaRef}
                 id="message"
                 name="message"
-                rows={1}
+                rows={2}
                 required
                 value={message}
                 onChange={handleMessageChange}
                 placeholder={t.contact.messagePlaceholder}
-                className="w-full bg-transparent border-b border-white/20 py-3 text-white text-sm focus:border-white focus:outline-none transition-[border-color] resize-none overflow-hidden"
+                className="w-full bg-transparent border-b border-white/20 py-3 text-white text-sm focus:border-white focus:outline-none transition-[border-color] resize-none overflow-hidden min-h-[3.75rem]"
               />
             </div>
             <button

@@ -20,6 +20,7 @@ export default function Navbar() {
   const [atTop, setAtTop] = useState(true);
   const [active, setActive] = useState("");
   const [ready, setReady] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   // intro-handoff: a logó csak akkor jelenik meg, ha az intro lefutott
   useEffect(() => {
@@ -63,6 +64,19 @@ export default function Navbar() {
     return () => observer.disconnect();
   }, []);
 
+  // body scroll-lock + Esc a nyitott mobil menühöz
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    const onKey = (e) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [menuOpen]);
+
   const linkClass = (href) =>
     `group relative text-white text-sm uppercase tracking-wider transition-opacity duration-200 ${
       active === href ? "opacity-100" : "opacity-80 hover:opacity-100"
@@ -74,69 +88,156 @@ export default function Navbar() {
     }`;
 
   const flagClass = (lang) =>
-    `text-base leading-none transition-all duration-200 hover:scale-110 cursor-pointer ${
+    `leading-none transition-all duration-200 hover:scale-110 cursor-pointer ${
       locale === lang ? "opacity-100 scale-110" : "opacity-50 hover:opacity-100"
     }`;
 
+  // mobil overlay stagger: nyitáskor egyenként, záráskor azonnal
+  const staggerStyle = (i) => ({
+    transitionDelay: menuOpen ? `${100 + i * 60}ms` : "0ms",
+  });
+  const itemClass = `transition-all duration-300 ease-out ${
+    menuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
+  }`;
+
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-6 transition-colors duration-300 ${
-        scrolled ? "bg-black" : "bg-transparent"
-      }`}
-    >
-      <div
-        className={`flex items-center gap-3 transition-opacity duration-500 ${
-          ready ? "opacity-100" : "opacity-0"
+    <>
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-6 transition-colors duration-300 ${
+          scrolled ? "bg-black" : "bg-transparent"
         }`}
       >
-        <Image
-          src="/logo.png"
-          alt="StillSoul Production logó"
-          width={40}
-          height={40}
-          className="h-10 w-10 object-contain"
-          priority
+        <div
+          className={`flex items-center gap-3 transition-opacity duration-500 ${
+            ready ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <Image
+            src="/logo.png"
+            alt="StillSoul Production logó"
+            width={40}
+            height={40}
+            className="h-10 w-10 object-contain"
+            priority
+          />
+          <span className="text-white text-base sm:text-lg font-semibold uppercase tracking-widest">
+            Stillsoul Production
+          </span>
+        </div>
+
+        {/* Desktop menü */}
+        <nav
+          className={`hidden sm:flex items-center gap-8 transition-all duration-300 ${
+            atTop
+              ? "opacity-0 -translate-y-2 pointer-events-none"
+              : "opacity-100 translate-y-0"
+          }`}
+        >
+          {navItems.map((item) => (
+            <a key={item.href} href={item.href} className={linkClass(item.href)}>
+              {t.nav[item.key]}
+              <span className={underlineClass(item.href)} />
+            </a>
+          ))}
+
+          <span className="mx-1 h-4 w-px bg-white/30" aria-hidden />
+
+          <button
+            type="button"
+            onClick={() => setLocale("hu")}
+            className={`text-base ${flagClass("hu")}`}
+            aria-label="Magyar"
+            aria-pressed={locale === "hu"}
+          >
+            🇭🇺
+          </button>
+          <button
+            type="button"
+            onClick={() => setLocale("en")}
+            className={`text-base ${flagClass("en")}`}
+            aria-label="English"
+            aria-pressed={locale === "en"}
+          >
+            🇬🇧
+          </button>
+        </nav>
+      </header>
+
+      {/* Mobil morpholó toggle (hamburger ↔ X, helyben) */}
+      <button
+        type="button"
+        onClick={() => setMenuOpen((v) => !v)}
+        className={`sm:hidden fixed top-6 right-8 z-[70] flex h-6 w-7 flex-col items-center justify-center gap-[5px] transition-opacity duration-500 ${
+          ready ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
+        aria-label={menuOpen ? "Menü bezárása" : "Menü megnyitása"}
+        aria-expanded={menuOpen}
+      >
+        <span
+          className={`block h-0.5 w-7 bg-white transition-all duration-300 ease-in-out ${
+            menuOpen ? "translate-y-[7px] rotate-45" : ""
+          }`}
         />
-        <span className="text-white text-lg font-semibold uppercase tracking-widest">
-          Stillsoul Production
-        </span>
-      </div>
+        <span
+          className={`block h-0.5 w-7 bg-white transition-all duration-300 ease-in-out ${
+            menuOpen ? "opacity-0" : "opacity-100"
+          }`}
+        />
+        <span
+          className={`block h-0.5 w-7 bg-white transition-all duration-300 ease-in-out ${
+            menuOpen ? "-translate-y-[7px] -rotate-45" : ""
+          }`}
+        />
+      </button>
 
-      <nav
-        className={`hidden sm:flex items-center gap-8 transition-all duration-300 ${
-          atTop
-            ? "opacity-0 -translate-y-2 pointer-events-none"
-            : "opacity-100 translate-y-0"
+      {/* Mobil overlay menü */}
+      <div
+        className={`sm:hidden fixed inset-0 z-[60] bg-black flex flex-col items-center justify-center transition-all duration-500 ease-in-out ${
+          menuOpen
+            ? "opacity-100 scale-100 pointer-events-auto"
+            : "opacity-0 scale-95 pointer-events-none"
         }`}
       >
-        {navItems.map((item) => (
-          <a key={item.href} href={item.href} className={linkClass(item.href)}>
-            {t.nav[item.key]}
-            <span className={underlineClass(item.href)} />
-          </a>
-        ))}
+        <nav className="flex flex-col items-center gap-7">
+          {navItems.map((item, i) => (
+            <a
+              key={item.href}
+              href={item.href}
+              onClick={() => setMenuOpen(false)}
+              style={staggerStyle(i)}
+              className={`${itemClass} text-lg uppercase tracking-widest ${
+                active === item.href ? "text-white" : "text-white/70"
+              }`}
+            >
+              {t.nav[item.key]}
+            </a>
+          ))}
 
-        <span className="mx-1 h-4 w-px bg-white/30" aria-hidden />
-
-        <button
-          type="button"
-          onClick={() => setLocale("hu")}
-          className={flagClass("hu")}
-          aria-label="Magyar"
-          aria-pressed={locale === "hu"}
-        >
-          🇭🇺
-        </button>
-        <button
-          type="button"
-          onClick={() => setLocale("en")}
-          className={flagClass("en")}
-          aria-label="English"
-          aria-pressed={locale === "en"}
-        >
-          🇬🇧
-        </button>
-      </nav>
-    </header>
+          <div
+            style={staggerStyle(navItems.length)}
+            className={`${itemClass} mt-6 flex items-center gap-6 text-xl`}
+          >
+            <button
+              type="button"
+              onClick={() => setLocale("hu")}
+              className={flagClass("hu")}
+              aria-label="Magyar"
+              aria-pressed={locale === "hu"}
+            >
+              🇭🇺
+            </button>
+            <button
+              type="button"
+              onClick={() => setLocale("en")}
+              className={flagClass("en")}
+              aria-label="English"
+              aria-pressed={locale === "en"}
+            >
+              🇬🇧
+            </button>
+          </div>
+        </nav>
+      </div>
+    </>
   );
 }
