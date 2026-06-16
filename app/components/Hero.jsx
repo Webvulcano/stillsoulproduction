@@ -2,7 +2,7 @@ export default function Hero() {
   return (
     <section className="relative h-screen w-full overflow-hidden">
       <video
-        src="/hero/stillsoul2.mp4"
+        src="/hero/stillsoul3.mp4"
         autoPlay
         muted
         loop
