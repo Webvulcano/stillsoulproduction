@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const DONE_EVENT = "ssp:introdone";
+const SEEN_KEY = "ssp_intro_seen";
 
 export default function IntroOverlay() {
   const [render, setRender] = useState(true);
@@ -20,12 +21,19 @@ export default function IntroOverlay() {
       setTimeout(() => window.dispatchEvent(new Event(DONE_EVENT)), 0);
     };
 
-    // reduced-motion → intro kihagyva
-    if (reduce) {
+    // Az intro csak az oldal valódi megnyitásakor fut (böngésző-fül/session).
+    // Belső navigáció (Navbar link, vissza a főoldalra) remountolja ezt a
+    // komponenst — ilyenkor a sessionStorage flag miatt kihagyjuk.
+    const seen =
+      typeof window !== "undefined" && sessionStorage.getItem(SEEN_KEY);
+    if (seen || reduce) {
       finish();
       setRender(false);
       return;
     }
+    try {
+      sessionStorage.setItem(SEEN_KEY, "1");
+    } catch {}
 
     const timers = [];
     // következő frame-ben indul a fade/scale-in (init -> enter)

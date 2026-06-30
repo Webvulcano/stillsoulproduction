@@ -1,7 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useLanguage } from "../i18n/LanguageProvider";
+import { CATEGORIES } from "../portfolio/categories";
 
 // nyelvfüggetlen: sorszám + kép (a címek a szótárból, index szerint)
 const media = [
@@ -26,10 +28,13 @@ export default function Services() {
       </div>
       {services.map((service, i) => {
         const isEven = i % 2 === 1;
+        // index → kategória-slug → szűrt portfólió oldal
+        const slug = CATEGORIES[i]?.slug;
         return (
-          <div
+          <Link
             key={service.num}
-            className="flex flex-col md:grid md:grid-cols-2 md:h-[280px]"
+            href={`/portfolio?cat=${slug}`}
+            className="group flex flex-col md:grid md:grid-cols-2 md:h-[280px]"
           >
             {/* Szöveg — mobilon mindig elöl; asztalon páros sornál jobbra (order-2) */}
             <div
@@ -40,7 +45,7 @@ export default function Services() {
               <span className="text-xs font-mono text-white/40">
                 {service.num}
               </span>
-              <h3 className="text-xl md:text-2xl font-semibold uppercase tracking-wider border-l-2 border-white pl-4">
+              <h3 className="text-xl md:text-2xl font-semibold uppercase tracking-wider border-l-2 border-white pl-4 text-white/70 transition-colors group-hover:text-white">
                 {service.title}
                 {service.details && (
                   <span className="block text-xs font-normal normal-case tracking-normal text-white/60 mt-1">
@@ -60,11 +65,11 @@ export default function Services() {
                 src={service.img}
                 alt={service.title}
                 fill
-                className="object-cover object-center"
+                className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
-          </div>
+          </Link>
         );
       })}
     </section>

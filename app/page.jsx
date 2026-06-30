@@ -6,14 +6,13 @@ import Services from "./components/Services";
 import Team from "./components/Team";
 import Contact from "./components/Contact";
 import ContactInfo from "./components/ContactInfo";
-import Footer from "./components/Footer";
 
 export default function Home() {
   return (
     <>
       <IntroOverlay />
       <Navbar />
-      <div className="relative z-10 bg-black mb-[30vw] md:mb-[22vw]">
+      <div className="relative z-10 bg-black">
         <Hero />
         <About />
         <Services />
@@ -22,7 +21,6 @@ export default function Home() {
         <ContactInfo />
         <div id="kapcsolat" />
       </div>
-      <Footer />
     </>
   );
 }

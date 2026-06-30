@@ -1,35 +1,58 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useLanguage } from "../i18n/LanguageProvider";
 
+// section = főoldali horgony (scroll-spy), route = külön oldal (pl. portfólió)
 const navItems = [
-  { key: "rolunk", href: "#rolunk" },
-  { key: "portfolio", href: "#portfolio" },
-  { key: "szolgaltatasok", href: "#szolgaltatasok" },
-  { key: "arajanlat", href: "#arajanlat" },
-  { key: "kapcsolat", href: "#kapcsolat" },
+  { key: "rolunk", section: "rolunk" },
+  { key: "portfolio", route: "/portfolio" },
+  { key: "szolgaltatasok", section: "szolgaltatasok" },
+  { key: "arajanlat", section: "arajanlat" },
+  { key: "kapcsolat", section: "kapcsolat" },
 ];
 
 const DONE_EVENT = "ssp:introdone";
 
 export default function Navbar() {
   const { t, locale, setLocale } = useLanguage();
+  const pathname = usePathname();
+  const isHome = pathname === "/";
   const [scrolled, setScrolled] = useState(false);
   const [atTop, setAtTop] = useState(true);
   const [active, setActive] = useState("");
   const [ready, setReady] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // intro-handoff: a logó csak akkor jelenik meg, ha az intro lefutott
+  // egy menüpont célja: route ha külön oldal, különben főoldali horgony.
+  // Nem a főoldalon a horgony "/#szekcio" — előbb a főoldalra navigál.
+  const hrefFor = (item) =>
+    item.route ? item.route : isHome ? `#${item.section}` : `/#${item.section}`;
+  const isActive = (item) =>
+    item.route ? pathname.startsWith(item.route) : active === `#${item.section}`;
+
+  // intro-handoff: a logó csak akkor jelenik meg, ha az intro lefutott.
+  // Nem a főoldalon nincs intro → azonnal látszik.
   useEffect(() => {
+    if (!isHome) {
+      setReady(true);
+      return;
+    }
     const onDone = () => setReady(true);
     window.addEventListener(DONE_EVENT, onDone);
     return () => window.removeEventListener(DONE_EVENT, onDone);
-  }, []);
+  }, [isHome]);
 
   useEffect(() => {
+    // Nem a főoldalon nincs hero: fix fekete sáv, a menü mindig látszik.
+    if (!isHome) {
+      setScrolled(true);
+      setAtTop(false);
+      return;
+    }
     const onScroll = () => {
       const y = window.scrollY;
       // hero = h-screen (100vh); fekete amint elhagyjuk a herot
@@ -40,11 +63,12 @@ export default function Navbar() {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [isHome]);
 
   useEffect(() => {
-    // scroll-spy: melyik szekció van épp nézetben
-    const ids = navItems.map((i) => i.href.slice(1));
+    // scroll-spy: melyik szekció van épp nézetben (csak a horgonyos itemekre)
+    if (!isHome) return;
+    const ids = navItems.filter((i) => i.section).map((i) => i.section);
     const els = ids
       .map((id) => document.getElementById(id))
       .filter(Boolean);
@@ -62,7 +86,7 @@ export default function Navbar() {
 
     els.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, []);
+  }, [isHome]);
 
   // body scroll-lock + Esc a nyitott mobil menühöz
   useEffect(() => {
@@ -77,14 +101,14 @@ export default function Navbar() {
     };
   }, [menuOpen]);
 
-  const linkClass = (href) =>
+  const linkClass = (item) =>
     `group relative text-white text-sm uppercase tracking-wider transition-opacity duration-200 ${
-      active === href ? "opacity-100" : "opacity-80 hover:opacity-100"
+      isActive(item) ? "opacity-100" : "opacity-80 hover:opacity-100"
     }`;
 
-  const underlineClass = (href) =>
+  const underlineClass = (item) =>
     `pointer-events-none absolute -bottom-1.5 left-0 h-px w-full bg-white origin-left transition-transform duration-300 ease-out ${
-      active === href ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+      isActive(item) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
     }`;
 
   const flagClass = (lang) =>
@@ -107,7 +131,16 @@ export default function Navbar() {
           scrolled ? "bg-black" : "bg-transparent"
         }`}
       >
-        <div
+        <Link
+          href="/"
+          onClick={(e) => {
+            // főoldalon nincs navigáció → kézzel görgetünk a tetejére
+            if (isHome) {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+          }}
+          aria-label="Vissza a főoldal tetejére"
           className={`flex items-center gap-3 transition-opacity duration-500 ${
             ready ? "opacity-100" : "opacity-0"
           }`}
@@ -123,21 +156,25 @@ export default function Navbar() {
           <span className="text-white text-base sm:text-lg font-semibold uppercase tracking-widest">
             Stillsoul Production
           </span>
-        </div>
+        </Link>
 
         {/* Desktop menü */}
         <nav
-          className={`hidden sm:flex items-center gap-8 transition-all duration-300 ${
+          className={`hidden min-[1136px]:flex items-center gap-8 transition-all duration-300 ${
             atTop
               ? "opacity-0 -translate-y-2 pointer-events-none"
               : "opacity-100 translate-y-0"
           }`}
         >
           {navItems.map((item) => (
-            <a key={item.href} href={item.href} className={linkClass(item.href)}>
+            <Link
+              key={item.key}
+              href={hrefFor(item)}
+              className={linkClass(item)}
+            >
               {t.nav[item.key]}
-              <span className={underlineClass(item.href)} />
-            </a>
+              <span className={underlineClass(item)} />
+            </Link>
           ))}
 
           <span className="mx-1 h-4 w-px bg-white/30" aria-hidden />
@@ -167,7 +204,7 @@ export default function Navbar() {
       <button
         type="button"
         onClick={() => setMenuOpen((v) => !v)}
-        className={`sm:hidden fixed top-6 right-8 z-[70] flex h-6 w-7 flex-col items-center justify-center gap-[5px] transition-opacity duration-500 ${
+        className={`min-[1136px]:hidden fixed top-8 right-8 z-[70] flex h-6 w-7 flex-col items-center justify-center gap-[5px] transition-opacity duration-500 ${
           ready ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
         aria-label={menuOpen ? "Menü bezárása" : "Menü megnyitása"}
@@ -192,7 +229,7 @@ export default function Navbar() {
 
       {/* Mobil overlay menü */}
       <div
-        className={`sm:hidden fixed inset-0 z-[60] bg-black flex flex-col items-center justify-center transition-all duration-500 ease-in-out ${
+        className={`min-[1136px]:hidden fixed inset-0 z-[60] bg-black flex flex-col items-center justify-center transition-all duration-500 ease-in-out ${
           menuOpen
             ? "opacity-100 scale-100 pointer-events-auto"
             : "opacity-0 scale-95 pointer-events-none"
@@ -200,17 +237,17 @@ export default function Navbar() {
       >
         <nav className="flex flex-col items-center gap-7">
           {navItems.map((item, i) => (
-            <a
-              key={item.href}
-              href={item.href}
+            <Link
+              key={item.key}
+              href={hrefFor(item)}
               onClick={() => setMenuOpen(false)}
               style={staggerStyle(i)}
               className={`${itemClass} text-lg uppercase tracking-widest ${
-                active === item.href ? "text-white" : "text-white/70"
+                isActive(item) ? "text-white" : "text-white/70"
               }`}
             >
               {t.nav[item.key]}
-            </a>
+            </Link>
           ))}
 
           <div

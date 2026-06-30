@@ -9,8 +9,7 @@ export const dict = {
     },
     about: {
       title: "Rólunk",
-      p1: "A StillSoul Production egy kreatív tartalmakat gyártó csapat. Legyen szó márka megkeresésről, reklámfilmről, social média tartalom gyártásáról, kreatív fotózásról vagy céges eseményről, fordulj felénk bizalommal. Elsődlegesen Budapesten, Győrben és Esztergomban vagyunk megtalálhatóak, de egy izgalmas projekt érdekében a távolság számunkra nem akadály. Az ország bármely pontjára vagy határon kívülre is elmegyünk. Nálunk a vevői igények az elsők, ezért az árazásunk is mindig személyre szabott.",
-      p2: "A vizuális történetmesélés számunkra több mint munka, szenvedély. Célunk, hogy olyan képeket és filmeket készítsünk, amelyek nemcsak megőrzik a pillanatokat, hanem újra átélhetővé is teszik őket. Digitális és analóg technikával is dolgozunk, így minden projekt egyedi hangulatot és időtálló karaktert kap.",
+      p1: "A StillSoul Production egy kreatív tartalmakat gyártó csapat. Legyen szó márka megkeresésről, reklámfilmről, social média tartalom gyártásáról, kreatív fotózásról vagy céges eseményről, fordulj felénk bizalommal. Az ország bármely pontjára vagy határon kívülre is elmegyünk. Nálunk a vevői igények az elsők, ezért az árazásunk is mindig személyre szabott.",
       p3: "Minden munkánk alapja az alkotás szeretete, az őszinte kapcsolódás és a maradandó vizuális élmények létrehozása.",
     },
     services: {
@@ -54,6 +53,37 @@ export const dict = {
     contactInfo: {
       label: "— Kapcsolat —",
     },
+    portfolio: {
+      label: "— Portfólió —",
+      searchPlaceholder: "Keresés a referenciák között…",
+      allCategories: "Összes",
+      clear: "Szűrők törlése",
+      noResults: "Nincs a szűrésnek megfelelő referencia.",
+      // {n} = találatok száma
+      resultsCount: "{n} referencia",
+      // referencia-címek (a data.js titleKey-jei ide mutatnak)
+      items: {
+        "artisans-cine": { title: "7Artisans Cine" },
+        "om-tg7": { title: "OM System TG-7" },
+        joby: { title: "JOBY táska promóció" },
+        "om-adventure": { title: "OM-5 Mark II Adventure Pack" },
+        "trauner-shortmood": {
+          title: "Alexander Trauner Art/Film Festival — Short-mood",
+        },
+        "trauner-aftermovie": {
+          title: "Alexander Trauner Art/Film Festival — Aftermovie",
+        },
+        "trauner-interju": {
+          title: "Alexander Trauner Art/Film Festival — Interjú",
+        },
+        "fanni-gabor": { title: "Fanni & Gábor esküvője" },
+        "bences-bal": { title: "X. Bencés Bál, 2023" },
+        "egy-napra": { title: "Egy napra a boldogságtól, 2024" },
+        parduc: { title: "Párduc, 2025" },
+        szirenek: { title: "Szirének, 2025" },
+        maradekorszag: { title: "Maradékország, 2026" },
+      },
+    },
   },
 
   en: {
@@ -66,8 +96,7 @@ export const dict = {
     },
     about: {
       title: "About us",
-      p1: "StillSoul Production is a creative content studio. Whether it's a brand collaboration, a commercial, social media content, creative photography or a corporate event — reach out to us. We're based primarily in Budapest, Győr and Esztergom, but distance is no obstacle for an exciting project: we travel anywhere in the country or beyond. Your needs come first, so our pricing is always tailored to you.",
-      p2: "For us, visual storytelling is more than work — it's a passion. Our goal is to create images and films that not only preserve moments, but make them worth reliving. We work with both digital and analog techniques, giving every project a distinctive mood and timeless character.",
+      p1: "StillSoul Production is a creative content studio. Whether it's a brand collaboration, a commercial, social media content, creative photography or a corporate event — reach out to us. Your needs come first, so our pricing is always tailored to you.",
       p3: "All our work is rooted in the love of creating, honest connection, and crafting lasting visual experiences.",
     },
     services: {
@@ -110,6 +139,37 @@ export const dict = {
     },
     contactInfo: {
       label: "— Contact —",
+    },
+    portfolio: {
+      label: "— Portfolio —",
+      searchPlaceholder: "Search the references…",
+      allCategories: "All",
+      clear: "Clear filters",
+      noResults: "No references match your filters.",
+      // {n} = number of results
+      resultsCount: "{n} references",
+      // reference titles (data.js titleKeys point here)
+      items: {
+        "artisans-cine": { title: "7Artisans Cine" },
+        "om-tg7": { title: "OM System TG-7" },
+        joby: { title: "JOBY bag promo" },
+        "om-adventure": { title: "OM-5 Mark II Adventure Pack" },
+        "trauner-shortmood": {
+          title: "Alexander Trauner Art/Film Festival — Short mood",
+        },
+        "trauner-aftermovie": {
+          title: "Alexander Trauner Art/Film Festival — Aftermovie",
+        },
+        "trauner-interju": {
+          title: "Alexander Trauner Art/Film Festival — Interview",
+        },
+        "fanni-gabor": { title: "Fanni & Gábor's wedding" },
+        "bences-bal": { title: "10th Benedictine Ball, 2023" },
+        "egy-napra": { title: "A Day Away from Happiness, 2024" },
+        parduc: { title: "Panther, 2025" },
+        szirenek: { title: "Sirens, 2025" },
+        maradekorszag: { title: "Remnant Country, 2026" },
+      },
     },
   },
 };
