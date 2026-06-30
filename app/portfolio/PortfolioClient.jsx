@@ -23,6 +23,11 @@ export default function PortfolioClient() {
   const [activeCats, setActiveCats] = useState(() => new Set());
   const [selected, setSelected] = useState(null);
 
+  // belépéskor a lap tetejére (mobilon a hosszú főoldalról jövet ne lent nyíljon)
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   // URL ?cat= → aktív kategóriák (kezdeti betöltés + külső/vissza-navigáció)
   const catParam = searchParams.get("cat") || "";
   useEffect(() => {
