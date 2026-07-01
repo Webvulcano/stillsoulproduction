@@ -1,0 +1,56 @@
+"use client";
+
+import { useState } from "react";
+import { useLanguage } from "../i18n/LanguageProvider";
+import { PORTFOLIO } from "./data";
+import { ROW_ORDER, rowTitle } from "./categories";
+import CategoryRow from "./CategoryRow";
+import VideoModal from "./VideoModal";
+import ImageLightbox from "./ImageLightbox";
+
+// Portfólió-galéria: kategóriánként tagolt, oldalra lapozós referencia-sorok.
+// A ROW_ORDER sorrendjét követi (fotó-sorok elöl, videó-sorok utánuk); üres sorok kimaradnak.
+export default function PortfolioGallery() {
+  const { t } = useLanguage();
+  // selected: { item, list, index } — fotónál a list a soron belüli lapozáshoz kell.
+  const [selected, setSelected] = useState(null);
+
+  const sections = ROW_ORDER.map((slug) => ({
+    slug,
+    title: rowTitle(slug, t),
+    items: PORTFOLIO.filter((it) => it.categories.includes(slug)),
+  })).filter((s) => s.items.length > 0);
+
+  const handleSelect = (item, list, index) => setSelected({ item, list, index });
+
+  return (
+    <main className="min-h-screen bg-black pt-28 pb-20 sm:pt-32">
+      <div className="mx-auto w-full max-w-[1200px]">
+        <h1 className="mb-10 px-8 text-3xl font-semibold uppercase tracking-widest text-white sm:mb-14 sm:text-4xl">
+          {t.portfolio.galleryTitle}
+        </h1>
+
+        {sections.map((s, i) => (
+          <CategoryRow
+            key={s.slug}
+            title={s.title}
+            items={s.items}
+            onSelect={handleSelect}
+            reverse={i % 2 === 1}
+          />
+        ))}
+      </div>
+
+      {selected &&
+        (selected.item.kind === "photo" ? (
+          <ImageLightbox
+            items={selected.list}
+            index={selected.index}
+            onClose={() => setSelected(null)}
+          />
+        ) : (
+          <VideoModal item={selected.item} onClose={() => setSelected(null)} />
+        ))}
+    </main>
+  );
+}

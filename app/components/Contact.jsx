@@ -70,7 +70,7 @@ export default function Contact() {
                 ref={textareaRef}
                 id="message"
                 name="message"
-                rows={2}
+                rows={1}
                 required
                 value={message}
                 onChange={handleMessageChange}

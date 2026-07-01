@@ -24,3 +24,23 @@ export function slugToTitle(slug, t) {
 export function sanitizeSlugs(slugs) {
   return slugs.filter((s) => SLUGS.includes(s));
 }
+
+// — Fotó-kategóriák (a galéria-oldalhoz) —
+// Ezeknek a címe NEM a services-ből jön, hanem a dict.portfolio.rowTitles-ból.
+export const PHOTO_SLUGS = ["portre", "esemenyfoto", "kisallat", "analog"];
+
+// A galéria sorainak megjelenési sorrendje: előbb a 4 fotó-sor, utána a videó-sorok.
+export const ROW_ORDER = [
+  "portre",
+  "esemenyfoto",
+  "kisallat",
+  "analog",
+  "kreativ",
+  "esemenyek",
+  "film",
+];
+
+// Sor-cím feloldása: fotó-slug → dict.portfolio.rowTitles; egyébként a services-cím.
+export function rowTitle(slug, t) {
+  return t.portfolio?.rowTitles?.[slug] ?? slugToTitle(slug, t);
+}

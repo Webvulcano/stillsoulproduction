@@ -16,15 +16,15 @@ export const dict = {
       label: "— Szolgáltatások —",
       items: [
         { title: "Digitális és analóg fotózás" },
-        { title: "Brand építés & reklámanyagok készítése" },
-        { title: "Kreatív tartalomgyártás, socialmedia tartamak és short videók" },
+        { title: "Videóklippek & reklámanyagok" },
+        { title: "Kreatív tartalomgyártás & short videók" },
         { title: "Események és rendezvények" },
         {
-          title: "Eseti megkeresések, besegítés filmes munkákban",
+          title: "Eseti megkeresések filmes munkákban",
           details:
             "(vágó, rendezőasszisztens, gyártásvezető, világosító, látványtervező, art director, berendező)",
         },
-        { title: "Dokumentumfilm és fikciós játékfilmek készítése" },
+        { title: "Dokumentumfilm és fikciós játékfilmek" },
       ],
     },
     contact: {
@@ -47,7 +47,7 @@ export const dict = {
       emailPlaceholder: "pelda@email.com",
       messageLabel: "Üzenet",
       messagePlaceholder:
-        "Ide írd le kérlek, hogy mivel keresnél meg minket és mekkora összeget szánnál rá…",
+        "Ide írd le kérlek, hogy mivel keresnél meg minket",
       submit: "Küldés",
     },
     contactInfo: {
@@ -55,6 +55,14 @@ export const dict = {
     },
     portfolio: {
       label: "— Portfólió —",
+      galleryTitle: "PORTFÓLIÓ",
+      // Fotó-sorok címei (a videó-sorok címe a services.items-ből jön)
+      rowTitles: {
+        portre: "Portréfotózás",
+        esemenyfoto: "Eseményfotózás",
+        kisallat: "Kisállatfotózás",
+        analog: "Analóg fotózás",
+      },
       searchPlaceholder: "Keresés a referenciák között…",
       allCategories: "Összes",
       clear: "Szűrők törlése",
@@ -63,12 +71,12 @@ export const dict = {
       resultsCount: "{n} referencia",
       // referencia-címek (a data.js titleKey-jei ide mutatnak)
       items: {
-        "artisans-cine": { title: "7Artisans Cine" },
-        "om-tg7": { title: "OM System TG-7" },
-        joby: { title: "JOBY táska promóció" },
-        "om-adventure": { title: "OM-5 Mark II Adventure Pack" },
+        "artisans-cine": { title: "7Artisans Cine - short" },
+        "om-tg7": { title: "OM System TG-7 - short" },
+        "joby": { title: "JOBY táska - short" },
+        "om-adventure": { title: "OM-5 Mark II Adventure Pack - short" },
         "trauner-shortmood": {
-          title: "Alexander Trauner Art/Film Festival — Short-mood",
+          title: "Alexander Trauner Art/Film Festival - short",
         },
         "trauner-aftermovie": {
           title: "Alexander Trauner Art/Film Festival — Aftermovie",
@@ -103,8 +111,8 @@ export const dict = {
       label: "— Services —",
       items: [
         { title: "Digital & analog photography" },
-        { title: "Brand building & promotional materials" },
-        { title: "Creative content, social media & short videos" },
+        { title: "Video clips & promotional materials" },
+        { title: "Creative content production & short videos" },
         { title: "Events & functions" },
         {
           title: "Film crew support",
@@ -142,6 +150,14 @@ export const dict = {
     },
     portfolio: {
       label: "— Portfolio —",
+      galleryTitle: "PORTFOLIO",
+      // Photo row titles (video rows get titles from services.items)
+      rowTitles: {
+        portre: "Portrait photography",
+        esemenyfoto: "Event photography",
+        kisallat: "Pet photography",
+        analog: "Analog photography",
+      },
       searchPlaceholder: "Search the references…",
       allCategories: "All",
       clear: "Clear filters",
@@ -150,10 +166,10 @@ export const dict = {
       resultsCount: "{n} references",
       // reference titles (data.js titleKeys point here)
       items: {
-        "artisans-cine": { title: "7Artisans Cine" },
-        "om-tg7": { title: "OM System TG-7" },
-        joby: { title: "JOBY bag promo" },
-        "om-adventure": { title: "OM-5 Mark II Adventure Pack" },
+        "artisans-cine": { title: "7Artisans Cine - short" },
+        "om-tg7": { title: "OM System TG-7 - short" },
+        "joby": { title: "JOBY bag - short" },
+        "om-adventure": { title: "OM-5 Mark II Adventure Pack - short" },
         "trauner-shortmood": {
           title: "Alexander Trauner Art/Film Festival — Short mood",
         },
