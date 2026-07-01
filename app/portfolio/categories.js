@@ -44,3 +44,12 @@ export const ROW_ORDER = [
 export function rowTitle(slug, t) {
   return t.portfolio?.rowTitles?.[slug] ?? slugToTitle(slug, t);
 }
+
+// Szolgáltatás-csempe (service-slug) → galéria-sor (row-slug).
+// Ami itt nincs (brand, filmes) → nincs sor → a portfólió tetejére ugrik.
+export const SERVICE_TO_ROW = {
+  foto: "portre",
+  kreativ: "kreativ",
+  esemenyek: "esemenyfoto",
+  film: "film",
+};

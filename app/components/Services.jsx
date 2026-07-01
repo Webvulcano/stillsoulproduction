@@ -3,7 +3,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "../i18n/LanguageProvider";
-import { CATEGORIES } from "../portfolio/categories";
+import { CATEGORIES, SERVICE_TO_ROW } from "../portfolio/categories";
+import { PORTFOLIO } from "../portfolio/data";
+
+// Csempe → cél URL: ha a kategóriának van feltöltött sora, oda görget (#row-<slug>);
+// egyébként a portfólió tetejére (/portfolio).
+function hrefForSlug(slug) {
+  const target = SERVICE_TO_ROW[slug];
+  const hasItems =
+    target && PORTFOLIO.some((it) => it.categories.includes(target));
+  return hasItems ? `/portfolio#row-${target}` : "/portfolio";
+}
 
 // nyelvfüggetlen: sorszám + kép (a címek a szótárból, index szerint)
 const media = [
@@ -33,7 +43,7 @@ export default function Services() {
         return (
           <Link
             key={service.num}
-            href={`/portfolio?cat=${slug}`}
+            href={hrefForSlug(slug)}
             className="group flex flex-col md:grid md:grid-cols-2 md:h-[280px]"
           >
             {/* Szöveg — mobilon mindig elöl; asztalon páros sornál jobbra (order-2) */}

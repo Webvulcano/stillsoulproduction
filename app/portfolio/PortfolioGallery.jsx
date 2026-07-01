@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLanguage } from "../i18n/LanguageProvider";
 import { PORTFOLIO } from "./data";
 import { ROW_ORDER, rowTitle } from "./categories";
@@ -23,6 +23,20 @@ export default function PortfolioGallery() {
 
   const handleSelect = (item, list, index) => setSelected({ item, list, index });
 
+  // Szolgáltatás-csempéről érkezve: görgetés a sorra (#row-<slug>).
+  // Kis késleltetés a layout/kép-betöltés miatt; a scroll-mt-28 adja a navbar-offsetet.
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (!hash) return;
+    const id = decodeURIComponent(hash.slice(1));
+    const scroll = () => {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+    const timer = setTimeout(scroll, 120);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <main className="min-h-screen bg-black pt-28 pb-20 sm:pt-32">
       <div className="mx-auto w-full max-w-[1200px]">
@@ -33,6 +47,7 @@ export default function PortfolioGallery() {
         {sections.map((s, i) => (
           <CategoryRow
             key={s.slug}
+            id={`row-${s.slug}`}
             title={s.title}
             items={s.items}
             onSelect={handleSelect}

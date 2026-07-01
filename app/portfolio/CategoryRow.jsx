@@ -20,7 +20,7 @@ const DRAG_THRESHOLD = 6; // px — efölött húzásnak számít, klikk elnyomv
 const easeInOut = (t) =>
   t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
 
-export default function CategoryRow({ title, items, onSelect, reverse = false }) {
+export default function CategoryRow({ title, items, onSelect, reverse = false, id }) {
   const { t } = useLanguage();
   const scrollerRef = useRef(null);
   const pausedRef = useRef(false);
@@ -205,7 +205,7 @@ export default function CategoryRow({ title, items, onSelect, reverse = false })
   }
 
   return (
-    <section className="mb-14">
+    <section id={id} className="mb-14 scroll-mt-28">
       <h2 className="mb-4 px-8 text-lg font-medium tracking-wide text-white/90 sm:text-xl">
         {title}
       </h2>
