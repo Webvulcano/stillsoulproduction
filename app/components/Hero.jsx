@@ -9,8 +9,6 @@ export default function Hero() {
         playsInline
         className="absolute inset-0 w-full h-full object-cover object-center"
       />
-
-      <div className="absolute inset-0 bg-black/40" />
     </section>
   );
 }
