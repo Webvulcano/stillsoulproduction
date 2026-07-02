@@ -3,16 +3,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "../i18n/LanguageProvider";
-import { CATEGORIES, SERVICE_TO_ROW } from "../portfolio/categories";
-import { PORTFOLIO } from "../portfolio/data";
+import { CATEGORIES } from "../portfolio/categories";
 
-// Csempe → cél URL: ha a kategóriának van feltöltött sora, oda görget (#row-<slug>);
-// egyébként a portfólió tetejére (/portfolio).
-function hrefForSlug(slug) {
-  const target = SERVICE_TO_ROW[slug];
-  const hasItems =
-    target && PORTFOLIO.some((it) => it.categories.includes(target));
-  return hasItems ? `/portfolio#row-${target}` : "/portfolio";
+// Csempe → cél URL: a serviceTargets (DB: service_key→mappa-slug) alapján.
+// Ha van hozzárendelt, feltöltött mappa → oda görget (#row-<slug>); különben tetejére.
+function hrefForSlug(slug, serviceTargets) {
+  const target = serviceTargets[slug];
+  return target ? `/portfolio#row-${target}` : "/portfolio";
 }
 
 // nyelvfüggetlen: sorszám + kép (a címek a szótárból, index szerint)
@@ -25,7 +22,7 @@ const media = [
   { num: "06", img: "/services/6.jpg" },
 ];
 
-export default function Services() {
+export default function Services({ serviceTargets = {} }) {
   const { t } = useLanguage();
   const services = media.map((m, i) => ({ ...m, ...t.services.items[i] }));
 
@@ -43,7 +40,7 @@ export default function Services() {
         return (
           <Link
             key={service.num}
-            href={hrefForSlug(slug)}
+            href={hrefForSlug(slug, serviceTargets)}
             className="group flex flex-col md:grid md:grid-cols-2 md:h-[280px]"
           >
             {/* Szöveg — mobilon mindig elöl; asztalon páros sornál jobbra (order-2) */}

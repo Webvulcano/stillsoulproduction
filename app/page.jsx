@@ -6,8 +6,26 @@ import Services from "./components/Services";
 import Team from "./components/Team";
 import Contact from "./components/Contact";
 import ContactInfo from "./components/ContactInfo";
+import { getPortfolioItems, getCategories } from "@/lib/portfolio";
 
-export default function Home() {
+// ISR: statikusan cache-elt, adminban mentés után revalidatePath frissíti.
+export const revalidate = 3600;
+
+export default async function Home() {
+  const [items, categories] = await Promise.all([
+    getPortfolioItems(),
+    getCategories(),
+  ]);
+  // Mely kategóriákban van tartalom.
+  const filledSlugs = new Set(items.map((it) => it.categories[0]));
+  // service_key → cél-mappa slug, csak ha a mappában van elem (különben tetejére).
+  const serviceTargets = {};
+  for (const c of categories) {
+    if (c.service_key && filledSlugs.has(c.slug)) {
+      serviceTargets[c.service_key] = c.slug;
+    }
+  }
+
   return (
     <>
       <IntroOverlay />
@@ -15,7 +33,7 @@ export default function Home() {
       <div className="relative z-10 bg-black">
         <Hero />
         <About />
-        <Services />
+        <Services serviceTargets={serviceTargets} />
         {/* <Team /> */}
         <Contact />
         <ContactInfo />

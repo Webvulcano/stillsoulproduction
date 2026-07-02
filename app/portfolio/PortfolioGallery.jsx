@@ -2,24 +2,24 @@
 
 import { useEffect, useState } from "react";
 import { useLanguage } from "../i18n/LanguageProvider";
-import { PORTFOLIO } from "./data";
-import { ROW_ORDER, rowTitle } from "./categories";
 import CategoryRow from "./CategoryRow";
 import VideoModal from "./VideoModal";
 import ImageLightbox from "./ImageLightbox";
 
 // Portfólió-galéria: kategóriánként tagolt, oldalra lapozós referencia-sorok.
-// A ROW_ORDER sorrendjét követi (fotó-sorok elöl, videó-sorok utánuk); üres sorok kimaradnak.
-export default function PortfolioGallery() {
-  const { t } = useLanguage();
+// A sorok a DB-kategóriák sort_order sorrendjét követik; üres sorok kimaradnak.
+export default function PortfolioGallery({ items = [], categories = [] }) {
+  const { t, locale } = useLanguage();
   // selected: { item, list, index } — fotónál a list a soron belüli lapozáshoz kell.
   const [selected, setSelected] = useState(null);
 
-  const sections = ROW_ORDER.map((slug) => ({
-    slug,
-    title: rowTitle(slug, t),
-    items: PORTFOLIO.filter((it) => it.categories.includes(slug)),
-  })).filter((s) => s.items.length > 0);
+  const sections = categories
+    .map((c) => ({
+      slug: c.slug,
+      title: locale === "en" ? c.title_en : c.title_hu,
+      items: items.filter((it) => it.categories.includes(c.slug)),
+    }))
+    .filter((s) => s.items.length > 0);
 
   const handleSelect = (item, list, index) => setSelected({ item, list, index });
 

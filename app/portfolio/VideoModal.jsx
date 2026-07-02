@@ -3,11 +3,12 @@
 import { useEffect } from "react";
 import { FiX } from "react-icons/fi";
 import { useLanguage } from "../i18n/LanguageProvider";
-import { titleOf } from "./data";
+import { itemTitle } from "./data";
 
 // Lightbox: beágyazott YouTube player. Zárás: X, háttér-kattintás, Esc.
 export default function VideoModal({ item, onClose }) {
-  const { t } = useLanguage();
+  const { locale } = useLanguage();
+  const title = itemTitle(item, locale);
 
   useEffect(() => {
     const onKey = (e) => {
@@ -27,7 +28,7 @@ export default function VideoModal({ item, onClose }) {
       onClick={onClose}
       role="dialog"
       aria-modal="true"
-      aria-label={titleOf(item, t)}
+      aria-label={title}
     >
       <button
         type="button"
@@ -47,13 +48,13 @@ export default function VideoModal({ item, onClose }) {
           <iframe
             className="absolute inset-0 h-full w-full"
             src={`https://www.youtube.com/embed/${item.youtubeId}?autoplay=1`}
-            title={titleOf(item, t)}
+            title={title}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           />
         </div>
         <h3 className="mt-4 text-center text-sm font-semibold uppercase tracking-wider text-white">
-          {titleOf(item, t)}
+          {title}
         </h3>
       </div>
     </div>

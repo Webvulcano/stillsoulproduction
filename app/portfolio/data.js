@@ -173,6 +173,13 @@ export function thumbUrl(item) {
 }
 
 // Cím feloldása a központi szótárból (locale-érzékeny, egyetlen forrás).
+// (Régi statikus itemekhez; a DB-s itemek a title_hu/title_en mezőt hozzák.)
 export function titleOf(item, t) {
   return t.portfolio?.items?.[item.titleKey]?.title ?? item.titleKey;
+}
+
+// DB-s elem kétnyelvű felirata locale szerint (üres ha nincs).
+export function itemTitle(item, locale) {
+  const t = locale === "en" ? item.title_en : item.title_hu;
+  return t ?? item.title_en ?? item.title_hu ?? "";
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { FiX, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { thumbUrl } from "./data";
@@ -93,13 +94,15 @@ export default function ImageLightbox({ items, index = 0, onClose }) {
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
       >
-        <div className="relative flex max-h-[82vh] w-full items-center justify-center overflow-hidden rounded-lg bg-black">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+        <div className="relative h-[82vh] w-full overflow-hidden rounded-lg bg-black">
+          <Image
             src={thumbUrl(item)}
             alt=""
+            fill
+            sizes="(max-width: 1024px) 100vw, 1024px"
+            quality={85}
             draggable={false}
-            className="max-h-[82vh] w-auto max-w-full select-none object-contain"
+            className="select-none object-contain"
           />
         </div>
         {count > 1 && (

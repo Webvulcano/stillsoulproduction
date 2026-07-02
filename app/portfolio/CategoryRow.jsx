@@ -1,9 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { FaPlay } from "react-icons/fa";
 import { useLanguage } from "../i18n/LanguageProvider";
-import { thumbUrl, titleOf } from "./data";
+import { thumbUrl, itemTitle } from "./data";
 
 // Egy kategória-szekció: cím + vízszintesen léptető kártya-sor.
 // - léptet pontosan 1 kártyányit (sima ~0.4s glide), majd 1s szünet, ismét
@@ -21,7 +22,7 @@ const easeInOut = (t) =>
   t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
 
 export default function CategoryRow({ title, items, onSelect, reverse = false, id }) {
-  const { t } = useLanguage();
+  const { locale } = useLanguage();
   const scrollerRef = useRef(null);
   const pausedRef = useRef(false);
   const dragRef = useRef({ active: false, moved: false, startX: 0, startLeft: 0 });
@@ -232,8 +233,8 @@ export default function CategoryRow({ title, items, onSelect, reverse = false, i
         {loop.map(({ it, rep }) => {
           const isVideo = it.kind !== "photo";
           const isPhoto = !isVideo;
-          // Videónál a cím a dict-ből; fotónál nincs felirat, az alt a sor címe.
-          const itemTitle = isPhoto ? title : titleOf(it, t);
+          // Videónál a felirat a DB kétnyelvű mezőjéből; fotónál nincs, az alt a sor címe.
+          const label = isPhoto ? title : itemTitle(it, locale);
           const isClone = rep > 0;
           return (
             <button
@@ -243,18 +244,18 @@ export default function CategoryRow({ title, items, onSelect, reverse = false, i
               onClick={() => handleClick(it)}
               className="group shrink-0 text-left"
               style={{ width: "clamp(260px, 78vw, 360px)" }}
-              aria-label={itemTitle}
+              aria-label={label}
               aria-hidden={isClone || undefined}
               tabIndex={isClone ? -1 : undefined}
             >
               <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-white/5">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={thumbUrl(it)}
-                  alt={itemTitle}
-                  loading="lazy"
+                  alt={label}
+                  fill
+                  sizes="(max-width: 640px) 78vw, 360px"
                   draggable={false}
-                  className="h-full w-full select-none object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="select-none object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 {isVideo && (
                   <span className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
@@ -267,7 +268,7 @@ export default function CategoryRow({ title, items, onSelect, reverse = false, i
               {/* Fotónál nincs felirat; videónál fix 2 soros hely (a thumbnail nem csúszik) */}
               {isVideo && (
                 <h3 className="mt-3 line-clamp-2 min-h-[2.5rem] text-sm font-semibold uppercase leading-5 tracking-wider text-white">
-                  {itemTitle}
+                  {label}
                 </h3>
               )}
             </button>
