@@ -50,6 +50,6 @@ export function rowTitle(slug, t) {
 export const SERVICE_TO_ROW = {
   foto: "portre",
   kreativ: "kreativ",
-  esemenyek: "esemenyfoto",
+  esemenyek: "esemenyek",
   film: "film",
 };
