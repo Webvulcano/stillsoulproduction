@@ -9,7 +9,11 @@ import { thumbUrl } from "./data";
 // Vezérlés: X / Esc / háttér-klikk zár; nyíl gomb + ←/→ billentyű + swipe lapoz (körkörös).
 export default function ImageLightbox({ items, index = 0, onClose }) {
   const [current, setCurrent] = useState(index);
+  const [loaded, setLoaded] = useState(false);
   const touchX = useRef(null);
+
+  // Skeleton újraindítása képváltáskor.
+  useEffect(() => setLoaded(false), [current]);
 
   const count = items.length;
   const go = (delta) => setCurrent((c) => (c + delta + count) % count);
@@ -95,6 +99,9 @@ export default function ImageLightbox({ items, index = 0, onClose }) {
         onTouchEnd={onTouchEnd}
       >
         <div className="relative h-[82vh] w-full overflow-hidden rounded-lg bg-black">
+          {!loaded && (
+            <div className="absolute inset-0 animate-pulse bg-white/10" />
+          )}
           <Image
             src={thumbUrl(item)}
             alt=""
@@ -102,7 +109,10 @@ export default function ImageLightbox({ items, index = 0, onClose }) {
             sizes="(max-width: 1024px) 100vw, 1024px"
             quality={85}
             draggable={false}
-            className="select-none object-contain"
+            onLoad={() => setLoaded(true)}
+            className={`select-none object-contain transition-opacity duration-300 ${
+              loaded ? "opacity-100" : "opacity-0"
+            }`}
           />
         </div>
         {count > 1 && (

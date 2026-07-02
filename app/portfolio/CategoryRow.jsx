@@ -1,10 +1,33 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaPlay } from "react-icons/fa";
 import { useLanguage } from "../i18n/LanguageProvider";
 import { thumbUrl, itemTitle } from "./data";
+
+// Thumbnail skeletonnal: pulzáló placeholder amíg a kép be nem tölt.
+function ThumbImage({ src, alt }) {
+  const [loaded, setLoaded] = useState(false);
+  return (
+    <>
+      {!loaded && (
+        <div className="absolute inset-0 animate-pulse bg-white/10" />
+      )}
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        sizes="(max-width: 640px) 78vw, 360px"
+        draggable={false}
+        onLoad={() => setLoaded(true)}
+        className={`select-none object-cover transition-all duration-500 group-hover:scale-105 ${
+          loaded ? "opacity-100" : "opacity-0"
+        }`}
+      />
+    </>
+  );
+}
 
 // Egy kategória-szekció: cím + vízszintesen léptető kártya-sor.
 // - léptet pontosan 1 kártyányit (sima ~0.4s glide), majd 1s szünet, ismét
@@ -249,14 +272,7 @@ export default function CategoryRow({ title, items, onSelect, reverse = false, i
               tabIndex={isClone ? -1 : undefined}
             >
               <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-white/5">
-                <Image
-                  src={thumbUrl(it)}
-                  alt={label}
-                  fill
-                  sizes="(max-width: 640px) 78vw, 360px"
-                  draggable={false}
-                  className="select-none object-cover transition-transform duration-500 group-hover:scale-105"
-                />
+                <ThumbImage src={thumbUrl(it)} alt={label} />
                 {isVideo && (
                   <span className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                     <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white/90 text-black">
