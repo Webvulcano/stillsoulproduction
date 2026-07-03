@@ -49,6 +49,9 @@ export const dict = {
       messagePlaceholder:
         "Ide írd le kérlek, hogy mivel keresnél meg minket",
       submit: "Küldés",
+      sending: "Küldés…",
+      success: "Köszönjük! Megkaptuk az üzeneted, hamarosan válaszolunk.",
+      error: "Hiba történt a küldés során. Kérlek próbáld újra.",
     },
     contactInfo: {
       label: "— Kapcsolat —",
@@ -144,6 +147,9 @@ export const dict = {
       messagePlaceholder:
         "Tell us what you'd like to work on and what budget you have in mind…",
       submit: "Send",
+      sending: "Sending…",
+      success: "Thank you! We've received your message and will get back to you soon.",
+      error: "Something went wrong. Please try again.",
     },
     contactInfo: {
       label: "— Contact —",
