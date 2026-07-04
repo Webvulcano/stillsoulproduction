@@ -16,8 +16,8 @@ const contacts = [
   },
   {
     icon: FaInstagram,
-    label: "@stillsoulp",
-    href: "https://instagram.com/stillsoulp",
+    label: "@stillsoulproduction",
+    href: "https://www.instagram.com/stillsoulproduction/",
     external: true,
   },
 ];
