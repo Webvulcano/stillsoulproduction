@@ -10,6 +10,7 @@ export const dict = {
     about: {
       title: "Rólunk",
       p1: "A StillSoul Production egy kreatív tartalmakat gyártó csapat. Legyen szó márka megkeresésről, reklámfilmről, social média tartalom gyártásáról, kreatív fotózásról vagy céges eseményről, fordulj felénk bizalommal. Az ország bármely pontjára vagy határon kívülre is elmegyünk. Nálunk a vevői igények az elsők, ezért az árazásunk is mindig személyre szabott.",
+      p2: "",
       p3: "Minden munkánk alapja az alkotás szeretete, az őszinte kapcsolódás és a maradandó vizuális élmények létrehozása.",
     },
     services: {
@@ -108,6 +109,7 @@ export const dict = {
     about: {
       title: "About us",
       p1: "StillSoul Production is a creative content studio. Whether it's a brand collaboration, a commercial, social media content, creative photography or a corporate event — reach out to us. Your needs come first, so our pricing is always tailored to you.",
+      p2: "",
       p3: "All our work is rooted in the love of creating, honest connection, and crafting lasting visual experiences.",
     },
     services: {

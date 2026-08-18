@@ -12,19 +12,17 @@ function hrefForSlug(slug, serviceTargets) {
   return target ? `/portfolio#row-${target}` : "/portfolio";
 }
 
-// nyelvfüggetlen: sorszám + kép (a címek a szótárból, index szerint)
-const media = [
-  { num: "01", img: "/services/1.jpeg" },
-  { num: "02", img: "/services/2.jpg" },
-  { num: "03", img: "/services/3.jpg" },
-  { num: "04", img: "/services/4.jpg" },
-  { num: "05", img: "/services/5.jpg" },
-  { num: "06", img: "/services/6.jpg" },
-];
-
-export default function Services({ serviceTargets = {} }) {
-  const { t } = useLanguage();
-  const services = media.map((m, i) => ({ ...m, ...t.services.items[i] }));
+// A csempék (cím, leírás, kép) a DB-ből jönnek (site_content.services), kétnyelvűen.
+export default function Services({ serviceTargets = {}, tiles = [] }) {
+  const { t, locale } = useLanguage();
+  const en = locale === "en";
+  const services = tiles.map((tile, i) => ({
+    num: String(i + 1).padStart(2, "0"),
+    img: tile.image_url,
+    slug: tile.slug,
+    title: (en ? tile.title_en : tile.title_hu) || "",
+    details: (en ? tile.details_en : tile.details_hu) || "",
+  }));
 
   return (
     <section id="szolgaltatasok" className="bg-black text-white">
@@ -35,8 +33,8 @@ export default function Services({ serviceTargets = {} }) {
       </div>
       {services.map((service, i) => {
         const isEven = i % 2 === 1;
-        // index → kategória-slug → szűrt portfólió oldal
-        const slug = CATEGORIES[i]?.slug;
+        // csempe-slug → szűrt portfólió oldal (fallback: index → CATEGORIES)
+        const slug = service.slug ?? CATEGORIES[i]?.slug;
         return (
           <Link
             key={service.num}

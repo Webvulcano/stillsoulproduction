@@ -277,6 +277,115 @@ export async function reorderItems(orderedIds) {
   revalidateAll();
 }
 
+// — Oldal-tartalom (site_content): Rólunk + Munkáink —
+
+const PHOTO_SLOTS = 6;
+
+// Publikus Storage-URL → objektum-útvonal, de CSAK a site/ prefixű (admin által
+// feltöltött) képekre. A seedelt /about/*.jpg statikus fájlok nem törölhetők.
+function siteStoragePath(url) {
+  const m = String(url || "").match(/\/storage\/v1\/object\/public\/portfolio\/(site\/.+)$/);
+  return m ? decodeURIComponent(m[1]) : null;
+}
+
+// A lecserélt képeket takarítjuk, hogy ne szemeteljen a bucket.
+async function removeReplaced(supabase, oldUrls, newUrls) {
+  const keep = new Set(newUrls.filter(Boolean));
+  const paths = oldUrls
+    .filter((u) => u && !keep.has(u))
+    .map(siteStoragePath)
+    .filter(Boolean);
+  if (paths.length) await supabase.storage.from("portfolio").remove(paths);
+}
+
+function text(v) {
+  return typeof v === "string" ? v.trim() : "";
+}
+
+// Fix hosszú kép-tömb: üres slot → a régi érték marad.
+function photoSlots(next, prev) {
+  return Array.from({ length: PHOTO_SLOTS }, (_, i) =>
+    text(next?.[i]) || prev?.[i] || null
+  );
+}
+
+export async function saveAbout(payload) {
+  const supabase = await createClient();
+  const { data: row } = await supabase
+    .from("site_content")
+    .select("value")
+    .eq("key", "about")
+    .maybeSingle();
+  const prev = row?.value ?? {};
+
+  const value = {
+    title_hu: text(payload.title_hu),
+    title_en: text(payload.title_en),
+    p1_hu: text(payload.p1_hu),
+    p1_en: text(payload.p1_en),
+    p2_hu: text(payload.p2_hu),
+    p2_en: text(payload.p2_en),
+    p3_hu: text(payload.p3_hu),
+    p3_en: text(payload.p3_en),
+    top_photos: photoSlots(payload.top_photos, prev.top_photos),
+    bottom_photos: photoSlots(payload.bottom_photos, prev.bottom_photos),
+  };
+  if (!value.title_hu || !value.title_en)
+    throw new Error("A cím (HU és EN) kötelező.");
+
+  const { error } = await supabase
+    .from("site_content")
+    .upsert({ key: "about", value, updated_at: new Date().toISOString() });
+  if (error) throw new Error(error.message);
+
+  await removeReplaced(
+    supabase,
+    [...(prev.top_photos ?? []), ...(prev.bottom_photos ?? [])],
+    [...value.top_photos, ...value.bottom_photos]
+  );
+  revalidateAll();
+}
+
+// Egy szolgáltatás-csempe mentése (a 6 csempe fix, slug szerint azonosítva).
+export async function saveServiceTile(payload) {
+  const supabase = await createClient();
+  const slug = text(payload.slug);
+  if (!slug) throw new Error("Hiányzó csempe-azonosító.");
+
+  const { data: row } = await supabase
+    .from("site_content")
+    .select("value")
+    .eq("key", "services")
+    .maybeSingle();
+  const items = Array.isArray(row?.value?.items) ? [...row.value.items] : [];
+  const idx = items.findIndex((it) => it?.slug === slug);
+  if (idx === -1) throw new Error("Ismeretlen csempe: " + slug);
+  const prev = items[idx];
+
+  const title_hu = text(payload.title_hu);
+  const title_en = text(payload.title_en);
+  if (!title_hu || !title_en) throw new Error("A cím (HU és EN) kötelező.");
+
+  items[idx] = {
+    ...prev,
+    title_hu,
+    title_en,
+    details_hu: text(payload.details_hu),
+    details_en: text(payload.details_en),
+    image_url: text(payload.image_url) || prev.image_url,
+  };
+
+  const { error } = await supabase.from("site_content").upsert({
+    key: "services",
+    value: { items },
+    updated_at: new Date().toISOString(),
+  });
+  if (error) throw new Error(error.message);
+
+  await removeReplaced(supabase, [prev.image_url], [items[idx].image_url]);
+  revalidateAll();
+}
+
 export async function signOut() {
   const supabase = await createClient();
   await supabase.auth.signOut();

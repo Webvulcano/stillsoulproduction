@@ -4,22 +4,6 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { useLanguage } from "../i18n/LanguageProvider";
 
-const TOP_PHOTOS = [
-  "/about/top-01.jpg",
-  "/about/top-02.jpg",
-  "/about/top-03.jpg",
-  "/about/top-04.jpg",
-  "/about/top-05.jpg",
-  "/about/top-06.jpg",
-];
-const BOTTOM_PHOTOS = [
-  "/about/01.jpg",
-  "/about/02.jpg",
-  "/about/03.jpg",
-  "/about/04.jpg",
-  "/about/05.jpg",
-  "/about/06.jpg",
-];
 
 // Kép-csík belépő animációval (fade + slide). fromTop: felülről csúszik be.
 function PhotoStrip({ photos, alt, fromTop = false }) {
@@ -56,7 +40,7 @@ function PhotoStrip({ photos, alt, fromTop = false }) {
     >
       {photos.map((src, i) => (
         <div
-          key={src}
+          key={`${i}-${src}`}
           className={`group relative aspect-[3/2] overflow-hidden rounded-lg bg-white/5 transition-all duration-700 ease-out ${
             visible ? "translate-y-0 opacity-100" : hidden
           }`}
@@ -75,30 +59,44 @@ function PhotoStrip({ photos, alt, fromTop = false }) {
   );
 }
 
-export default function About() {
-  const { t } = useLanguage();
-  const alt = `${t.about.title} — StillSoul Production`;
+// A tartalom a DB-ből jön (site_content.about), kétnyelvűen — a nyelv kliens-oldali.
+export default function About({ content }) {
+  const { t, locale } = useLanguage();
+  const suf = locale === "en" ? "_en" : "_hu";
+  const pick = (k, fallback) => content?.[k + suf] ?? fallback;
+
+  const title = pick("title", t.about.title);
+  const paragraphs = [
+    pick("p1", t.about.p1),
+    pick("p2", t.about.p2),
+    pick("p3", t.about.p3),
+  ].filter((p) => p && p.trim());
+  const topPhotos = content?.top_photos ?? [];
+  const bottomPhotos = content?.bottom_photos ?? [];
+  const alt = `${title} — StillSoul Production`;
 
   return (
     <section id="rolunk" className="relative min-h-screen w-full overflow-hidden bg-black">
       <div className="flex min-h-screen flex-col items-center justify-center gap-14 px-8 py-24">
         {/* Kép-csík a cím fölött */}
-        <PhotoStrip photos={TOP_PHOTOS} alt={alt} fromTop />
+        <PhotoStrip photos={topPhotos} alt={alt} fromTop />
 
         {/* Szöveg — marad a fő elem */}
         <div className="max-w-xl space-y-8">
           <h2 className="text-4xl md:text-7xl font-light tracking-tight text-white">
-            {t.about.title}
+            {title}
           </h2>
           <div className="border-l-2 border-white/30 pl-6 space-y-4">
-            <p className="text-sm leading-7 text-gray-300">{t.about.p1}</p>
-            <p className="text-sm leading-7 text-gray-300">{t.about.p2}</p>
-            <p className="text-sm leading-7 text-gray-300">{t.about.p3}</p>
+            {paragraphs.map((p, i) => (
+              <p key={i} className="text-sm leading-7 text-gray-300">
+                {p}
+              </p>
+            ))}
           </div>
         </div>
 
         {/* Kép-csík a szöveg alatt */}
-        <PhotoStrip photos={BOTTOM_PHOTOS} alt={alt} />
+        <PhotoStrip photos={bottomPhotos} alt={alt} />
       </div>
     </section>
   );

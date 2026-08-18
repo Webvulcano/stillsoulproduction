@@ -15,7 +15,6 @@ import {
   deleteCategory,
   reorderCategories,
   reorderItems,
-  signOut,
 } from "../actions";
 
 const MAX_UPLOAD_BYTES = 3 * 1024 * 1024; // 3 MB / fájl
@@ -66,7 +65,7 @@ function previewUrl(it) {
   return null;
 }
 
-export default function AdminDrive({ categories, items, email }) {
+export default function AdminDrive({ categories, items }) {
   const router = useRouter();
   const [cats, setCats] = useState(categories);
   const [openSlug, setOpenSlug] = useState(null);
@@ -179,29 +178,22 @@ export default function AdminDrive({ categories, items, email }) {
   };
 
   return (
-    <main className="mx-auto min-h-screen max-w-5xl bg-black px-5 py-8 text-white">
-      {/* Fejléc */}
-      <header className="mb-6 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          {openSlug && (
-            <button onClick={() => setOpenSlug(null)} className={btnGhost}>
-              <FiArrowLeft />
-            </button>
+    <section className="mb-12 rounded-xl border border-white/10 bg-white/5 p-5">
+      {/* Szekció-fejléc — mappán belül vissza-gomb + mappanév */}
+      <header className="mb-4 flex items-center gap-3">
+        {openSlug && (
+          <button onClick={() => setOpenSlug(null)} className={btnGhost}>
+            <FiArrowLeft />
+          </button>
+        )}
+        <div>
+          <h2 className="text-lg font-semibold uppercase tracking-widest">
+            {openCat ? openCat.title_hu : "Portfólió"}
+          </h2>
+          {openCat && (
+            <p className="text-xs text-white/40">{countByCat(openSlug)} elem</p>
           )}
-          <div>
-            <h1 className="text-lg font-semibold uppercase tracking-widest">
-              {openCat
-                ? openCat.title_hu
-                : "StillSoul — Admin"}
-            </h1>
-            <p className="text-xs text-white/40">
-              {openCat ? `${countByCat(openSlug)} elem` : email}
-            </p>
-          </div>
         </div>
-        <form action={signOut}>
-          <button className={btnGhost}>Kijelentkezés</button>
-        </form>
       </header>
 
       {/* GYÖKÉR: mappák */}
@@ -426,7 +418,7 @@ export default function AdminDrive({ categories, items, email }) {
           onDelete={(fd) => perform(() => deleteCategory(fd), () => setFolderDialog(null))}
         />
       )}
-    </main>
+    </section>
   );
 }
 
