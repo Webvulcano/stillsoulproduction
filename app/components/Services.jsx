@@ -27,6 +27,7 @@ export default function Services({ serviceTargets = {}, images = [] }) {
 
   return (
     <section id="szolgaltatasok" className="bg-black text-white">
+      <div className="max-w-[1920px] mx-auto">
       <div className="px-8 md:px-16 py-8 text-center">
         <span className="text-xs uppercase tracking-[0.3em] text-white/40" data-cms="home.services.label">
           {t.services.label}
@@ -81,12 +82,13 @@ export default function Services({ serviceTargets = {}, images = [] }) {
                 unoptimized={isCmsUpload(service.img?.src)}
                 fill
                 className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
-                sizes="(max-width: 768px) 100vw, 50vw"
+                sizes="(max-width: 768px) 100vw, (max-width: 1920px) 50vw, 960px"
               />
             </div>
           </Link>
         );
       })}
+      </div>
     </section>
   );
 }
