@@ -1,4 +1,4 @@
-// CMS manifest for the StillSoul CMS copy (Ügyfél Admin). Structure comes from
+// CMS manifest for StillSoul Production (Ügyfél Admin). Structure comes from
 // lib/cms-schema.js; defaults = current live content. Sync from the admin repo:
 //   npx tsx scripts/sync-manifest.mjs <this repo>/cms.manifest.js --print-payload
 import { SECTIONS, defaultFor } from "./lib/cms-schema.js";
@@ -11,8 +11,8 @@ const PAGES = [
 
 export default {
   site: {
-    slug: "stillsoul-demo",
-    name: "StillSoul Production (CMS másolat)",
+    slug: "stillsoulproduction",
+    name: "StillSoul Production",
     url: "https://stillsoulproduction.hu",
     previewUrl: "https://stillsoulproduction.hu",
   },
