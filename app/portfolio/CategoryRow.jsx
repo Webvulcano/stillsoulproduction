@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { FaPlay } from "react-icons/fa";
 import { useLanguage } from "../i18n/LanguageProvider";
 import { thumbUrl, itemTitle } from "./data";
+import { isCmsUpload } from "@/lib/cms-image";
 
 // Thumbnail skeletonnal: pulzáló placeholder amíg a kép be nem tölt.
 function ThumbImage({ src, alt }) {
@@ -19,6 +20,7 @@ function ThumbImage({ src, alt }) {
         alt={alt}
         fill
         sizes="(max-width: 640px) 78vw, 360px"
+        unoptimized={isCmsUpload(src)}
         draggable={false}
         onLoad={() => setLoaded(true)}
         className={`select-none object-cover transition-all duration-500 group-hover:scale-105 ${
@@ -250,14 +252,16 @@ export default function CategoryRow({ title, items, onSelect, reverse = false, i
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
         onTouchCancel={onTouchEnd}
+        data-cms="@gallery"
         className="flex items-start gap-4 overflow-x-auto px-8 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         style={{ touchAction: "pan-x", cursor: "grab", scrollBehavior: "auto" }}
       >
         {loop.map(({ it, rep }) => {
           const isVideo = it.kind !== "photo";
           const isPhoto = !isVideo;
-          // Videónál a felirat a DB kétnyelvű mezőjéből; fotónál nincs, az alt a sor címe.
-          const label = isPhoto ? title : itemTitle(it, locale);
+          // Videónál a felirat a CMS kétnyelvű címe; fotónál nincs felirat, az alt a kép leírása
+          // (ha nincs, a sor címe).
+          const label = isPhoto ? (locale === "en" ? it.alt_en ?? it.alt_hu : it.alt_hu) || title : itemTitle(it, locale);
           const isClone = rep > 0;
           return (
             <button

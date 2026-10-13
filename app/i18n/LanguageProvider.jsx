@@ -6,7 +6,9 @@ import { dict } from "./dict";
 const LanguageContext = createContext(null);
 const STORAGE_KEY = "ssp_lang";
 
-export function LanguageProvider({ children }) {
+// `dicts` = the dictionary with CMS texts ({ hu, en }) from the root layout;
+// the bundled dict.js is only the fallback.
+export function LanguageProvider({ children, dicts = dict }) {
   const [locale, setLocale] = useState("hu");
 
   // mentett nyelv visszatöltése (kliensen)
@@ -23,7 +25,7 @@ export function LanguageProvider({ children }) {
     } catch {}
   }, [locale]);
 
-  const value = { locale, setLocale, t: dict[locale] };
+  const value = { locale, setLocale, t: dicts[locale] ?? dicts.hu };
 
   return (
     <LanguageContext.Provider value={value}>

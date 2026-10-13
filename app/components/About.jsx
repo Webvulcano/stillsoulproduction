@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { useLanguage } from "../i18n/LanguageProvider";
+import { isCmsUpload } from "@/lib/cms-image";
 
 
 // Kép-csík belépő animációval (fade + slide). fromTop: felülről csúszik be.
@@ -38,19 +39,21 @@ function PhotoStrip({ photos, alt, fromTop = false }) {
       ref={ref}
       className="grid w-full max-w-6xl grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6"
     >
-      {photos.map((src, i) => (
+      {photos.map((photo, i) => (
         <div
-          key={`${i}-${src}`}
+          key={`${i}-${photo.src}`}
+          data-cms={photo.key}
           className={`group relative aspect-[3/2] overflow-hidden rounded-lg bg-white/5 transition-all duration-700 ease-out ${
             visible ? "translate-y-0 opacity-100" : hidden
           }`}
           style={{ transitionDelay: `${i * 120}ms` }}
         >
           <Image
-            src={src}
-            alt={`${alt} ${i + 1}`}
+            src={photo.src}
+            alt={photo.alt || `${alt} ${i + 1}`}
             fill
             sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw"
+            unoptimized={isCmsUpload(photo.src)}
             className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
         </div>
@@ -59,20 +62,16 @@ function PhotoStrip({ photos, alt, fromTop = false }) {
   );
 }
 
-// A tartalom a DB-ből jön (site_content.about), kétnyelvűen — a nyelv kliens-oldali.
-export default function About({ content }) {
-  const { t, locale } = useLanguage();
-  const suf = locale === "en" ? "_en" : "_hu";
-  const pick = (k, fallback) => content?.[k + suf] ?? fallback;
+// Szöveg: CMS-ből a szótáron át (t.about), képek: CMS képhelyek (photos, 6 felső + 6 alsó).
+export default function About({ photos = [] }) {
+  const { t } = useLanguage();
 
-  const title = pick("title", t.about.title);
-  const paragraphs = [
-    pick("p1", t.about.p1),
-    pick("p2", t.about.p2),
-    pick("p3", t.about.p3),
-  ].filter((p) => p && p.trim());
-  const topPhotos = content?.top_photos ?? [];
-  const bottomPhotos = content?.bottom_photos ?? [];
+  const title = t.about.title;
+  const paragraphs = ["p1", "p2", "p3"]
+    .map((k) => ({ k, text: t.about[k] }))
+    .filter((p) => p.text && p.text.trim());
+  const topPhotos = photos.slice(0, 6);
+  const bottomPhotos = photos.slice(6, 12);
   const alt = `${title} — StillSoul Production`;
 
   return (
@@ -83,13 +82,13 @@ export default function About({ content }) {
 
         {/* Szöveg — marad a fő elem */}
         <div className="max-w-xl space-y-8">
-          <h2 className="text-4xl md:text-7xl font-light tracking-tight text-white">
+          <h2 className="text-4xl md:text-7xl font-light tracking-tight text-white" data-cms="home.about.title">
             {title}
           </h2>
           <div className="border-l-2 border-white/30 pl-6 space-y-4">
-            {paragraphs.map((p, i) => (
-              <p key={i} className="text-sm leading-7 text-gray-300">
-                {p}
+            {paragraphs.map((p) => (
+              <p key={p.k} className="text-sm leading-7 text-gray-300" data-cms={`home.about.${p.k}`}>
+                {p.text}
               </p>
             ))}
           </div>

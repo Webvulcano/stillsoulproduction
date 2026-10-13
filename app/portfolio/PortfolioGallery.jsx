@@ -40,7 +40,7 @@ export default function PortfolioGallery({ items = [], categories = [] }) {
   return (
     <main className="min-h-screen bg-black pt-28 pb-20 sm:pt-32">
       <div className="mx-auto w-full max-w-[1200px]">
-        <h1 className="mb-10 px-8 text-3xl font-semibold uppercase tracking-widest text-white sm:mb-14 sm:text-4xl">
+        <h1 className="mb-10 px-8 text-3xl font-semibold uppercase tracking-widest text-white sm:mb-14 sm:text-4xl" data-cms="portfolio.portfolio.gallery_title">
           {t.portfolio.galleryTitle}
         </h1>
 

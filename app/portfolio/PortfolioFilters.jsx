@@ -71,7 +71,7 @@ export default function PortfolioFilters({
             className="inline-flex shrink-0 items-center gap-1 self-end whitespace-nowrap text-xs uppercase tracking-wider text-white/45 transition-colors hover:text-white sm:self-auto"
           >
             <FiX />
-            {t.portfolio.clear}
+            <span data-cms="portfolio.portfolio.clear">{t.portfolio.clear}</span>
           </button>
         )}
       </div>

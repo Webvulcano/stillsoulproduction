@@ -7,16 +7,17 @@ import Team from "./components/Team";
 import Contact from "./components/Contact";
 import ContactInfo from "./components/ContactInfo";
 import { getPortfolioItems, getCategories } from "@/lib/portfolio";
-import { getSiteContent } from "@/lib/siteContent";
+import { getSectionImages } from "@/lib/cms-dict";
 
-// ISR: statikusan cache-elt, adminban mentés után revalidatePath frissíti.
+// ISR: statikusan cache-elt; az Ügyfél Admin mentés után a cms:<slug> taget frissíti.
 export const revalidate = 3600;
 
 export default async function Home() {
-  const [items, categories, content] = await Promise.all([
+  const [items, categories, aboutImages, serviceImages] = await Promise.all([
     getPortfolioItems(),
     getCategories(),
-    getSiteContent(),
+    getSectionImages("about"),
+    getSectionImages("services"),
   ]);
   // Mely kategóriákban van tartalom.
   const filledSlugs = new Set(items.map((it) => it.categories[0]));
@@ -34,8 +35,8 @@ export default async function Home() {
       <Navbar />
       <div className="relative z-10 bg-black">
         <Hero />
-        <About content={content.about} />
-        <Services serviceTargets={serviceTargets} tiles={content.services} />
+        <About photos={aboutImages} />
+        <Services serviceTargets={serviceTargets} images={serviceImages} />
         {/* <Team /> */}
         <Contact />
         <ContactInfo />

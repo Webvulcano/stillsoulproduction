@@ -11,7 +11,7 @@ export default function PortfolioGrid({ items, onSelect }) {
 
   if (items.length === 0) {
     return (
-      <p className="mt-16 text-center text-sm text-white/50">
+      <p className="mt-16 text-center text-sm text-white/50" data-cms="portfolio.portfolio.no_results">
         {t.portfolio.noResults}
       </p>
     );
