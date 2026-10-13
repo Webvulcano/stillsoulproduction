@@ -13,7 +13,10 @@ export default {
   site: {
     slug: "stillsoul-demo",
     name: "StillSoul Production (CMS másolat)",
-    url: "http://localhost:3010",
+    // Merge előtt: a feature/cms preview deploy (az éles main még nem CMS-es).
+    // Merge után → éles domain.
+    url: "https://stillsoulproduction-git-feature-cms-lehel200s-projects.vercel.app",
+    previewUrl: "https://stillsoulproduction-git-feature-cms-lehel200s-projects.vercel.app",
   },
   // Portfólió = Ügyfél Admin galéria modul. A kategóriákat a főoldali szolgáltatás-csempékhez
   // lehet kötni (link key = a csempe slugja, ld. app/portfolio/categories.js CATEGORIES).
