@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { FiFolder, FiPlus, FiArrowLeft, FiX, FiEdit2, FiTrash2 } from "react-icons/fi";
-import { createClient } from "@/lib/supabase/client";
+import { toWebp, uploadBlob, checkInputFile, SIZES } from "./uploadImage";
 import {
   createItems,
   updateItemFields,
@@ -17,28 +17,22 @@ import {
   reorderItems,
 } from "../actions";
 
-const MAX_UPLOAD_BYTES = 3 * 1024 * 1024; // 3 MB / fájl
-
-// Kliens-oldali feltöltés a Storage-ba (nincs server-action méretlimit).
-async function uploadFiles(category, files) {
-  const supabase = createClient();
-  const tooBig = files.find((f) => f.size > MAX_UPLOAD_BYTES);
-  if (tooBig) {
-    throw new Error(
-      `Túl nagy fájl: ${tooBig.name} (${(tooBig.size / 1024 / 1024).toFixed(1)} MB). Max 3 MB.`
-    );
-  }
-  const urls = [];
+// Feltöltés előtt a böngésző WebP-re méretez (nyers kamera-JPG is mehet).
+// photo → full (lightbox) + thumb (rács); video → csak thumb (borítókép).
+// Vissza: [{ image_url, thumb_url }] a fájlok sorrendjében.
+async function uploadFiles(category, files, kind = "photo") {
+  files.forEach(checkInputFile);
+  const out = [];
   for (const f of files) {
-    const ext = (f.name.split(".").pop() || "jpg").toLowerCase();
-    const path = `${category}/${crypto.randomUUID()}.${ext}`;
-    const { error } = await supabase.storage
-      .from("portfolio")
-      .upload(path, f, { contentType: f.type || "image/jpeg", upsert: false });
-    if (error) throw new Error("Feltöltés hiba: " + error.message);
-    urls.push(supabase.storage.from("portfolio").getPublicUrl(path).data.publicUrl);
+    const base = `${category}/${crypto.randomUUID()}`;
+    const thumb_url = await uploadBlob(`${base}-thumb`, await toWebp(f, SIZES.thumb));
+    const image_url =
+      kind === "photo"
+        ? await uploadBlob(`${base}-full`, await toWebp(f, SIZES.full))
+        : thumb_url;
+    out.push({ image_url, thumb_url });
   }
-  return urls;
+  return out;
 }
 
 // A főoldali szolgáltatás-csempék (fixek) — a mappa ezekhez köthető.
@@ -60,7 +54,7 @@ const btnPrimary =
   "rounded bg-white px-5 py-2 text-sm font-semibold text-black hover:opacity-90 disabled:opacity-50";
 
 function previewUrl(it) {
-  if (it.image_url) return it.image_url;
+  if (it.thumb_url || it.image_url) return it.thumb_url || it.image_url;
   if (it.youtube_id) return `https://img.youtube.com/vi/${it.youtube_id}/hqdefault.jpg`;
   return null;
 }
@@ -363,8 +357,8 @@ export default function AdminDrive({ categories, items }) {
           onClose={() => setUploadOpen(false)}
           onSubmit={(d) =>
             perform(async () => {
-              const urls = d.files.length
-                ? await uploadFiles(d.category, d.files)
+              const images = d.files.length
+                ? await uploadFiles(d.category, d.files, d.kind)
                 : [];
               await createItems({
                 kind: d.kind,
@@ -373,7 +367,7 @@ export default function AdminDrive({ categories, items }) {
                 title_hu: d.title_hu,
                 title_en: d.title_en,
                 year: d.year,
-                imageUrls: urls,
+                images,
               });
             }, () => setUploadOpen(false))
           }
@@ -389,8 +383,8 @@ export default function AdminDrive({ categories, items }) {
           onClose={() => setEditItem(null)}
           onSave={(d) =>
             perform(async () => {
-              let image_url;
-              if (d.file) image_url = (await uploadFiles(d.category, [d.file]))[0];
+              let img = {};
+              if (d.file) [img] = await uploadFiles(d.category, [d.file], editItem.kind);
               await updateItemFields({
                 id: d.id,
                 category: d.category,
@@ -398,7 +392,8 @@ export default function AdminDrive({ categories, items }) {
                 title_hu: d.title_hu,
                 title_en: d.title_en,
                 year: d.year,
-                image_url,
+                image_url: img.image_url,
+                thumb_url: img.thumb_url,
               });
             }, () => setEditItem(null))
           }

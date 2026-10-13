@@ -6,6 +6,7 @@ import { saveServiceTile } from "../actions";
 import {
   uploadSiteImage,
   MAX_SITE_IMAGE_BYTES,
+  MAX_SITE_IMAGE_LABEL,
   inputCls,
   btnGhost,
   btnPrimary,
@@ -80,7 +81,7 @@ function Tile({ tile, num }) {
             if (!f) return;
             if (f.size > MAX_SITE_IMAGE_BYTES) {
               alert(
-                `Túl nagy fájl: ${(f.size / 1024 / 1024).toFixed(1)} MB. Max 1 MB.`
+                `Túl nagy fájl: ${(f.size / 1024 / 1024).toFixed(1)} MB. Max ${MAX_SITE_IMAGE_LABEL}.`
               );
               return;
             }

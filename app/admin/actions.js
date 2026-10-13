@@ -36,18 +36,20 @@ export async function createItems(payload) {
   const title_hu = payload.title_hu?.trim() || null;
   const title_en = payload.title_en?.trim() || null;
   const year = payload.year ? parseInt(payload.year, 10) || null : null;
-  const imageUrls = Array.isArray(payload.imageUrls)
-    ? payload.imageUrls.filter(Boolean)
+  // images: [{ image_url, thumb_url }] — a kliens már feltöltötte (full + thumb WebP).
+  const images = Array.isArray(payload.images)
+    ? payload.images.filter((x) => x?.image_url)
     : [];
 
   let sort_order = await nextSortOrder(supabase, category);
 
   if (kind === "photo") {
-    if (imageUrls.length === 0) throw new Error("Fotóhoz legalább egy kép kell.");
-    const rows = imageUrls.map((url) => ({
+    if (images.length === 0) throw new Error("Fotóhoz legalább egy kép kell.");
+    const rows = images.map((img) => ({
       kind: "photo",
       category,
-      image_url: url,
+      image_url: img.image_url,
+      thumb_url: img.thumb_url ?? null,
       title_hu,
       title_en,
       year,
@@ -62,7 +64,8 @@ export async function createItems(payload) {
       kind: "video",
       category,
       youtube_id,
-      image_url: imageUrls[0] ?? null,
+      image_url: images[0]?.image_url ?? null,
+      thumb_url: images[0]?.thumb_url ?? null,
       title_hu,
       title_en,
       year,
@@ -85,7 +88,10 @@ export async function updateItemFields(payload) {
     const yid = parseYouTubeId(payload.youtube);
     if (yid) patch.youtube_id = yid;
   }
-  if (payload.image_url) patch.image_url = payload.image_url;
+  if (payload.image_url) {
+    patch.image_url = payload.image_url;
+    patch.thumb_url = payload.thumb_url ?? null;
+  }
 
   const { error } = await supabase
     .from("portfolio_items")

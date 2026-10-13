@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { FiX, FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import { thumbUrl } from "./data";
+import { fullUrl } from "./data";
 
 // Fotó-lightbox soron belüli lapozással.
 // Vezérlés: X / Esc / háttér-klikk zár; nyíl gomb + ←/→ billentyű + swipe lapoz (körkörös).
@@ -103,7 +103,7 @@ export default function ImageLightbox({ items, index = 0, onClose }) {
             <div className="absolute inset-0 animate-pulse bg-white/10" />
           )}
           <Image
-            src={thumbUrl(item)}
+            src={fullUrl(item)}
             alt=""
             fill
             sizes="(max-width: 1024px) 100vw, 1024px"

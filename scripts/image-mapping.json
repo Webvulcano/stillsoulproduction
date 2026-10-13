@@ -1,0 +1,413 @@
+{
+  "/contact.jpg": {
+    "img": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/contact-img.webp"
+  },
+  "/team/cusi.jpg": {
+    "img": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/team/cusi-img.webp"
+  },
+  "/team/hedi.jpg": {
+    "img": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/team/hedi-img.webp"
+  },
+  "/portfolio/om-tg72.png": {
+    "img": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/om-tg72-img.webp"
+  },
+  "/portfolio/joby2.PNG": {
+    "img": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/joby2-img.webp"
+  },
+  "/portfolio/szirenek.jpg": {
+    "img": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/szirenek-img.webp"
+  },
+  "/portfolio/photos/portre/01.jpg": {
+    "img": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/portre/01-img.webp"
+  },
+  "/portfolio/photos/portre/03.jpg": {
+    "img": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/portre/03-img.webp"
+  },
+  "/portfolio/photos/portre/05.jpg": {
+    "img": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/portre/05-img.webp"
+  },
+  "/portfolio/photos/portre/07.jpg": {
+    "img": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/portre/07-img.webp"
+  },
+  "/portfolio/photos/portre/08.jpg": {
+    "img": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/portre/08-img.webp"
+  },
+  "/portfolio/photos/portre/10.jpg": {
+    "img": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/portre/10-img.webp"
+  },
+  "/portfolio/photos/portre/11.jpg": {
+    "img": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/portre/11-img.webp"
+  },
+  "/portfolio/photos/esemeny/08.jpg": {
+    "img": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/esemeny/08-img.webp"
+  },
+  "/portfolio/photos/esemeny/11.jpg": {
+    "img": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/esemeny/11-img.webp"
+  },
+  "/portfolio/photos/analog/08.jpg": {
+    "img": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/analog/08-img.webp"
+  },
+  "/about/top-01.jpg": {
+    "img": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/about/top-01-img.webp"
+  },
+  "/about/top-02.jpg": {
+    "img": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/about/top-02-img.webp"
+  },
+  "/about/top-03.jpg": {
+    "img": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/about/top-03-img.webp"
+  },
+  "/about/top-04.jpg": {
+    "img": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/about/top-04-img.webp"
+  },
+  "/about/top-05.jpg": {
+    "img": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/about/top-05-img.webp"
+  },
+  "/about/top-06.jpg": {
+    "img": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/about/top-06-img.webp"
+  },
+  "/about/01.jpg": {
+    "img": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/about/01-img.webp"
+  },
+  "/about/02.jpg": {
+    "img": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/about/02-img.webp"
+  },
+  "/about/03.jpg": {
+    "img": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/about/03-img.webp"
+  },
+  "/about/04.jpg": {
+    "img": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/about/04-img.webp"
+  },
+  "/about/05.jpg": {
+    "img": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/about/05-img.webp"
+  },
+  "/about/06.jpg": {
+    "img": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/about/06-img.webp"
+  },
+  "/services/1.jpeg": {
+    "img": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/services/1-img.webp"
+  },
+  "/services/2.jpg": {
+    "img": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/services/2-img.webp"
+  },
+  "/services/3.jpg": {
+    "img": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/services/3-img.webp"
+  },
+  "/services/4.jpg": {
+    "img": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/services/4-img.webp"
+  },
+  "/services/5.jpg": {
+    "img": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/services/5-img.webp"
+  },
+  "/services/6.jpg": {
+    "img": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/services/6-img.webp"
+  },
+  "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/portre/e8b499ad-a851-47ef-bacf-0f742d66a8bd.jpeg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/portre/e8b499ad-a851-47ef-bacf-0f742d66a8bd-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/portre/e8b499ad-a851-47ef-bacf-0f742d66a8bd-full.webp"
+  },
+  "/portfolio/photos/kisallat/06.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/kisallat/06-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/kisallat/06-full.webp"
+  },
+  "/portfolio/maradekorszag.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/maradekorszag-thumb.webp"
+  },
+  "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/portre/420dac4f-9d05-44b5-b17c-7765cff443eb.jpeg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/portre/420dac4f-9d05-44b5-b17c-7765cff443eb-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/portre/420dac4f-9d05-44b5-b17c-7765cff443eb-full.webp"
+  },
+  "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/portre/d7469e09-5eda-4608-a402-14c54f7d1f0b.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/portre/d7469e09-5eda-4608-a402-14c54f7d1f0b-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/portre/d7469e09-5eda-4608-a402-14c54f7d1f0b-full.webp"
+  },
+  "/portfolio/photos/portre/09.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/portre/09-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/portre/09-full.webp"
+  },
+  "/portfolio/photos/portre/04.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/portre/04-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/portre/04-full.webp"
+  },
+  "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/portre/04fdbdc4-2da1-4ea3-b437-959ea90e18b2.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/portre/04fdbdc4-2da1-4ea3-b437-959ea90e18b2-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/portre/04fdbdc4-2da1-4ea3-b437-959ea90e18b2-full.webp"
+  },
+  "/portfolio/photos/portre/02.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/portre/02-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/portre/02-full.webp"
+  },
+  "/portfolio/photos/kisallat/11.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/kisallat/11-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/kisallat/11-full.webp"
+  },
+  "/portfolio/photos/kisallat/05.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/kisallat/05-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/kisallat/05-full.webp"
+  },
+  "/portfolio/parduc.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/parduc-thumb.webp"
+  },
+  "/portfolio/egy-napra.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/egy-napra-thumb.webp"
+  },
+  "/portfolio/photos/kisallat/13.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/kisallat/13-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/kisallat/13-full.webp"
+  },
+  "/portfolio/photos/esemeny/01.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/esemeny/01-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/esemeny/01-full.webp"
+  },
+  "/portfolio/photos/esemeny/02.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/esemeny/02-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/esemeny/02-full.webp"
+  },
+  "/portfolio/photos/esemeny/03.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/esemeny/03-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/esemeny/03-full.webp"
+  },
+  "/portfolio/photos/esemeny/04.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/esemeny/04-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/esemeny/04-full.webp"
+  },
+  "/portfolio/photos/esemeny/05.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/esemeny/05-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/esemeny/05-full.webp"
+  },
+  "/portfolio/photos/esemeny/06.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/esemeny/06-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/esemeny/06-full.webp"
+  },
+  "/portfolio/photos/esemeny/07.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/esemeny/07-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/esemeny/07-full.webp"
+  },
+  "/portfolio/photos/kisallat/09.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/kisallat/09-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/kisallat/09-full.webp"
+  },
+  "/portfolio/photos/esemeny/09.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/esemeny/09-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/esemeny/09-full.webp"
+  },
+  "/portfolio/photos/esemeny/10.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/esemeny/10-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/esemeny/10-full.webp"
+  },
+  "/portfolio/photos/kisallat/03.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/kisallat/03-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/kisallat/03-full.webp"
+  },
+  "/portfolio/photos/esemeny/12.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/esemeny/12-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/esemeny/12-full.webp"
+  },
+  "/portfolio/photos/esemeny/13.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/esemeny/13-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/esemeny/13-full.webp"
+  },
+  "/portfolio/photos/esemeny/14.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/esemeny/14-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/esemeny/14-full.webp"
+  },
+  "/portfolio/photos/esemeny/15.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/esemeny/15-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/esemeny/15-full.webp"
+  },
+  "/portfolio/photos/kisallat/02.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/kisallat/02-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/kisallat/02-full.webp"
+  },
+  "/portfolio/photos/kisallat/01.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/kisallat/01-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/kisallat/01-full.webp"
+  },
+  "/portfolio/photos/kisallat/14.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/kisallat/14-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/kisallat/14-full.webp"
+  },
+  "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/videoklippek-reklamanyagok/aa6e0a67-4253-4562-87b8-e6d3f5e8d236.png": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/videoklippek-reklamanyagok/aa6e0a67-4253-4562-87b8-e6d3f5e8d236-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/videoklippek-reklamanyagok/aa6e0a67-4253-4562-87b8-e6d3f5e8d236-full.webp"
+  },
+  "/portfolio/photos/kisallat/10.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/kisallat/10-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/kisallat/10-full.webp"
+  },
+  "/portfolio/photos/kisallat/07.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/kisallat/07-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/kisallat/07-full.webp"
+  },
+  "/portfolio/photos/kisallat/04.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/kisallat/04-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/kisallat/04-full.webp"
+  },
+  "/portfolio/photos/kisallat/12.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/kisallat/12-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/kisallat/12-full.webp"
+  },
+  "/portfolio/photos/kisallat/08.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/kisallat/08-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/kisallat/08-full.webp"
+  },
+  "/portfolio/7artisans-cine.png": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/7artisans-cine-thumb.webp"
+  },
+  "/portfolio/fanni-gabor.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/fanni-gabor-thumb.webp"
+  },
+  "/portfolio/bences-bal.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/bences-bal-thumb.webp"
+  },
+  "/portfolio/photos/analog/07.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/analog/07-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/analog/07-full.webp"
+  },
+  "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/esemenyek/8bbb7832-bd12-4ca9-ba67-44bc1195b403.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/esemenyek/8bbb7832-bd12-4ca9-ba67-44bc1195b403-thumb.webp"
+  },
+  "/portfolio/trauner-interju.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/trauner-interju-thumb.webp"
+  },
+  "/portfolio/Alexander-Aftermovie.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/Alexander-Aftermovie-thumb.webp"
+  },
+  "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/kreativ/50689522-1237-467f-8193-b87fdb12d423.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/kreativ/50689522-1237-467f-8193-b87fdb12d423-thumb.webp"
+  },
+  "/portfolio/om-adventure-pack2.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/om-adventure-pack2-thumb.webp"
+  },
+  "/portfolio/Alexander Trauner-Short-mood.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/Alexander-Trauner-Short-mood-thumb.webp"
+  },
+  "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/kreativ/7fea710c-8985-48fd-994b-93ce6ee191a2.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/kreativ/7fea710c-8985-48fd-994b-93ce6ee191a2-thumb.webp"
+  },
+  "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/kreativ/adea938e-6857-4eff-848a-cf271fbfdbbf.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/kreativ/adea938e-6857-4eff-848a-cf271fbfdbbf-thumb.webp"
+  },
+  "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/portre/231c94a7-a9e6-4172-9b82-b4e69b7a2a30.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/portre/231c94a7-a9e6-4172-9b82-b4e69b7a2a30-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/portre/231c94a7-a9e6-4172-9b82-b4e69b7a2a30-full.webp"
+  },
+  "/portfolio/photos/portre/06.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/portre/06-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/portre/06-full.webp"
+  },
+  "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/portre/06e71180-250b-49b5-912e-1da9f6fedd36.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/portre/06e71180-250b-49b5-912e-1da9f6fedd36-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/portre/06e71180-250b-49b5-912e-1da9f6fedd36-full.webp"
+  },
+  "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/portre/88799257-c325-4d40-927a-3fb6d43c0aaf.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/portre/88799257-c325-4d40-927a-3fb6d43c0aaf-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/portre/88799257-c325-4d40-927a-3fb6d43c0aaf-full.webp"
+  },
+  "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/portre/2f08a95e-9038-401b-9287-2b1065a768ae.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/portre/2f08a95e-9038-401b-9287-2b1065a768ae-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/portre/2f08a95e-9038-401b-9287-2b1065a768ae-full.webp"
+  },
+  "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/portre/54f33947-a818-47fa-80e9-a4787add62b5.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/portre/54f33947-a818-47fa-80e9-a4787add62b5-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/portre/54f33947-a818-47fa-80e9-a4787add62b5-full.webp"
+  },
+  "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/portre/d53ae22a-b408-4157-8521-bc4f13c87c1a.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/portre/d53ae22a-b408-4157-8521-bc4f13c87c1a-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/portre/d53ae22a-b408-4157-8521-bc4f13c87c1a-full.webp"
+  },
+  "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/portre/d53dbd7c-11c1-4a77-acca-4da1d69631bf.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/portre/d53dbd7c-11c1-4a77-acca-4da1d69631bf-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/portre/d53dbd7c-11c1-4a77-acca-4da1d69631bf-full.webp"
+  },
+  "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/esemenyek/874ed297-3f47-483a-9228-240aca297db3.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/esemenyek/874ed297-3f47-483a-9228-240aca297db3-thumb.webp"
+  },
+  "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/portre/49c2c419-5384-40a0-b5ac-6203d872e196.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/portre/49c2c419-5384-40a0-b5ac-6203d872e196-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/portre/49c2c419-5384-40a0-b5ac-6203d872e196-full.webp"
+  },
+  "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/portre/9fb0a980-322d-4c4d-b5fb-0e6c1b72bb68.jpeg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/portre/9fb0a980-322d-4c4d-b5fb-0e6c1b72bb68-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/portre/9fb0a980-322d-4c4d-b5fb-0e6c1b72bb68-full.webp"
+  },
+  "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/portre/b85f3664-e80b-4822-a7a1-84024cc026eb.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/portre/b85f3664-e80b-4822-a7a1-84024cc026eb-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/portre/b85f3664-e80b-4822-a7a1-84024cc026eb-full.webp"
+  },
+  "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/videoklippek-reklamanyagok/fb61fbb3-dd33-4ed6-97eb-2c3026ac09b1.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/videoklippek-reklamanyagok/fb61fbb3-dd33-4ed6-97eb-2c3026ac09b1-thumb.webp"
+  },
+  "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/videoklippek-reklamanyagok/3ba784fb-d6e7-45f9-85b0-8476af29b22e.png": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/videoklippek-reklamanyagok/3ba784fb-d6e7-45f9-85b0-8476af29b22e-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/videoklippek-reklamanyagok/3ba784fb-d6e7-45f9-85b0-8476af29b22e-full.webp"
+  },
+  "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/kreativ/39e9ca16-495f-42ed-b0de-c07ca1de90d3.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/kreativ/39e9ca16-495f-42ed-b0de-c07ca1de90d3-thumb.webp"
+  },
+  "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/videoklippek-reklamanyagok/e362b54d-5f43-4218-8791-3c17c438a621.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/videoklippek-reklamanyagok/e362b54d-5f43-4218-8791-3c17c438a621-thumb.webp"
+  },
+  "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/videoklippek-reklamanyagok/ad8133ec-3d1e-4b72-b6b7-360697151e6a.png": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/videoklippek-reklamanyagok/ad8133ec-3d1e-4b72-b6b7-360697151e6a-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/videoklippek-reklamanyagok/ad8133ec-3d1e-4b72-b6b7-360697151e6a-full.webp"
+  },
+  "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/kreativ/4f93193c-651d-4ab7-8bf2-8b2e90f72609.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/kreativ/4f93193c-651d-4ab7-8bf2-8b2e90f72609-thumb.webp"
+  },
+  "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/kreativ/78a62765-6994-4625-9df4-027c21f7473a.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/kreativ/78a62765-6994-4625-9df4-027c21f7473a-thumb.webp"
+  },
+  "/portfolio/photos/analog/11.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/analog/11-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/analog/11-full.webp"
+  },
+  "/portfolio/photos/analog/01.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/analog/01-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/analog/01-full.webp"
+  },
+  "/portfolio/photos/analog/03.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/analog/03-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/analog/03-full.webp"
+  },
+  "/portfolio/photos/analog/12.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/analog/12-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/analog/12-full.webp"
+  },
+  "/portfolio/photos/analog/04.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/analog/04-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/analog/04-full.webp"
+  },
+  "/portfolio/photos/analog/06.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/analog/06-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/analog/06-full.webp"
+  },
+  "/portfolio/photos/analog/09.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/analog/09-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/analog/09-full.webp"
+  },
+  "/portfolio/photos/analog/05.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/analog/05-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/analog/05-full.webp"
+  },
+  "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/analog/00389655-0400-45d9-93e1-0080b3ad1398.jpeg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/analog/00389655-0400-45d9-93e1-0080b3ad1398-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/analog/00389655-0400-45d9-93e1-0080b3ad1398-full.webp"
+  },
+  "/portfolio/photos/analog/02.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/analog/02-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/analog/02-full.webp"
+  },
+  "/portfolio/photos/analog/10.jpg": {
+    "thumb": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/analog/10-thumb.webp",
+    "full": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/public/portfolio/photos/analog/10-full.webp"
+  },
+  "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/site/services/853a11b0-2637-4a0c-8ae8-026a3c307a09.jpg": {
+    "img": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/site/services/853a11b0-2637-4a0c-8ae8-026a3c307a09-img.webp"
+  },
+  "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/site/services/9d843d6e-0ab2-4ec5-8105-d6c1b4c780e1.jpg": {
+    "img": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/site/services/9d843d6e-0ab2-4ec5-8105-d6c1b4c780e1-img.webp"
+  },
+  "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/site/services/65f867e2-1f1c-4f57-9c02-4b7e18aba86b.jpg": {
+    "img": "https://lpimxezspyrlirqwffwg.supabase.co/storage/v1/object/public/portfolio/webp/bucket/site/services/65f867e2-1f1c-4f57-9c02-4b7e18aba86b-img.webp"
+  }
+}
