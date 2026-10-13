@@ -81,3 +81,20 @@ body {
   }
 }
 
+
+/* Logó-szalag (LogoTicker): a lista kétszer egymás után → -50% eltolás = varrat nélküli loop */
+@keyframes logoTicker {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.logo-ticker-track {
+  animation: logoTicker var(--ticker-duration, 40s) linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-ticker-track {
+    animation: none;
+  }
+}

@@ -4,6 +4,7 @@ import { FaPlay } from "react-icons/fa";
 import { useLanguage } from "../i18n/LanguageProvider";
 import { thumbUrl, titleOf } from "./data";
 import { slugToTitle } from "./categories";
+import CoverImage from "./CoverImage";
 
 // Reszponzív kártya-grid (a Services.jsx reszponzív mintáját követi).
 export default function PortfolioGrid({ items, onSelect }) {
@@ -11,7 +12,7 @@ export default function PortfolioGrid({ items, onSelect }) {
 
   if (items.length === 0) {
     return (
-      <p className="mt-16 text-center text-sm text-white/50">
+      <p className="mt-16 text-center text-sm text-white/50" data-cms="portfolio.portfolio.no_results">
         {t.portfolio.noResults}
       </p>
     );
@@ -31,12 +32,12 @@ export default function PortfolioGrid({ items, onSelect }) {
           >
             {/* Thumbnail + play overlay */}
             <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-white/5">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <CoverImage
                 src={thumbUrl(item)}
                 alt={title}
-                loading="lazy"
-                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                fit={item.fit}
+                objectPosition={item.objectPosition}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 384px"
               />
               <span className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white/90 text-black">

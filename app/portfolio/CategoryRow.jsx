@@ -1,33 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { FaPlay } from "react-icons/fa";
 import { useLanguage } from "../i18n/LanguageProvider";
 import { thumbUrl, itemTitle } from "./data";
-
-// Thumbnail skeletonnal: pulzáló placeholder amíg a kép be nem tölt.
-function ThumbImage({ src, alt }) {
-  const [loaded, setLoaded] = useState(false);
-  return (
-    <>
-      {!loaded && (
-        <div className="absolute inset-0 animate-pulse bg-white/10" />
-      )}
-      <Image
-        src={src}
-        alt={alt}
-        fill
-        sizes="(max-width: 640px) 78vw, 360px"
-        draggable={false}
-        onLoad={() => setLoaded(true)}
-        className={`select-none object-cover transition-all duration-500 group-hover:scale-105 ${
-          loaded ? "opacity-100" : "opacity-0"
-        }`}
-      />
-    </>
-  );
-}
+import CoverImage from "./CoverImage";
 
 // Egy kategória-szekció: cím + vízszintesen léptető kártya-sor.
 // - léptet pontosan 1 kártyányit (sima ~0.4s glide), majd 1s szünet, ismét
@@ -250,14 +227,16 @@ export default function CategoryRow({ title, items, onSelect, reverse = false, i
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
         onTouchCancel={onTouchEnd}
+        data-cms="@gallery"
         className="flex items-start gap-4 overflow-x-auto px-8 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         style={{ touchAction: "pan-x", cursor: "grab", scrollBehavior: "auto" }}
       >
         {loop.map(({ it, rep }) => {
           const isVideo = it.kind !== "photo";
           const isPhoto = !isVideo;
-          // Videónál a felirat a DB kétnyelvű mezőjéből; fotónál nincs, az alt a sor címe.
-          const label = isPhoto ? title : itemTitle(it, locale);
+          // Videónál a felirat a CMS kétnyelvű címe; fotónál nincs felirat, az alt a kép leírása
+          // (ha nincs, a sor címe).
+          const label = isPhoto ? (locale === "en" ? it.alt_en ?? it.alt_hu : it.alt_hu) || title : itemTitle(it, locale);
           const isClone = rep > 0;
           return (
             <button
@@ -272,7 +251,13 @@ export default function CategoryRow({ title, items, onSelect, reverse = false, i
               tabIndex={isClone ? -1 : undefined}
             >
               <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-white/5">
-                <ThumbImage src={thumbUrl(it)} alt={label} />
+                <CoverImage
+                  src={thumbUrl(it)}
+                  alt={label}
+                  fit={it.fit}
+                  objectPosition={it.objectPosition}
+                  sizes="(max-width: 640px) 78vw, 360px"
+                />
                 {isVideo && (
                   <span className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                     <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white/90 text-black">

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { FiX, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { fullUrl } from "./data";
+import { isCmsUpload } from "@/lib/cms-image";
 
 // Fotó-lightbox soron belüli lapozással.
 // Vezérlés: X / Esc / háttér-klikk zár; nyíl gomb + ←/→ billentyű + swipe lapoz (körkörös).
@@ -104,7 +105,8 @@ export default function ImageLightbox({ items, index = 0, onClose }) {
           )}
           <Image
             src={fullUrl(item)}
-            alt=""
+            alt={item.alt_hu ?? ""}
+            unoptimized={isCmsUpload(fullUrl(item))}
             fill
             sizes="(max-width: 1024px) 100vw, 1024px"
             quality={85}

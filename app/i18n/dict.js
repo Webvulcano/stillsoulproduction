@@ -13,6 +13,12 @@ export const dict = {
       p2: "",
       p3: "Minden munkánk alapja az alkotás szeretete, az őszinte kapcsolódás és a maradandó vizuális élmények létrehozása.",
     },
+    clients: {
+      title: "Akikkel dolgoztunk",
+    },
+    reviews: {
+      title: "Rólunk mondták",
+    },
     services: {
       label: "— Szolgáltatások —",
       items: [
@@ -111,6 +117,12 @@ export const dict = {
       p1: "StillSoul Production is a creative content studio. Whether it's a brand collaboration, a commercial, social media content, creative photography or a corporate event — reach out to us. Your needs come first, so our pricing is always tailored to you.",
       p2: "",
       p3: "All our work is rooted in the love of creating, honest connection, and crafting lasting visual experiences.",
+    },
+    clients: {
+      title: "Clients we've worked with",
+    },
+    reviews: {
+      title: "What our clients say",
     },
     services: {
       label: "— Services —",

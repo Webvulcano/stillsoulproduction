@@ -80,7 +80,7 @@ export default function Contact() {
         <div className="flex flex-col justify-center items-center px-8 md:px-16 py-16 md:py-24 min-h-[auto] md:min-h-screen">
           {status !== "success" && (
             <div className="mb-12">
-              <span className="text-xs uppercase tracking-[0.3em] text-white/40">
+              <span className="text-xs uppercase tracking-[0.3em] text-white/40" data-cms="home.contact.label">
                 {t.contact.label}
               </span>
             </div>
@@ -115,7 +115,7 @@ export default function Contact() {
                   strokeLinejoin="round"
                 />
               </svg>
-              <p className="text-base md:text-lg tracking-wide text-white/90">
+              <p className="text-base md:text-lg tracking-wide text-white/90" data-cms="home.contact.success">
                 {t.contact.success}
               </p>
             </div>
@@ -130,7 +130,7 @@ export default function Contact() {
               aria-hidden="true"
             />
             <div>
-              <label htmlFor="category" className="block text-xs uppercase tracking-widest text-white/50 mb-2">
+              <label htmlFor="category" className="block text-xs uppercase tracking-widest text-white/50 mb-2" data-cms="home.contact.category_label">
                 {t.contact.categoryLabel}
               </label>
               <div className="relative">
@@ -152,7 +152,7 @@ export default function Contact() {
               </div>
             </div>
             <div>
-              <label htmlFor="email" className="block text-xs uppercase tracking-widest text-white/50 mb-2">
+              <label htmlFor="email" className="block text-xs uppercase tracking-widest text-white/50 mb-2" data-cms="home.contact.email_label">
                 {t.contact.emailLabel}
               </label>
               <input
@@ -165,7 +165,7 @@ export default function Contact() {
               />
             </div>
             <div>
-              <label htmlFor="message" className="block text-xs uppercase tracking-widest text-white/50 mb-2">
+              <label htmlFor="message" className="block text-xs uppercase tracking-widest text-white/50 mb-2" data-cms="home.contact.message_label">
                 {t.contact.messageLabel}
               </label>
               <textarea
@@ -185,7 +185,9 @@ export default function Contact() {
               disabled={status === "sending"}
               className="w-full py-4 text-xs uppercase tracking-widest border border-white/20 hover:bg-white hover:text-black transition-colors duration-300 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-white"
             >
-              {status === "sending" ? t.contact.sending : t.contact.submit}
+              <span data-cms="home.contact.submit">
+                {status === "sending" ? t.contact.sending : t.contact.submit}
+              </span>
             </button>
             <div aria-live="polite" className="min-h-[1.25rem]">
               {status === "error" && (

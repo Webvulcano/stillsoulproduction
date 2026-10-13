@@ -172,7 +172,7 @@ export default function Navbar() {
               href={hrefFor(item)}
               className={linkClass(item)}
             >
-              {t.nav[item.key]}
+              <span data-cms={`home.nav.${item.key}`}>{t.nav[item.key]}</span>
               <span className={underlineClass(item)} />
             </Link>
           ))}
@@ -246,7 +246,7 @@ export default function Navbar() {
                 isActive(item) ? "text-white" : "text-white/70"
               }`}
             >
-              {t.nav[item.key]}
+              <span data-cms={`home.nav.${item.key}`}>{t.nav[item.key]}</span>
             </Link>
           ))}
 

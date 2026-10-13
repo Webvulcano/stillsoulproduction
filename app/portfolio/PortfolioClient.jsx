@@ -73,7 +73,7 @@ export default function PortfolioClient() {
   return (
     <main className="min-h-screen bg-black px-6 pb-24 pt-28 text-white md:px-12">
       <div className="mb-10 text-center">
-        <span className="text-xs uppercase tracking-[0.3em] text-white/40">
+        <span className="text-xs uppercase tracking-[0.3em] text-white/40" data-cms="portfolio.portfolio.label">
           {t.portfolio.label}
         </span>
       </div>

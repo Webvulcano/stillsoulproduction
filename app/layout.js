@@ -1,6 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "./i18n/LanguageProvider";
+import CmsBridge from "@/components/cms/CmsBridge";
+import { getCmsDicts } from "@/lib/cms-dict";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,14 +46,16 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const dicts = await getCmsDicts();
   return (
     <html
       lang="hu"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <LanguageProvider>{children}</LanguageProvider>
+        <LanguageProvider dicts={dicts}>{children}</LanguageProvider>
+        <CmsBridge />
       </body>
     </html>
   );
