@@ -9,19 +9,20 @@ import Reviews from "./components/Reviews";
 import Contact from "./components/Contact";
 import ContactInfo from "./components/ContactInfo";
 import { getPortfolioItems, getCategories } from "@/lib/portfolio";
-import { getReviews, getSectionImages, getSlotGallery } from "@/lib/cms-dict";
+import { getPackages, getReviews, getSectionImages, getSlotGallery } from "@/lib/cms-dict";
 
 // ISR: statikusan cache-elt; az Ügyfél Admin mentés után a cms:<slug> taget frissíti.
 export const revalidate = 3600;
 
 export default async function Home() {
-  const [items, categories, aboutImages, serviceImages, logos, reviews] = await Promise.all([
+  const [items, categories, aboutImages, serviceImages, logos, reviews, packages] = await Promise.all([
     getPortfolioItems(),
     getCategories(),
     getSectionImages("about"),
     getSectionImages("services"),
     getSlotGallery("clients", "logos"),
     getReviews(),
+    getPackages(),
   ]);
   // Mely kategóriákban van tartalom.
   const filledSlugs = new Set(items.map((it) => it.categories[0]));
@@ -44,7 +45,7 @@ export default async function Home() {
         <Services serviceTargets={serviceTargets} images={serviceImages} />
         {/* <Team /> */}
         <Reviews reviews={reviews} />
-        <Contact />
+        <Contact packages={packages} />
         <ContactInfo />
         <div id="kapcsolat" />
       </div>

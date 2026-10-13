@@ -26,6 +26,8 @@ export default {
   },
   // Értékelések = Ügyfél Admin értékelés-modul (Értékelések menü) → szekció a Szolgáltatások és az Árajánlat között.
   reviews: { label: "Értékelések" },
+  // Csomagok = Ügyfél Admin csomag-modul (Csomagok menü) → „Kész csomagjaink” popup az Árajánlat űrlap fölött.
+  packages: { label: "Csomagok" },
   locales: [
     { code: "hu", label: "Magyar" },
     { code: "en", label: "English" },

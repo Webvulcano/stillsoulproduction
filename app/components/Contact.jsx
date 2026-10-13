@@ -3,6 +3,7 @@ import Image from "next/image";
 import { media } from "@/lib/media";
 import { useRef, useState } from "react";
 import { useLanguage } from "../i18n/LanguageProvider";
+import QuotePackages from "./QuotePackages";
 
 const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
 
@@ -10,7 +11,7 @@ const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
 // Élesítéskor állítsd false-ra (vagy töröld a teszt-ágat a handleSubmit-ben).
 const TEST_MODE = false;
 
-export default function Contact() {
+export default function Contact({ packages = [] }) {
   const { t } = useLanguage();
   const textareaRef = useRef(null);
   const [message, setMessage] = useState("");
@@ -78,6 +79,7 @@ export default function Contact() {
     <section id="arajanlat" className="bg-black text-white">
       <div className="grid grid-cols-1 md:grid-cols-2">
         <div className="flex flex-col justify-center items-center px-8 md:px-16 py-16 md:py-24 min-h-[auto] md:min-h-screen">
+          {status !== "success" && <QuotePackages packages={packages} />}
           {status !== "success" && (
             <div className="mb-12">
               <span className="text-xs uppercase tracking-[0.3em] text-white/40" data-cms="home.contact.label">

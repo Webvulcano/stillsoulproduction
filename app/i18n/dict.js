@@ -34,6 +34,15 @@ export const dict = {
         { title: "Dokumentumfilm és fikciós játékfilmek" },
       ],
     },
+    packages: {
+      button: "Kész csomagjaink",
+      teaser: "Esküvő 200 000 Ft-tól",
+      close: "Bezárás",
+      label: "— Kész csomagjaink —",
+      download: "PDF",
+      note: "Fotó + videó együtt → a fotós csomag árából 25% kedvezmény.",
+      custom: "Nem találod, amit keresel? Írj nekünk",
+    },
     contact: {
       label: "— Árajánlat —",
       categoryLabel: "Kategória",
@@ -138,6 +147,15 @@ export const dict = {
         },
         { title: "Documentary & fiction filmmaking" },
       ],
+    },
+    packages: {
+      button: "Our packages",
+      teaser: "Weddings from 200 000 HUF",
+      close: "Close",
+      label: "— Our Packages —",
+      download: "PDF",
+      note: "Photo + video together → 25% off the photography package.",
+      custom: "Can't find what you need? Write to us",
     },
     contact: {
       label: "— Get a Quote —",
