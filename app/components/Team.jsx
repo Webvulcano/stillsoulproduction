@@ -1,15 +1,16 @@
 import Image from "next/image";
+import { media } from "@/lib/media";
 
 const members = [
   {
     name: "Fördős Bence",
     role: "rendező & operaőr & fotós / director & DOP & photographer",
-    img: "/team/cusi.jpg",
+    img: media("/team/cusi.jpg"),
   },
   {
     name: "Dudás Hédi",
     role: "vágó & forgatókönyvíró /editor & screenwriter",
-    img: "/team/hedi.jpg",
+    img: media("/team/hedi.jpg"),
   },
 ];
 

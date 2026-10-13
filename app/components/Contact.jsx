@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import { media } from "@/lib/media";
 import { useRef, useState } from "react";
 import { useLanguage } from "../i18n/LanguageProvider";
 
@@ -198,7 +199,7 @@ export default function Contact() {
         </div>
         <div className="relative w-full min-h-[400px] overflow-hidden">
           <Image
-            src="/contact.jpg"
+            src={media("/contact.jpg")}
             alt="Kapcsolat"
             fill
             className="object-cover object-center"

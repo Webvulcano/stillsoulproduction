@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { FiX, FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import { thumbUrl } from "./data";
+import { fullUrl } from "./data";
 import { isCmsUpload } from "@/lib/cms-image";
 
 // Fotó-lightbox soron belüli lapozással.
@@ -104,9 +104,9 @@ export default function ImageLightbox({ items, index = 0, onClose }) {
             <div className="absolute inset-0 animate-pulse bg-white/10" />
           )}
           <Image
-            src={thumbUrl(item)}
+            src={fullUrl(item)}
             alt={item.alt_hu ?? ""}
-            unoptimized={isCmsUpload(thumbUrl(item))}
+            unoptimized={isCmsUpload(fullUrl(item))}
             fill
             sizes="(max-width: 1024px) 100vw, 1024px"
             quality={85}

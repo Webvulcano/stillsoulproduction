@@ -164,10 +164,15 @@ export const PORTFOLIO = [
   { id: "analog-12", kind: "photo", image: "/portfolio/photos/analog/12.jpg", categories: ["analog"] },
 ];
 
+// Teljes méretű kép (lightbox): fotónál a full, egyébként a thumbnail.
+export function fullUrl(item) {
+  return (item.kind === "photo" && item.image) || thumbUrl(item);
+}
+
 // Thumbnail URL: valódi kép ha megadva, különben YouTube borítókép.
-// Fotó-item (kind: "photo") esetén a képfájl a forrás (image → thumb).
+// Fotó-item (kind: "photo"): a kis thumb a rácsba, ha nincs, a full kép.
 export function thumbUrl(item) {
-  if (item.kind === "photo") return item.image ?? item.thumb;
+  if (item.kind === "photo") return item.thumb ?? item.image;
   if (item.thumb) return item.thumb;
   return `https://img.youtube.com/vi/${item.youtubeId}/hqdefault.jpg`;
 }
