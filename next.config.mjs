@@ -19,6 +19,18 @@ const nextConfig = {
       },
     ];
   },
+  // /admin → átirányít a központi Ügyfél Adminra (DASHBOARD_URL = admin origin,
+  // pl. https://analytics.webvulcano.hu). Redirect, nem proxy → a Google login
+  // az admin saját domainjén fut. Env nélkül no-op.
+  async redirects() {
+    const base = process.env.DASHBOARD_URL?.replace(/\/+$/, "");
+    const slug = process.env.CMS_SITE_SLUG;
+    if (!base || !slug) return [];
+    return [
+      { source: "/admin", destination: `${base}/${slug}`, permanent: false },
+      { source: "/admin/:path*", destination: `${base}/${slug}/:path*`, permanent: false },
+    ];
+  },
   // Dev: IP-ről (pl. telefon ugyanazon a wifin) való eléréshez engedett origin-ök.
   // Enélkül a Next blokkolja a /_next erőforrásokat (JS/CSS/HMR) → fekete oldal más eszközön.
   allowedDevOrigins: ["192.168.0.150"],
