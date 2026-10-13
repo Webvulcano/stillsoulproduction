@@ -22,24 +22,29 @@ function Card({ review, locale, hidden }) {
   return (
     <figure
       aria-hidden={hidden || undefined}
-      className="mx-2.5 flex w-[300px] shrink-0 flex-col rounded-xl border border-white/10 bg-white/[0.04] p-6 md:mx-3 md:w-[360px]"
+      className="mx-2.5 flex w-[340px] shrink-0 flex-col rounded-lg border border-white/10 bg-neutral-900 p-6 shadow-[0_8px_20px_-8px_rgba(0,0,0,0.8)] md:mx-3 md:w-[420px] md:p-7"
     >
-      <div className="text-sm tracking-[0.2em] text-white" aria-label={hidden ? undefined : `${review.rating} / 5`}>
-        {"★".repeat(review.rating)}
-        <span className="text-white/20">{"★".repeat(5 - review.rating)}</span>
-      </div>
-      <blockquote className="mt-4 line-clamp-5 flex-1 whitespace-pre-line text-sm leading-6 text-gray-300">
-        {review.body?.[locale]}
-      </blockquote>
-      <figcaption className="mt-5 flex items-center gap-3">
-        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/10 text-xs font-semibold tracking-wider text-white">
+      <figcaption className="flex items-start gap-3">
+        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 border-white/20 bg-neutral-800 text-sm font-semibold tracking-wider text-white">
           {initials(review.author)}
         </span>
-        <span className="min-w-0">
-          <span className="block truncate text-sm font-semibold text-white">{review.author}</span>
-          {subtitle && <span className="block truncate text-xs text-white/50">{subtitle}</span>}
+        <span className="min-w-0 flex-1 pt-0.5">
+          <span className="flex items-start justify-between gap-2">
+            <span className="min-w-0 text-base font-bold leading-snug text-white">{review.author}</span>
+            <span
+              className="shrink-0 rounded bg-neutral-800 px-2.5 py-1.5 text-xs leading-none tracking-[0.12em] text-amber-400"
+              aria-label={hidden ? undefined : `${review.rating} / 5`}
+            >
+              {"★".repeat(review.rating)}
+              <span className="text-white/20">{"★".repeat(5 - review.rating)}</span>
+            </span>
+          </span>
+          {subtitle && <span className="block text-sm text-white/50">{subtitle}</span>}
         </span>
       </figcaption>
+      <blockquote className="mt-5 line-clamp-5 flex-1 whitespace-pre-line text-[15px] leading-7 text-white/80">
+        {review.body?.[locale]}
+      </blockquote>
     </figure>
   );
 }

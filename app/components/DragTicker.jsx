@@ -4,7 +4,8 @@ import { useEffect, useRef } from "react";
 
 // Végtelenített, megfogható (drag) sor — a Hallásgondozó TestiTicker mintájára.
 // dir: "left" | "right". A hívó a tartalmat kétszer adja (második fele aria-hidden),
-// a sor a felénél loopol. Egérrel fölé állva megáll; érintésnél húzás alatt áll.
+// a sor a felénél loopol. Egérrel fölé állva megáll; érintésnél húzás alatt áll,
+// elengedve lendülettel gurul tovább, majd lágyan visszaáll az automata mozgás.
 // Reduced motion: nem mozog magától, de kézzel húzható marad.
 export default function DragTicker({ dir = "left", speed = 28, className = "", children }) {
   const rowRef = useRef(null);
@@ -15,9 +16,19 @@ export default function DragTicker({ dir = "left", speed = 28, className = "", c
     const track = trackRef.current;
     if (!row || !track) return;
 
-    const s = { offset: 0, half: 0, dragging: false, hovered: false, startX: 0, startOffset: 0, last: 0, raf: 0 };
+    const s = {
+      offset: 0, half: 0, dragging: false, hovered: false,
+      startX: 0, startOffset: 0, pointerX: 0,
+      vel: 0, // px/ms — elengedés utáni lendület
+      samples: [], // utolsó húzás-pontok a sebességméréshez
+      auto: 1, // automata mozgás aránya (0..1), elengedés után lágyan áll vissza
+      last: 0, raf: 0,
+    };
     const sign = dir === "left" ? -1 : 1;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const FRICTION = 0.95; // lendület-csillapítás / 16.7 ms
+    const MAX_VEL = 4; // px/ms
+    const AUTO_RAMP = 600; // ms — automata mozgás visszagyorsulása
 
     const measure = () => {
       s.half = track.scrollWidth / 2;
@@ -35,18 +46,33 @@ export default function DragTicker({ dir = "left", speed = 28, className = "", c
     s.offset = dir === "right" ? -s.half : 0;
     apply();
 
-    // Időalapú lépés (px/s), hogy 60 és 120 Hz-en is ugyanolyan gyors legyen.
+    // Minden mozgás itt, képkockánként egyszer; időalapú (px/ms), hogy 60 és 120 Hz-en is egyforma legyen.
     const tick = (now) => {
       const dt = s.last ? Math.min(now - s.last, 64) : 0;
       s.last = now;
-      if (!s.dragging && !s.hovered && !reduce) {
-        s.offset += (speed * dt * sign) / 1000;
-        wrap();
-        apply();
+      if (s.dragging) {
+        s.offset = s.startOffset + (s.pointerX - s.startX);
+      } else if (Math.abs(s.vel) > 0.02) {
+        s.offset += s.vel * dt;
+        s.vel *= Math.pow(FRICTION, dt / 16.67);
+      } else {
+        s.vel = 0;
+        if (!s.hovered && !reduce) {
+          s.auto = Math.min(1, s.auto + dt / AUTO_RAMP);
+          const eased = s.auto * s.auto * (3 - 2 * s.auto);
+          s.offset += (speed * dt * sign * eased) / 1000;
+        }
       }
+      wrap();
+      apply();
       s.raf = requestAnimationFrame(tick);
     };
     s.raf = requestAnimationFrame(tick);
+
+    const sample = (x, t) => {
+      s.samples.push({ x, t });
+      while (s.samples.length > 2 && t - s.samples[0].t > 100) s.samples.shift();
+    };
 
     const onEnter = (e) => {
       if (e.pointerType === "mouse") s.hovered = true;
@@ -57,20 +83,30 @@ export default function DragTicker({ dir = "left", speed = 28, className = "", c
     const onDown = (e) => {
       if (e.pointerType === "mouse" && e.button !== 0) return;
       s.dragging = true;
-      s.startX = e.clientX;
+      s.vel = 0;
+      s.auto = 0;
+      s.startX = s.pointerX = e.clientX;
       s.startOffset = s.offset;
+      s.samples = [];
+      sample(e.clientX, e.timeStamp);
       track.setPointerCapture?.(e.pointerId);
       track.style.cursor = "grabbing";
     };
     const onMove = (e) => {
       if (!s.dragging) return;
-      s.offset = s.startOffset + (e.clientX - s.startX);
-      wrap();
-      apply();
+      s.pointerX = e.clientX;
+      sample(e.clientX, e.timeStamp);
     };
     const onUp = (e) => {
       if (!s.dragging) return;
       s.dragging = false;
+      s.offset = s.startOffset + (s.pointerX - s.startX);
+      // Sebesség az utolsó ~100 ms húzásából; ha az ujj megállt elengedés előtt, nincs lendület.
+      const first = s.samples[0];
+      const lastS = s.samples[s.samples.length - 1];
+      const span = lastS && first ? lastS.t - first.t : 0;
+      const idle = lastS ? e.timeStamp - lastS.t : Infinity;
+      s.vel = span > 0 && idle < 60 ? Math.max(-MAX_VEL, Math.min(MAX_VEL, (lastS.x - first.x) / span)) : 0;
       track.releasePointerCapture?.(e.pointerId);
       track.style.cursor = "grab";
     };
@@ -101,7 +137,7 @@ export default function DragTicker({ dir = "left", speed = 28, className = "", c
   return (
     <div ref={rowRef} className={`overflow-hidden ${className}`}>
       {/* touch-action: pan-y → függőlegesen görgethető marad az oldal, vízszintesen húzható a sor */}
-      <div ref={trackRef} className="flex w-max cursor-grab select-none [touch-action:pan-y]">
+      <div ref={trackRef} className="flex w-max cursor-grab select-none will-change-transform [touch-action:pan-y]">
         {children}
       </div>
     </div>
