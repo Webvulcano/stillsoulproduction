@@ -1,23 +1,25 @@
 import IntroOverlay from "./components/IntroOverlay";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import LogoTicker from "./components/LogoTicker";
 import About from "./components/About";
 import Services from "./components/Services";
 import Team from "./components/Team";
 import Contact from "./components/Contact";
 import ContactInfo from "./components/ContactInfo";
 import { getPortfolioItems, getCategories } from "@/lib/portfolio";
-import { getSectionImages } from "@/lib/cms-dict";
+import { getSectionImages, getSlotGallery } from "@/lib/cms-dict";
 
 // ISR: statikusan cache-elt; az Ügyfél Admin mentés után a cms:<slug> taget frissíti.
 export const revalidate = 3600;
 
 export default async function Home() {
-  const [items, categories, aboutImages, serviceImages] = await Promise.all([
+  const [items, categories, aboutImages, serviceImages, logos] = await Promise.all([
     getPortfolioItems(),
     getCategories(),
     getSectionImages("about"),
     getSectionImages("services"),
+    getSlotGallery("clients", "logos"),
   ]);
   // Mely kategóriákban van tartalom.
   const filledSlugs = new Set(items.map((it) => it.categories[0]));
@@ -35,6 +37,7 @@ export default async function Home() {
       <Navbar />
       <div className="relative z-10 bg-black">
         <Hero />
+        <LogoTicker logos={logos} />
         <About photos={aboutImages} />
         <Services serviceTargets={serviceTargets} images={serviceImages} />
         {/* <Team /> */}
