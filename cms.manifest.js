@@ -23,6 +23,7 @@ export default {
   gallery: {
     label: "Portfólió",
     maxWidth: 2000,
+    aspect: "16/9", // a kártyák aránya (CategoryRow / PortfolioGrid aspect-video) → admin előnézet
     links: LIVE_SERVICES.map((s, i) => ({ key: s.slug, label: `${i + 1}. csempe — ${s.title_hu}` })),
   },
   locales: [
