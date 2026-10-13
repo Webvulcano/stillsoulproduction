@@ -76,7 +76,7 @@ export default function About({ photos = [] }) {
 
   return (
     <section id="rolunk" className="relative min-h-screen w-full overflow-hidden bg-black">
-      <div className="flex min-h-screen flex-col items-center justify-center gap-14 px-8 py-24">
+      <div className="flex min-h-screen flex-col items-center justify-center gap-14 px-8 pt-12 pb-24">
         {/* Kép-csík a cím fölött */}
         <PhotoStrip photos={topPhotos} alt={alt} fromTop />
 

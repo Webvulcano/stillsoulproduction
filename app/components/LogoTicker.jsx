@@ -5,8 +5,8 @@ import { useLanguage } from "../i18n/LanguageProvider";
 import { isCmsUpload } from "@/lib/cms-image";
 
 // „Akikkel dolgoztunk” logó-szalag a hero videó alatt. Logók az Ügyfél Adminból (képhely:
-// home.clients.logos), eredeti színben, egyforma magasságban; végtelenített lassú futás,
-// hoverre megáll, reduced-motion esetén áll (középre rendezve). Üres lista → nem jelenik meg.
+// home.clients.logos), eredeti színben, egyforma magasságban; végtelenített lassú futás
+// (hoverre sem áll meg), reduced-motion esetén áll (középre rendezve). Üres lista → nem jelenik meg.
 export default function LogoTicker({ logos }) {
   const { t, locale } = useLanguage();
   if (!logos?.length) return null;
@@ -30,13 +30,13 @@ export default function LogoTicker({ logos }) {
         height={l.height ?? 100}
         unoptimized={isCmsUpload(l.src)}
         draggable={false}
-        className="h-full w-auto max-w-[180px] select-none object-contain opacity-80 transition-opacity duration-300 hover:opacity-100"
+        className="h-full w-auto max-w-[180px] select-none object-contain"
       />
     </li>
   );
 
   return (
-    <section className="logo-ticker bg-black py-10 text-white md:py-14" aria-labelledby="clients-title">
+    <section className="logo-ticker bg-black pt-10 pb-8 text-white md:pt-14" aria-labelledby="clients-title">
       <h2 id="clients-title" className="mb-8 text-center text-xs uppercase tracking-[0.3em] text-white/40" data-cms="home.clients.title">
         {t.clients.title}
       </h2>
