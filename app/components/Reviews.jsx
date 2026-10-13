@@ -42,7 +42,8 @@ function Card({ review, locale, hidden }) {
           {subtitle && <span className="block text-sm text-white/50">{subtitle}</span>}
         </span>
       </figcaption>
-      <blockquote className="mt-5 line-clamp-5 flex-1 whitespace-pre-line text-[15px] leading-7 text-white/80">
+      {/* Nincs flex-1: a nyújtott doboz a clamp utáni 6. sort félig mutatná; max-h = pontosan 5 sor (leading-7). */}
+      <blockquote className="mt-5 line-clamp-5 max-h-[8.75rem] overflow-hidden whitespace-pre-line text-[15px] leading-7 text-white/80">
         {review.body?.[locale]}
       </blockquote>
     </figure>
