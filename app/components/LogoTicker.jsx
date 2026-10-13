@@ -36,7 +36,7 @@ export default function LogoTicker({ logos }) {
   );
 
   return (
-    <section className="logo-ticker bg-black py-10 text-white md:py-14" aria-labelledby="clients-title">
+    <section className="logo-ticker bg-black py-22 text-white md:py-26" aria-labelledby="clients-title">
       <h2 id="clients-title" className="mb-8 text-center text-xs uppercase tracking-[0.3em] text-white/40" data-cms="home.clients.title">
         {t.clients.title}
       </h2>
