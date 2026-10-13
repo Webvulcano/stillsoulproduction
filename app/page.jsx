@@ -5,21 +5,23 @@ import LogoTicker from "./components/LogoTicker";
 import About from "./components/About";
 import Services from "./components/Services";
 import Team from "./components/Team";
+import Reviews from "./components/Reviews";
 import Contact from "./components/Contact";
 import ContactInfo from "./components/ContactInfo";
 import { getPortfolioItems, getCategories } from "@/lib/portfolio";
-import { getSectionImages, getSlotGallery } from "@/lib/cms-dict";
+import { getReviews, getSectionImages, getSlotGallery } from "@/lib/cms-dict";
 
 // ISR: statikusan cache-elt; az Ügyfél Admin mentés után a cms:<slug> taget frissíti.
 export const revalidate = 3600;
 
 export default async function Home() {
-  const [items, categories, aboutImages, serviceImages, logos] = await Promise.all([
+  const [items, categories, aboutImages, serviceImages, logos, reviews] = await Promise.all([
     getPortfolioItems(),
     getCategories(),
     getSectionImages("about"),
     getSectionImages("services"),
     getSlotGallery("clients", "logos"),
+    getReviews(),
   ]);
   // Mely kategóriákban van tartalom.
   const filledSlugs = new Set(items.map((it) => it.categories[0]));
@@ -41,6 +43,7 @@ export default async function Home() {
         <About photos={aboutImages} />
         <Services serviceTargets={serviceTargets} images={serviceImages} />
         {/* <Team /> */}
+        <Reviews reviews={reviews} />
         <Contact />
         <ContactInfo />
         <div id="kapcsolat" />

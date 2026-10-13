@@ -16,6 +16,9 @@ export const dict = {
     clients: {
       title: "Akikkel dolgoztunk",
     },
+    reviews: {
+      title: "Rólunk mondták",
+    },
     services: {
       label: "— Szolgáltatások —",
       items: [
@@ -117,6 +120,9 @@ export const dict = {
     },
     clients: {
       title: "Clients we've worked with",
+    },
+    reviews: {
+      title: "What our clients say",
     },
     services: {
       label: "— Services —",
