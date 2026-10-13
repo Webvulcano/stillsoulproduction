@@ -75,8 +75,9 @@ export default function About({ photos = [] }) {
   const alt = `${title} — StillSoul Production`;
 
   return (
-    <section id="rolunk" className="relative min-h-screen w-full overflow-hidden bg-black">
-      <div className="flex min-h-screen flex-col items-center justify-center gap-14 px-8 pt-12 pb-24">
+    <section id="rolunk" className="relative w-full overflow-hidden bg-black">
+      {/* Nincs min-h-screen: a logósáv alatti rés így nem függ az ablak magasságától (= a sáv feletti réssel). */}
+      <div className="flex flex-col items-center gap-14 px-8 pb-24">
         {/* Kép-csík a cím fölött */}
         <PhotoStrip photos={topPhotos} alt={alt} fromTop />
 
