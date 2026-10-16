@@ -6,10 +6,9 @@ Fontos nekünk, hogy biztonságban tudd az adataidat. Ebben a tájékoztatóban 
 
 ## 1. Ki kezeli az adataidat? (Adatkezelő)
 
-- **Név:** [ADATKEZELŐ NEVE / CÉGNÉV] (StillSoul Production)
-- **Székhely:** [SZÉKHELY]
+- **Név:** [TELJES NÉV] adószámos magánszemély (StillSoul Production)
+- **Lakóhely:** [LAKCÍM]
 - **Adószám:** [ADÓSZÁM]
-- **Nyilvántartási szám / cégjegyzékszám:** [SZÁM]
 - **Email:** stillsoulproduction@gmail.com
 - **Telefon:** +36 30 305 3304
 

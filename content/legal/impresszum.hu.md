@@ -2,15 +2,14 @@
 
 ## Szolgáltató
 
-- **Név:** [SZOLGÁLTATÓ NEVE / CÉGNÉV]
+- **Név:** [TELJES NÉV]
 - **Márkanév:** StillSoul Production
-- **Forma:** [egyéni vállalkozó / Kft. / Bt.]
-- **Székhely:** [SZÉKHELY]
+- **Forma:** adószámos magánszemély
+- **Lakóhely:** [LAKCÍM]
 - **Levelezési cím:** [HA ELTÉR]
 - **Adószám:** [ADÓSZÁM]
 - **Közösségi adószám:** [HA VAN]
-- **Nyilvántartási szám / cégjegyzékszám:** [SZÁM]
-- **Nyilvántartó hatóság:** [NAV / … Törvényszék Cégbírósága]
+- **Adózás:** [pl. Alanyi adómentes – az árak áfát nem tartalmaznak.]
 - **Email:** stillsoulproduction@gmail.com
 - **Telefon:** +36 30 305 3304
 
@@ -23,7 +22,7 @@
 
 ## Panaszkezelés, békéltető testület
 
-Panaszodat a stillsoulproduction@gmail.com címen vagy a +36 30 305 3304 számon jelezheted. Fogyasztóként a panasz elutasítása esetén a székhelyünk szerint illetékes békéltető testülethez fordulhatsz:
+Panaszodat a stillsoulproduction@gmail.com címen vagy a +36 30 305 3304 számon jelezheted. Fogyasztóként a panasz elutasítása esetén a lakóhelyünk szerint illetékes békéltető testülethez fordulhatsz:
 
 **[Budapesti Békéltető Testület]**
 [1016 Budapest, Krisztina krt. 99. III. em. 310.] · [bekelteto.testulet@bkik.hu] · [bekeltet.bkik.hu]

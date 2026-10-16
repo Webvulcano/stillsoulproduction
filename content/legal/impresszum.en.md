@@ -2,15 +2,14 @@
 
 ## Service provider
 
-- **Name:** [PROVIDER NAME / COMPANY NAME]
+- **Name:** [FULL NAME]
 - **Brand name:** StillSoul Production
-- **Legal form:** [sole trader / Kft. (Ltd.) / Bt.]
-- **Registered address:** [ADDRESS]
+- **Legal form:** private individual with a Hungarian tax number (adószámos magánszemély)
+- **Address:** [HOME ADDRESS]
 - **Postal address:** [IF DIFFERENT]
 - **Tax number:** [TAX NUMBER]
 - **EU VAT number:** [IF ANY]
-- **Registration / company number:** [NUMBER]
-- **Registering authority:** [Hungarian Tax Authority (NAV) / Court of Registration of … ]
+- **VAT:** [e.g. Exempt from VAT (alanyi adómentes) – prices include no VAT.]
 - **Email:** stillsoulproduction@gmail.com
 - **Phone:** +36 30 305 3304
 
@@ -23,7 +22,7 @@
 
 ## Complaints, conciliation body
 
-You can send a complaint to stillsoulproduction@gmail.com or call +36 30 305 3304. If you're a consumer and we reject your complaint, you can turn to the conciliation body competent for our registered address:
+You can send a complaint to stillsoulproduction@gmail.com or call +36 30 305 3304. If you're a consumer and we reject your complaint, you can turn to the conciliation body competent for our address:
 
 **[Budapest Conciliation Board (Budapesti Békéltető Testület)]**
 [H-1016 Budapest, Krisztina krt. 99. III. em. 310.] · [bekelteto.testulet@bkik.hu] · [bekeltet.bkik.hu]

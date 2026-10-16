@@ -6,10 +6,9 @@ We want you to feel safe with your data. This policy explains what personal data
 
 ## 1. Who is responsible for your data? (Controller)
 
-- **Name:** [CONTROLLER NAME / COMPANY] (StillSoul Production)
-- **Registered address:** [ADDRESS]
+- **Name:** [FULL NAME], private individual with a tax number (StillSoul Production)
+- **Address:** [HOME ADDRESS]
 - **Tax number:** [TAX NUMBER]
-- **Registration / company number:** [NUMBER]
 - **Email:** stillsoulproduction@gmail.com
 - **Phone:** +36 30 305 3304
 
