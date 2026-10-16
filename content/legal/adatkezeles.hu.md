@@ -48,7 +48,7 @@ Ha emailben, telefonon vagy Instagramon keresel minket, a megadott elérhetősé
 | **Adatok** | IP cím, böngésző és eszköz típusa, a megtekintett oldal, a látogatás időpontja |
 | **Cél** | a weboldal biztonságos, hibamentes működése, visszaélések kivédése |
 | **Jogalap** | jogos érdek (GDPR 6. cikk (1) f) — a weboldal működtetése ezen adatok nélkül nem lehetséges |
-| **Időtartam** | a tárhelyszolgáltató naplózási ideje szerint, legfeljebb [X nap] |
+| **Időtartam** | a tárhelyszolgáltató naplózási ideje szerint, legfeljebb 1 nap |
 
 ### 2.5. Böngészőben tárolt adatok, sütik (cookie-k)
 
@@ -83,7 +83,7 @@ Az adataidat nem adjuk el és nem adjuk át harmadik félnek marketing célra. A
 | CleanTalk Inc., Automattic Inc. (Akismet) — a Web3Forms alvállalkozói | spamszűrés (az IP címet és az email címet kapják meg) | USA |
 | Google Ireland Ltd. / Google LLC (Gmail) | email fogadása, tárolása | EU / USA — DPF |
 | Supabase Inc. | a weboldal tartalmának (szövegek, képek, vélemények) tárolása; a látogatóról csak a képletöltés technikai adatait (pl. IP cím) kezeli | EU (Frankfurt) |
-| [WEBVULCANO / LEHEL VÁLLALKOZÁSÁNAK NEVE, CÍME] | a weboldal fejlesztése, üzemeltetése, tartalomkezelő rendszer | EU |
+| Bognár Lehel egyéni vállalkozó (WebVulcano; info@webvulcano.hu; nyilvántartási szám: 57400255; adószám: 59380074-1-28) | a weboldal fejlesztése, üzemeltetése, tartalomkezelő rendszer | EU |
 
 ## 4. Adattovábbítás az EU-n kívülre
 

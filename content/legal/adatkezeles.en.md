@@ -48,7 +48,7 @@ If you reach out by email, phone or Instagram, we handle your contact details an
 | **Data** | IP address, browser and device type, the page viewed, time of visit |
 | **Purpose** | keeping the website secure and working properly, preventing abuse |
 | **Legal basis** | legitimate interest (Art. 6(1)(f) GDPR), as the website can't run without this data |
-| **Retention** | according to the hosting provider's log retention, at most [X days] |
+| **Retention** | according to the hosting provider's log retention, at most 1 day |
 
 ### 2.5. Data stored in your browser, cookies
 
@@ -83,7 +83,7 @@ We don't sell your data or share it with third parties for marketing. We rely on
 | CleanTalk Inc., Automattic Inc. (Akismet) — Web3Forms sub-processors | spam filtering (they receive the IP address and email address) | USA |
 | Google Ireland Ltd. / Google LLC (Gmail) | receiving and storing email | EU / USA — DPF |
 | Supabase Inc. | storing the website's content (texts, images, reviews); about visitors it only handles the technical data of loading images (e.g. IP address) | EU (Frankfurt) |
-| [WEBVULCANO / LEHEL'S BUSINESS NAME, ADDRESS] | website development, operation, content management system | EU |
+| Bognár Lehel, sole trader (WebVulcano; info@webvulcano.hu; registration no.: 57400255; tax no.: 59380074-1-28) | website development, operation, content management system | EU |
 
 ## 4. Transfers outside the EU
 
