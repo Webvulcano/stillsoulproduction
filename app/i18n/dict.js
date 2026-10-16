@@ -68,9 +68,18 @@ export const dict = {
       sending: "Küldés…",
       success: "Köszönjük! Megkaptuk az üzeneted, hamarosan válaszolunk.",
       error: "Hiba történt a küldés során. Kérlek próbáld újra.",
+      // jogi szöveg, szándékosan nem CMS-szerkeszthető
+      privacyBefore: "Az elküldéssel tudomásul veszed az ",
+      privacyLink: "adatkezelési tájékoztatót",
+      privacyAfter: ".",
     },
     contactInfo: {
       label: "— Kapcsolat —",
+    },
+    legal: {
+      privacy: "Adatkezelési tájékoztató",
+      imprint: "Impresszum",
+      madeBy: "Készítette:",
     },
     portfolio: {
       label: "— Portfólió —",
@@ -182,9 +191,17 @@ export const dict = {
       sending: "Sending…",
       success: "Thank you! We've received your message and will get back to you soon.",
       error: "Something went wrong. Please try again.",
+      privacyBefore: "By sending, you acknowledge our ",
+      privacyLink: "Privacy Policy",
+      privacyAfter: ".",
     },
     contactInfo: {
       label: "— Contact —",
+    },
+    legal: {
+      privacy: "Privacy Policy",
+      imprint: "Legal notice",
+      madeBy: "Made by",
     },
     portfolio: {
       label: "— Portfolio —",

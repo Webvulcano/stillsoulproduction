@@ -5,7 +5,7 @@ import { FiX } from "react-icons/fi";
 import { useLanguage } from "../i18n/LanguageProvider";
 import { itemTitle } from "./data";
 
-// Lightbox: beágyazott YouTube player. Zárás: X, háttér-kattintás, Esc.
+// Lightbox: beágyazott YouTube player (youtube-nocookie = fokozott adatvédelmi mód, lásd adatkezelési tájékoztató). Zárás: X, háttér-kattintás, Esc.
 export default function VideoModal({ item, onClose }) {
   const { locale } = useLanguage();
   const title = itemTitle(item, locale);
@@ -47,7 +47,7 @@ export default function VideoModal({ item, onClose }) {
         <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-black">
           <iframe
             className="absolute inset-0 h-full w-full"
-            src={`https://www.youtube.com/embed/${item.youtubeId}?autoplay=1`}
+            src={`https://www.youtube-nocookie.com/embed/${item.youtubeId}?autoplay=1`}
             title={title}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen

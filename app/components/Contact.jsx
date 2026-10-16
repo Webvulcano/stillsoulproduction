@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { media } from "@/lib/media";
 import { useRef, useState } from "react";
 import { useLanguage } from "../i18n/LanguageProvider";
@@ -191,6 +192,13 @@ export default function Contact({ packages = [] }) {
                 {status === "sending" ? t.contact.sending : t.contact.submit}
               </span>
             </button>
+            <p className="text-xs tracking-wide text-white/40 text-center">
+              {t.contact.privacyBefore}
+              <Link href="/adatkezeles" className="underline underline-offset-4 hover:text-white transition-colors">
+                {t.contact.privacyLink}
+              </Link>
+              {t.contact.privacyAfter}
+            </p>
             <div aria-live="polite" className="min-h-[1.25rem]">
               {status === "error" && (
                 <p className="text-xs tracking-wide text-red-400">{t.contact.error}</p>

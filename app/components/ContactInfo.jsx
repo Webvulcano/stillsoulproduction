@@ -2,6 +2,7 @@
 
 import { FaPhone, FaEnvelope, FaInstagram } from "react-icons/fa";
 import { useLanguage } from "../i18n/LanguageProvider";
+import LegalLinks from "./LegalLinks";
 
 const contacts = [
   {
@@ -25,7 +26,7 @@ const contacts = [
 export default function ContactInfo() {
   const { t } = useLanguage();
   return (
-    <section className="bg-black text-white py-16">
+    <section className="bg-black text-white pt-20 md:pt-24">
       <span className="block text-xs uppercase tracking-[0.3em] text-white/40 text-center mb-8" data-cms="home.contact_info.label">
         {t.contactInfo.label}
       </span>
@@ -43,6 +44,9 @@ export default function ContactInfo() {
             </span>
           </a>
         ))}
+      </div>
+      <div className="mt-12">
+        <LegalLinks />
       </div>
     </section>
   );

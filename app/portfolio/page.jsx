@@ -1,4 +1,5 @@
 import Navbar from "../components/Navbar";
+import LegalLinks from "../components/LegalLinks";
 import PortfolioGallery from "./PortfolioGallery";
 import { getPortfolioItems, getCategories } from "@/lib/portfolio";
 
@@ -18,6 +19,7 @@ export default async function PortfolioPage() {
     <>
       <Navbar />
       <PortfolioGallery items={items} categories={categories} />
+      <LegalLinks />
     </>
   );
 }
