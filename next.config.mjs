@@ -40,7 +40,6 @@ const nextConfig = {
   images: {
     unoptimized: true,
     remotePatterns: [
-      { protocol: "https", hostname: "lpimxezspyrlirqwffwg.supabase.co" },
       // Ügyfél Admin CMS (feltöltött WebP-k unoptimized-ként mennek, de a default-ok is innen jöhetnek)
       { protocol: "https", hostname: "fwhgroduenrtixzuwpfv.supabase.co" },
       { protocol: "https", hostname: "img.youtube.com" },
