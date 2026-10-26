@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useLanguage } from "../i18n/LanguageProvider";
 import { CATEGORIES } from "../portfolio/categories";
 import { isCmsUpload } from "@/lib/cms-image";
+import { LIVE_SERVICES } from "@/lib/cms-live-snapshot";
 
 // Csempe → cél URL: a serviceTargets (DB: service_key→mappa-slug) alapján.
 // Ha van hozzárendelt, feltöltött mappa → oda görget (#row-<slug>); különben tetejére.
@@ -77,7 +78,7 @@ export default function Services({ serviceTargets = {}, images = [] }) {
               data-cms={service.img?.key}
             >
               <Image
-                src={service.img?.src}
+                src={service.img?.src ?? LIVE_SERVICES[i]?.image_url}
                 alt={service.img?.alt || service.title}
                 unoptimized={isCmsUpload(service.img?.src)}
                 fill
