@@ -8,6 +8,7 @@ export const CATEGORIES = [
   { slug: "esemenyek", idx: 3 }, // Események és rendezvények
   { slug: "filmes", idx: 4 }, // Eseti megkeresések, besegítés filmes munkákban
   { slug: "film", idx: 5 }, // Dokumentum- és játékfilm
+  { slug: "termek", idx: 6 }, // Termékfotózás
 ];
 
 export const SLUGS = CATEGORIES.map((c) => c.slug);

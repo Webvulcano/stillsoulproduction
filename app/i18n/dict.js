@@ -32,6 +32,7 @@ export const dict = {
             "(vágó, rendezőasszisztens, gyártásvezető, világosító, látványtervező, art director, berendező)",
         },
         { title: "Dokumentumfilm és fikciós játékfilmek" },
+        { title: "Termékfotózás" },
       ],
     },
     packages: {
@@ -155,6 +156,7 @@ export const dict = {
             "(editor, assistant director, line producer, gaffer, set designer, art director, set dresser)",
         },
         { title: "Documentary & fiction filmmaking" },
+        { title: "Product photography" },
       ],
     },
     packages: {
