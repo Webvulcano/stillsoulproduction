@@ -1,4 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { LanguageProvider } from "./i18n/LanguageProvider";
 import CmsBridge from "@/components/cms/CmsBridge";
@@ -56,6 +57,7 @@ export default async function RootLayout({ children }) {
       <body className="min-h-full flex flex-col">
         <LanguageProvider dicts={dicts}>{children}</LanguageProvider>
         <CmsBridge />
+        <Analytics />
       </body>
     </html>
   );
