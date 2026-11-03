@@ -28,6 +28,15 @@ export default {
   reviews: { label: "Értékelések" },
   // Csomagok = Ügyfél Admin csomag-modul (Csomagok menü) → „Kész csomagjaink” popup az Árajánlat űrlap fölött.
   packages: { label: "Csomagok" },
+  // Vercel Web Analytics → admin Analitika oldal (a token az admin szerverén van).
+  // Konverzió = eseménynevek (ld. track() hívások: ContactInfo.jsx, Contact.jsx).
+  analytics: {
+    vercel: {
+      projectId: "prj_84xqmyv9XDjTbv3Tc8clZAZ5ZE7m",
+      teamId: "team_3e4PonEWGDktxZ3jN5cVjuN8",
+      conversions: ["Árajánlat-kérés", "Telefonhívás", "Email"],
+    },
+  },
   locales: [
     { code: "hu", label: "Magyar" },
     { code: "en", label: "English" },

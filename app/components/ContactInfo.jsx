@@ -1,5 +1,6 @@
 "use client";
 
+import { track } from "@vercel/analytics";
 import { FaPhone, FaEnvelope, FaInstagram } from "react-icons/fa";
 import { useLanguage } from "../i18n/LanguageProvider";
 import LegalLinks from "./LegalLinks";
@@ -9,11 +10,13 @@ const contacts = [
     icon: FaPhone,
     label: "+36 30 305 3304",
     href: "tel:+36303053304",
+    event: "Telefonhívás",
   },
   {
     icon: FaEnvelope,
     label: "stillsoulproduction@gmail.com",
     href: "mailto:stillsoulproduction@gmail.com",
+    event: "Email",
   },
   {
     icon: FaInstagram,
@@ -31,10 +34,11 @@ export default function ContactInfo() {
         {t.contactInfo.label}
       </span>
       <div className="flex flex-wrap justify-center gap-8 md:gap-14 px-6">
-        {contacts.map(({ icon: Icon, label, href, external }) => (
+        {contacts.map(({ icon: Icon, label, href, external, event }) => (
           <a
             key={label}
             href={href}
+            onClick={event ? () => track(event) : undefined}
             {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
             className="group flex items-center gap-3"
           >

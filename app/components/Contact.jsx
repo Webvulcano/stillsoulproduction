@@ -1,4 +1,5 @@
 "use client";
+import { track } from "@vercel/analytics";
 import Image from "next/image";
 import Link from "next/link";
 import { media } from "@/lib/media";
@@ -64,6 +65,7 @@ export default function Contact({ packages = [] }) {
       });
       const json = await res.json();
       if (json.success) {
+        track("Árajánlat-kérés");
         setStatus("success");
         form.reset();
         setMessage("");
