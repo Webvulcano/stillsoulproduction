@@ -5,12 +5,15 @@ import { FaPlay } from "react-icons/fa";
 import { useLanguage } from "../i18n/LanguageProvider";
 import { thumbUrl, itemTitle } from "./data";
 import CoverImage from "./CoverImage";
+import { registerRow } from "./rowScheduler";
 
 // Egy kategória-szekció: cím + vízszintesen léptető kártya-sor.
 // - léptet pontosan 1 kártyányit (sima ~0.4s glide), majd 1s szünet, ismét
 // - a képek jobbra vándorolnak (scrollLeft csökken); balról jönnek be az újak
 // - VÉGTELENÍTETT: a kártyák többszörözve (REPS) → seamless loop, egy referencia többször látszik
 // - hover / fókusz / húzás alatt megáll, utána folytatódik
+// - egyszerre max. 2 (látható) sor léptet, a többi áll (rowScheduler.js);
+//   "csökkentett mozgás" rendszerbeállításnál nincs automatikus léptetés
 // - swipe / drag-to-scroll pointer-eseményekkel; a húzás nem süti el a klikket
 const REPS = 4; // hányszor ismételjük a listát a seamless loophoz
 const GLIDE_MS = 800; // egy lépés hossza
@@ -30,6 +33,16 @@ export default function CategoryRow({ title, items, onSelect, reverse = false, i
   const wrapRef = useRef(0); // egy teljes kör szélessége = items.length * step
   const touchTimerRef = useRef(0); // érintés utáni resume késleltetés
   const touchingRef = useRef(false); // ujj a képernyőn (natív görgetés aktív)
+  const activeRef = useRef(false); // az ütemező engedi-e a léptetést (látható + max. 2 sor)
+
+  // Feliratkozás az ütemezőre: csak a látható, kiválasztott sorok léptetnek.
+  useEffect(() => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    return registerRow(el, (on) => {
+      activeRef.current = on;
+    });
+  }, []);
 
   // Léptető vezérlő: glide egy kártyát → 1s várakozás → ismét, végtelenítve.
   useEffect(() => {
@@ -39,6 +52,9 @@ export default function CategoryRow({ title, items, onSelect, reverse = false, i
     let cancelled = false;
     let raf = 0;
     let timer = 0;
+    const reducedMotion = window.matchMedia?.(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
 
     const measure = () => {
       const first = el.querySelector("[data-card]");
@@ -90,7 +106,10 @@ export default function CategoryRow({ title, items, onSelect, reverse = false, i
       });
 
     const waitWhileBlocked = async () => {
-      while (!cancelled && (pausedRef.current || dragRef.current.active)) {
+      while (
+        !cancelled &&
+        (pausedRef.current || dragRef.current.active || !activeRef.current)
+      ) {
         await sleep(120);
       }
     };
@@ -100,6 +119,7 @@ export default function CategoryRow({ title, items, onSelect, reverse = false, i
       await sleep(60);
       measure();
       el.scrollLeft = wrapRef.current; // induló pozíció a sáv alján
+      if (reducedMotion) return; // csak kézi görgetés / húzás
 
       while (!cancelled) {
         await waitWhileBlocked();
