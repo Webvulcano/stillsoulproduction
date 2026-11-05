@@ -12,7 +12,7 @@ import { registerRow } from "./rowScheduler";
 // - a képek jobbra vándorolnak (scrollLeft csökken); balról jönnek be az újak
 // - VÉGTELENÍTETT: a kártyák többszörözve (REPS) → seamless loop, egy referencia többször látszik
 // - hover / fókusz / húzás alatt megáll, utána folytatódik
-// - egyszerre max. 2 (látható) sor léptet, a többi áll (rowScheduler.js);
+// - egyszerre csak 1 sor léptet: a képernyő közepén lévő (rowScheduler.js);
 //   "csökkentett mozgás" rendszerbeállításnál nincs automatikus léptetés
 // - swipe / drag-to-scroll pointer-eseményekkel; a húzás nem süti el a klikket
 const REPS = 4; // hányszor ismételjük a listát a seamless loophoz
@@ -33,9 +33,9 @@ export default function CategoryRow({ title, items, onSelect, reverse = false, i
   const wrapRef = useRef(0); // egy teljes kör szélessége = items.length * step
   const touchTimerRef = useRef(0); // érintés utáni resume késleltetés
   const touchingRef = useRef(false); // ujj a képernyőn (natív görgetés aktív)
-  const activeRef = useRef(false); // az ütemező engedi-e a léptetést (látható + max. 2 sor)
+  const activeRef = useRef(false); // az ütemező engedi-e a léptetést (ez a sor van középen)
 
-  // Feliratkozás az ütemezőre: csak a látható, kiválasztott sorok léptetnek.
+  // Feliratkozás az ütemezőre: csak a képernyő közepén lévő sor léptet.
   useEffect(() => {
     const el = scrollerRef.current;
     if (!el) return;

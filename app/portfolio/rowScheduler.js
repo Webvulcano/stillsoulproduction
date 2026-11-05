@@ -1,52 +1,64 @@
-// Portfólió-sorok animáció-ütemezője: egyszerre legfeljebb MAX_ACTIVE sor léptet.
-// Csak a képernyőn látható sorok jöhetnek szóba; közülük a leginkább látható
-// (azonos láthatóságnál a feljebb lévő) sorok kapnak "aktív" jelet.
-// A képernyőn kívüli sorok egyáltalán nem animálnak (CPU / GPU kímélés).
-const MAX_ACTIVE = 2;
+// Portfólió-sorok animáció-ütemezője: egyszerre CSAK EGY sor léptet —
+// az, amelyiknek a közepe a legközelebb van a képernyő közepéhez.
+// A többi sor áll (a képernyőn kívüliek is), így kíméljük a CPU-t / GPU-t.
+// Görgetésnél / átméretezésnél (rAF-fel ritkítva) újraszámoljuk az aktív sort.
 
-const rows = new Map(); // el -> { ratio, setActive }
-let observer = null;
+const rows = new Map(); // el -> setActive(bool)
+let activeEl = null;
+let raf = 0;
+let listening = false;
 
 const recompute = () => {
-  const ranked = [...rows.entries()]
-    .filter(([, r]) => r.ratio > 0)
-    .sort(
-      ([elA, a], [elB, b]) =>
-        b.ratio - a.ratio ||
-        elA.getBoundingClientRect().top - elB.getBoundingClientRect().top
-    );
-  const active = new Set(ranked.slice(0, MAX_ACTIVE).map(([el]) => el));
-  for (const [el, r] of rows) r.setActive(active.has(el));
+  raf = 0;
+  const vh = window.innerHeight;
+  const mid = vh / 2;
+  let best = null;
+  let bestDist = Infinity;
+  for (const el of rows.keys()) {
+    const r = el.getBoundingClientRect();
+    if (r.bottom <= 0 || r.top >= vh) continue; // nem látszik
+    const dist = Math.abs((r.top + r.bottom) / 2 - mid);
+    if (dist < bestDist) {
+      bestDist = dist;
+      best = el;
+    }
+  }
+  if (best === activeEl) return;
+  activeEl = best;
+  for (const [el, setActive] of rows) setActive(el === best);
 };
 
-const getObserver = () => {
-  if (observer || typeof IntersectionObserver === "undefined") return observer;
-  observer = new IntersectionObserver(
-    (entries) => {
-      for (const e of entries) {
-        const r = rows.get(e.target);
-        if (r) r.ratio = e.isIntersecting ? e.intersectionRatio : 0;
-      }
-      recompute();
-    },
-    { threshold: [0, 0.25, 0.5, 0.75, 1] }
-  );
-  return observer;
+const schedule = () => {
+  if (!raf) raf = requestAnimationFrame(recompute);
+};
+
+const startListening = () => {
+  if (listening) return;
+  listening = true;
+  window.addEventListener("scroll", schedule, { passive: true });
+  window.addEventListener("resize", schedule);
+};
+
+const stopListening = () => {
+  if (!listening) return;
+  listening = false;
+  window.removeEventListener("scroll", schedule);
+  window.removeEventListener("resize", schedule);
+  cancelAnimationFrame(raf);
+  raf = 0;
 };
 
 // Regisztrál egy sort; setActive(bool) jelzi, léptethet-e. Visszaad egy leiratkozó függvényt.
 export function registerRow(el, setActive) {
-  const obs = getObserver();
-  if (!obs) {
-    // IntersectionObserver nélkül (nagyon régi böngésző): régi viselkedés.
-    setActive(true);
-    return () => {};
-  }
-  rows.set(el, { ratio: 0, setActive });
-  obs.observe(el);
+  rows.set(el, setActive);
+  setActive(false);
+  activeEl = null; // új sor → kényszerített újraszámolás
+  startListening();
+  schedule();
   return () => {
-    obs.unobserve(el);
     rows.delete(el);
-    recompute();
+    if (activeEl === el) activeEl = null;
+    if (rows.size === 0) stopListening();
+    else schedule();
   };
 }
