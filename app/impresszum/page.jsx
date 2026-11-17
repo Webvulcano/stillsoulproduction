@@ -4,6 +4,7 @@ import { getLegalDoc } from "@/lib/legal";
 
 export const metadata = {
   title: "Impresszum | Legal notice — Stillsoul Production",
+  alternates: { canonical: "/impresszum" },
 };
 
 export default async function ImprintPage() {

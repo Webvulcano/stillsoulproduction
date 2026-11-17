@@ -4,7 +4,10 @@ import PortfolioGallery from "./PortfolioGallery";
 import { getPortfolioItems, getCategories } from "@/lib/portfolio";
 
 export const metadata = {
-  title: "Portfólió — Stillsoul Production",
+  title: "Portfólió: videók és fotók · StillSoul Production",
+  description:
+    "StillSoul Production portfóliója: esküvői és rendezvény videók, reklámfilmek, videoklipek, portré- és analóg fotók.",
+  alternates: { canonical: "/portfolio" },
 };
 
 // ISR: statikusan cache-elt, adminban mentés után revalidatePath frissíti.

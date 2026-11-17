@@ -4,6 +4,7 @@ import { getLegalDoc } from "@/lib/legal";
 
 export const metadata = {
   title: "Adatkezelési tájékoztató | Privacy Policy — Stillsoul Production",
+  alternates: { canonical: "/adatkezeles" },
 };
 
 export default async function PrivacyPage() {

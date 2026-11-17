@@ -11,6 +11,10 @@ import ContactInfo from "./components/ContactInfo";
 import { getPortfolioItems, getCategories } from "@/lib/portfolio";
 import { getPackages, getReviews, getSectionImages, getSlotGallery } from "@/lib/cms-dict";
 
+export const metadata = {
+  alternates: { canonical: "/" },
+};
+
 // ISR: statikusan cache-elt; az Ügyfél Admin mentés után a cms:<slug> taget frissíti.
 export const revalidate = 3600;
 

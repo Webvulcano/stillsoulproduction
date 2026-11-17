@@ -17,13 +17,13 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   metadataBase: new URL("https://stillsoulproduction.hu"),
-  title: "Stillsoul Production",
+  title: "Videókészítés és fotózás Budapesten · StillSoul Production",
   description:
-    "Stillsoul Production – kreatív fotó és videó: esküvő, rendezvény, reklámfilm, social media. | Creative photo & video production.",
+    "Videókészítés és fotózás Budapesten, Győrben és Esztergomban: esküvő, rendezvény, reklámfilm, videoklip, portré. StillSoul Production – Fördős Bence és Dudás Hédi.",
   openGraph: {
-    title: "Stillsoul Production",
+    title: "Videókészítés és fotózás Budapesten · StillSoul Production",
     description:
-      "Kreatív fotó és videó – esküvő, rendezvény, reklámfilm, social media. | Creative photo & video production.",
+      "Videókészítés és fotózás Budapesten, Győrben és Esztergomban: esküvő, rendezvény, reklámfilm, videoklip, portré.",
     url: "https://stillsoulproduction.hu",
     siteName: "Stillsoul Production",
     locale: "hu_HU",
@@ -40,11 +40,43 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Stillsoul Production",
+    title: "Videókészítés és fotózás Budapesten · StillSoul Production",
     description:
-      "Kreatív fotó és videó – esküvő, rendezvény, reklámfilm, social media. | Creative photo & video production.",
+      "Videókészítés és fotózás Budapesten, Győrben és Esztergomban: esküvő, rendezvény, reklámfilm, videoklip, portré.",
     images: ["/logo-og.png"],
   },
+};
+
+const BASE_URL = "https://stillsoulproduction.hu";
+
+// Strukturált adat (schema.org).
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": `${BASE_URL}/#business`,
+  name: "StillSoul Production",
+  url: BASE_URL,
+  logo: `${BASE_URL}/logo.png`,
+  image: `${BASE_URL}/logo-og.png`,
+  description:
+    "Kreatív fotó- és videógyártás: esküvő, rendezvény, reklámfilm, videoklip, portré, social media tartalom.",
+  telephone: "+36303053304",
+  email: "stillsoulproduction@gmail.com",
+  areaServed: [
+    { "@type": "City", name: "Budapest" },
+    { "@type": "City", name: "Győr" },
+    { "@type": "City", name: "Esztergom" },
+  ],
+  knowsLanguage: ["hu", "en"],
+  sameAs: [
+    "https://www.instagram.com/stillsoulproduction/",
+    // Google Cégprofil (Knowledge Graph ID)
+    "https://www.google.com/search?kgmid=/g/11zz2h2m0v&q=StillSoul+Production",
+  ],
+  founder: [
+    { "@type": "Person", name: "Fördős Bence", jobTitle: "Rendező, operatőr, fotós" },
+    { "@type": "Person", name: "Dudás Hédi", jobTitle: "Vágó, forgatókönyvíró" },
+  ],
 };
 
 export default async function RootLayout({ children }) {
@@ -55,6 +87,12 @@ export default async function RootLayout({ children }) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
         <LanguageProvider dicts={dicts}>{children}</LanguageProvider>
         <CmsBridge />
         <Analytics />
