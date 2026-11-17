@@ -14,7 +14,7 @@ export const PACKAGES = [
 ];
 
 // Referencia-videók (portfólió CMS, kategória: esemenyek). Dátum és hossz a YouTube-oldalról.
-// A sorrend a megjelenítés sorrendje; a címek: content[locale].reference.videos[key].
+// A sorrend a megjelenítés sorrendje; a látható címek a portfólióból (CMS) jönnek.
 export const VIDEOS = {
   laura: {
     id: "RoptYKcX0MM",
@@ -141,12 +141,7 @@ export const content = {
     },
     reference: {
       title: "Esküvői filmjeink",
-      videos: {
-        laura: "Laura & Csabi esküvője · teljes film, 12 perc",
-        fanni: "Fanni & Gábor esküvője · teljes film, 6 perc",
-        trailer: "Laura & Csabi · trailer, 40 mp",
-      },
-      play: "Lejátszás",
+      text: "Két teljes esküvői film és egy trailer — így néz ki egy StillSoul esküvői videó.",
       portfolio: "További videók a portfólióban →",
     },
     faq: {
@@ -284,12 +279,6 @@ export const content = {
     reference: {
       title: "Our wedding films",
       text: "Two full wedding films and a trailer — this is what a StillSoul wedding video looks like.",
-      videos: {
-        laura: "Laura & Csabi's wedding · full film, 12 min",
-        fanni: "Fanni & Gábor's wedding · full film, 6 min",
-        trailer: "Laura & Csabi · trailer, 40 sec",
-      },
-      play: "Play",
       portfolio: "More videos in the portfolio →",
     },
     faq: {

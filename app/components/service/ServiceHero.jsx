@@ -1,11 +1,12 @@
 "use client";
 
 import Image from "next/image";
+import { isCmsUpload } from "@/lib/cms-image";
 import { inner, buttonPrimary, buttonGhost } from "./ui";
 
 // Aloldal-hero: videó (ha van) vagy poszterkép, rajta a látható H1 és két gomb.
 // h = { eyebrow, title, sub, cta, packagesLink, posterAlt }
-export default function ServiceHero({ h, poster, video = null, onQuote }) {
+export default function ServiceHero({ h, poster, video = null, onQuote, secondaryHref = "#csomagok" }) {
   return (
     <section className="relative flex min-h-[70vh] w-full items-end overflow-hidden md:min-h-screen">
       {video ? (
@@ -20,7 +21,7 @@ export default function ServiceHero({ h, poster, video = null, onQuote }) {
           className="absolute inset-0 h-full w-full object-cover object-center"
         />
       ) : (
-        <Image src={poster} alt={h.posterAlt} fill priority sizes="100vw" className="object-cover object-center" />
+        <Image src={poster} alt={h.posterAlt} unoptimized={isCmsUpload(poster)} fill priority sizes="100vw" className="object-cover object-center" />
       )}
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/20" />
       <div className="relative w-full px-8 pb-12 pt-32 md:px-16 md:pb-20">
@@ -32,7 +33,7 @@ export default function ServiceHero({ h, poster, video = null, onQuote }) {
             <a href="#arajanlat" onClick={onQuote} className={buttonPrimary}>
               {h.cta}
             </a>
-            <a href="#csomagok" className={buttonGhost}>
+            <a href={secondaryHref} className={buttonGhost}>
               {h.packagesLink}
             </a>
           </div>

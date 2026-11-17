@@ -1,0 +1,53 @@
+import Navbar from "../components/Navbar";
+import ContactInfo from "../components/ContactInfo";
+import JsonLd from "@/components/cms/JsonLd";
+import ServicePage from "../components/service/ServicePage";
+import { serviceMetadata, serviceLd, referenceRows } from "../components/service/servicePageLd";
+import { getReviews } from "@/lib/cms-dict";
+import { getPortfolioItems, getCategories } from "@/lib/portfolio";
+import { content, VIDEOS } from "./content";
+
+const PATH = "/videoklip-keszites";
+const TITLE = "Videoklip készítés · klipforgatás Budapest | StillSoul";
+const DESCRIPTION =
+  "Videoklip készítés zenekaroknak és előadóknak: koncepció, forgatókönyv, rendezés, klipforgatás és vágás egy csapattól. Kérj egyedi ajánlatot!";
+
+export const metadata = serviceMetadata({ path: PATH, title: TITLE, description: DESCRIPTION });
+
+const ld = serviceLd({
+  path: PATH,
+  name: "Videoklip készítés",
+  serviceType: "Videoklip készítés",
+  description: DESCRIPTION,
+  faq: content.hu.faq.items,
+  videos: VIDEOS,
+});
+
+// ISR: a referenciák (portfólió) és az értékelések az Ügyfél Adminból jönnek.
+export const revalidate = 3600;
+
+// Egyik nyelv CMS-listájában sincs → a lista elejére kerül.
+const QUOTE_CATEGORY = { hu: "Videoklip készítés", en: "Music video" };
+
+export default async function MusicVideoPage() {
+  const [items, categories, reviews] = await Promise.all([getPortfolioItems(), getCategories(), getReviews()]);
+  const rows = referenceRows(items, categories, [{ category: "videoklippek-reklamanyagok", youtubeIds: VIDEOS.map((v) => v.id), title: null }]);
+  return (
+    <>
+      {ld.map((d, i) => (
+        <JsonLd key={i} data={d} />
+      ))}
+      <Navbar />
+      <ServicePage
+        content={content}
+        rows={rows}
+        poster={`https://i.ytimg.com/vi/${VIDEOS[0].id}/maxresdefault.jpg`}
+        portfolioHref="/portfolio#row-videoklippek-reklamanyagok"
+        quoteCategory={QUOTE_CATEGORY}
+        reviews={reviews}
+        trackLabel="Videoklip oldal: ajánlatkérés"
+      />
+      <ContactInfo />
+    </>
+  );
+}

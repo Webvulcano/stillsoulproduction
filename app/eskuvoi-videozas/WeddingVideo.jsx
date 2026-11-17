@@ -3,12 +3,12 @@
 import Link from "next/link";
 import { track } from "@vercel/analytics";
 import { useLanguage } from "../i18n/LanguageProvider";
-import LazyYouTube from "../components/LazyYouTube";
 import Contact from "../components/Contact";
 import Reviews from "../components/Reviews";
 import ServiceHero from "../components/service/ServiceHero";
 import PriceList from "../components/service/PriceList";
 import Faq from "../components/service/Faq";
+import ReferenceRows from "../components/service/ReferenceRows";
 import { h2, h3Label, section, inner, lead, panel, cell, textLink } from "../components/service/ui";
 import { content, VIDEOS, ytThumb } from "./content";
 
@@ -22,7 +22,7 @@ const HERO_POSTER = ytThumb(VIDEOS.laura.id);
 const QUOTE_CATEGORY = { hu: "Esküvő videózás", en: "Wedding videography" };
 
 // Az SSR mindig magyar (LanguageProvider kezdő locale = "hu") → a magyar szöveg a HTML-ben van.
-export default function WeddingVideo({ packages = [], reviews = [] }) {
+export default function WeddingVideo({ packages = [], reviews = [], rows = [] }) {
   const { locale } = useLanguage();
   const c = content[locale] ?? content.hu;
   const onQuote = () => track("Esküvői oldal: ajánlatkérés");
@@ -75,25 +75,12 @@ export default function WeddingVideo({ packages = [], reviews = [] }) {
         </div>
       </section>
 
-      {/* 5. Referenciák — a videók listája: content.js VIDEOS */}
+      {/* 5. Referenciák — ugyanaz a lapozós sor, mint a portfólión; a videók: content.js VIDEOS */}
       <section className={section}>
         <div className={inner}>
           <h2 className={h2}>{c.reference.title}</h2>
           <p className={lead}>{c.reference.text}</p>
-          <div className="mt-12 grid gap-8 md:grid-cols-3">
-            {Object.entries(VIDEOS).map(([key, v]) => (
-              <figure key={key}>
-                <LazyYouTube
-                  id={v.id}
-                  title={c.reference.videos[key]}
-                  playLabel={c.reference.play}
-                  thumb={ytThumb(v.id)}
-                  sizes="(max-width: 768px) 100vw, 400px"
-                />
-                <figcaption className="mt-3 text-xs uppercase tracking-widest text-white/50">{c.reference.videos[key]}</figcaption>
-              </figure>
-            ))}
-          </div>
+          <ReferenceRows rows={rows} />
           <Link href="/portfolio#row-esemenyek" className={`mt-10 inline-block ${textLink}`}>
             {c.reference.portfolio}
           </Link>

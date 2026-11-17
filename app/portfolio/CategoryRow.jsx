@@ -21,7 +21,7 @@ const DRAG_THRESHOLD = 6; // px — efölött húzásnak számít, klikk elnyomv
 const easeInOut = (t) =>
   t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
 
-export default function CategoryRow({ title, items, onSelect, reverse = false, id }) {
+export default function CategoryRow({ title, items, onSelect, reverse = false, id, titleAs: Title = "h2" }) {
   const { locale } = useLanguage();
   const scrollerRef = useRef(null);
   const pausedRef = useRef(false);
@@ -207,9 +207,12 @@ export default function CategoryRow({ title, items, onSelect, reverse = false, i
 
   return (
     <section id={id} className="mb-14 scroll-mt-28">
-      <h2 className="mb-4 px-8 text-lg font-medium tracking-wide text-white/90 sm:text-xl">
-        {title}
-      </h2>
+      {/* titleAs: aloldalon h3 (a szekció h2 alatt); cím nélkül nincs fejléc */}
+      {title && (
+        <Title className="mb-4 px-8 text-lg font-medium tracking-wide text-white/90 sm:text-xl">
+          {title}
+        </Title>
+      )}
 
       <div
         ref={scrollerRef}

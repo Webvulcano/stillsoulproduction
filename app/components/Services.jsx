@@ -94,6 +94,10 @@ export default function Services({ serviceTargets = {}, images = [] }) {
         {[
           { href: "/eskuvoi-videozas", label: t.services.weddingLink },
           { href: "/eskuvoi-fotozas", label: t.services.weddingPhotoLink },
+          { href: "/portre-fotozas", label: t.services.portraitLink },
+          { href: "/rendezveny-fotozas-videozas", label: t.services.eventLink },
+          { href: "/videoklip-keszites", label: t.services.musicVideoLink },
+          { href: "/reklamfilm-keszites", label: t.services.commercialLink },
         ]
           .filter((l) => l.label)
           .map((l) => (

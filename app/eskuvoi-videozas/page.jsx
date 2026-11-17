@@ -5,6 +5,8 @@ import WeddingVideo from "./WeddingVideo";
 import { faqLd } from "../components/service/Faq";
 import { content, PACKAGES, VIDEOS, ytThumb } from "./content";
 import { getPackages, getReviews } from "@/lib/cms-dict";
+import { getPortfolioItems, getCategories } from "@/lib/portfolio";
+import { referenceRows } from "../components/service/servicePageLd";
 
 const BASE_URL = "https://stillsoulproduction.hu";
 const PAGE_URL = `${BASE_URL}/eskuvoi-videozas`;
@@ -87,7 +89,11 @@ const breadcrumbLd = {
 export const revalidate = 3600;
 
 export default async function WeddingVideoPage() {
-  const [packages, reviews] = await Promise.all([getPackages(), getReviews()]);
+  const [packages, reviews, items, categories] = await Promise.all([getPackages(), getReviews(), getPortfolioItems(), getCategories()]);
+  // Referenciák: az esküvői filmek a portfólió „Események” sorából, a VIDEOS sorrendjében.
+  const rows = referenceRows(items, categories, [
+    { category: "esemenyek", youtubeIds: Object.values(VIDEOS).map((v) => v.id), title: null },
+  ]);
   return (
     <>
       <JsonLd data={serviceLd} />
@@ -95,7 +101,7 @@ export default async function WeddingVideoPage() {
       <JsonLd data={videoLd} />
       <JsonLd data={breadcrumbLd} />
       <Navbar />
-      <WeddingVideo packages={packages} reviews={reviews} />
+      <WeddingVideo packages={packages} reviews={reviews} rows={rows} />
       <ContactInfo />
     </>
   );

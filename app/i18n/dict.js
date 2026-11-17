@@ -23,6 +23,10 @@ export const dict = {
       label: "— Szolgáltatások —",
       weddingLink: "Esküvői videózás — csomagok és árak →",
       weddingPhotoLink: "Esküvői fotózás — csomagok és árak →",
+      portraitLink: "Portré fotózás →",
+      eventLink: "Rendezvényfotózás és -videózás →",
+      musicVideoLink: "Videoklip készítés →",
+      commercialLink: "Reklámfilm készítés →",
       items: [
         { title: "Digitális és analóg fotózás" },
         { title: "Videóklippek & reklámanyagok" },
@@ -149,6 +153,10 @@ export const dict = {
       label: "— Services —",
       weddingLink: "Wedding videography — packages & prices →",
       weddingPhotoLink: "Wedding photography — packages & prices →",
+      portraitLink: "Portrait photography →",
+      eventLink: "Event photography & videography →",
+      musicVideoLink: "Music video production →",
+      commercialLink: "Commercial production →",
       items: [
         { title: "Digital & analog photography" },
         { title: "Video clips & promotional materials" },
