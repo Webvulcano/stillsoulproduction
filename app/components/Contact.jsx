@@ -13,8 +13,13 @@ const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
 // Élesítéskor állítsd false-ra (vagy töröld a teszt-ágat a handleSubmit-ben).
 const TEST_MODE = false;
 
-export default function Contact({ packages = [] }) {
-  const { t } = useLanguage();
+// defaultCategory: { hu, en } — előre kiválasztott kategória (pl. az esküvői aloldalon).
+// Ha az adott nyelv CMS-listájában nincs benne, a lista elejére kerül.
+export default function Contact({ packages = [], defaultCategory }) {
+  const { t, locale } = useLanguage();
+  const preset = defaultCategory?.[locale] ?? "";
+  const categories =
+    preset && !t.contact.categories.includes(preset) ? [preset, ...t.contact.categories] : t.contact.categories;
   const textareaRef = useRef(null);
   const [message, setMessage] = useState("");
   // "idle" | "sending" | "success" | "error"
@@ -140,14 +145,15 @@ export default function Contact({ packages = [] }) {
               </label>
               <div className="relative">
                 <select
+                  key={locale}
                   id="category"
                   name="category"
                   required
-                  defaultValue=""
+                  defaultValue={preset}
                   className="w-full appearance-none bg-black text-white border-b border-white/20 py-3 text-sm focus:border-white focus:outline-none transition-colors cursor-pointer"
                 >
                   <option value="" disabled>{t.contact.categoryPlaceholder}</option>
-                  {t.contact.categories.map((cat) => (
+                  {categories.map((cat) => (
                     <option key={cat} value={cat} className="bg-black text-white">
                       {cat}
                     </option>

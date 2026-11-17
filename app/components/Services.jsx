@@ -89,6 +89,23 @@ export default function Services({ serviceTargets = {}, images = [] }) {
           </Link>
         );
       })}
+      {/* Belső linkek a szolgáltatás-aloldalakra (SEO: enélkül árva oldalak). Szöveg: dict.js services.* */}
+      <div className="px-8 md:px-16 py-12 flex flex-wrap justify-center gap-4">
+        {[
+          { href: "/eskuvoi-videozas", label: t.services.weddingLink },
+          { href: "/eskuvoi-fotozas", label: t.services.weddingPhotoLink },
+        ]
+          .filter((l) => l.label)
+          .map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              className="inline-flex items-center px-8 py-3 text-xs uppercase tracking-widest border border-white/20 hover:bg-white hover:text-black transition-colors duration-300"
+            >
+              {l.label}
+            </Link>
+          ))}
+      </div>
       </div>
     </section>
   );

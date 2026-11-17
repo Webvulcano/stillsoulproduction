@@ -9,6 +9,18 @@ export default function sitemap() {
       priority: 1,
     },
     {
+      url: `${baseUrl}/eskuvoi-videozas`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/eskuvoi-fotozas`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
       url: `${baseUrl}/portfolio`,
       lastModified: new Date(),
       changeFrequency: "monthly",
