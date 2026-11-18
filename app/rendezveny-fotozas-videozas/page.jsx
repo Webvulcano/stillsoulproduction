@@ -3,7 +3,7 @@ import ContactInfo from "../components/ContactInfo";
 import JsonLd from "@/components/cms/JsonLd";
 import ServicePage from "../components/service/ServicePage";
 import { serviceMetadata, serviceLd, referenceRows } from "../components/service/servicePageLd";
-import { getReviews, getServiceContent } from "@/lib/cms-dict";
+import { getReviews, getServiceContent, getServicePoster } from "@/lib/cms-dict";
 import { getPortfolioItems, getCategories } from "@/lib/portfolio";
 import { VIDEOS } from "./content";
 
@@ -40,6 +40,7 @@ export default async function EventPage() {
     getReviews(),
     getServiceContent(CMS_PAGE),
   ]);
+  const cmsPoster = await getServicePoster(CMS_PAGE);
   const ld = ldFor(content.hu.faq.items);
   const rows = referenceRows(items, categories, [
     { category: "esemenyek", youtubeIds: VIDEOS.map((v) => v.id), title: { hu: "Rendezvényfilmek", en: "Event films" } },
@@ -55,7 +56,7 @@ export default async function EventPage() {
         content={content}
         cms={CMS_PAGE}
         rows={rows}
-        poster={`https://i.ytimg.com/vi/${VIDEOS[0].id}/maxresdefault.jpg`}
+        poster={cmsPoster ?? `https://i.ytimg.com/vi/${VIDEOS[0].id}/maxresdefault.jpg`}
         portfolioHref="/portfolio#row-esemenyek"
         quoteCategory={QUOTE_CATEGORY}
         reviews={reviews}

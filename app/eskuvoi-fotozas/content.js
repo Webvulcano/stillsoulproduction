@@ -11,6 +11,10 @@
 // A PDF-ben NINCS: utazási feltétel, átadási idő, stílus → ezekről az oldal nem állít semmit.
 // A PACKAGES ár csak tartalék a JSON-LD-hez: az Offer.price a CMS-ben szerkesztett árból jön (priceNumber).
 
+// Hero alap-háttérképe: a Laura & Csabi trailer nyitóképe (helyőrző, amíg nincs esküvői fotó) —
+// az Ügyfél Adminban felülírható (hero.poster képhely).
+export const HERO_POSTER_ID = "GTiKqG0dmJo";
+
 export const PACKAGES = [
   { key: "alap", name: "Alap", price: 200000, photos: "100–300" },
   { key: "deluxe", name: "Deluxe", price: 250000, photos: "300–500" },

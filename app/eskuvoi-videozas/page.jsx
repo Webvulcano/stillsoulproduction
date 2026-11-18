@@ -5,7 +5,7 @@ import { serviceRobots } from "@/lib/features";
 import WeddingVideo from "./WeddingVideo";
 import { faqLd } from "../components/service/Faq";
 import { PACKAGES, VIDEOS, ytThumb } from "./content";
-import { getPackages, getReviews, getServiceContent } from "@/lib/cms-dict";
+import { getPackages, getReviews, getServiceContent, getServicePoster } from "@/lib/cms-dict";
 import { getPortfolioItems, getCategories } from "@/lib/portfolio";
 import { referenceRows, priceNumber } from "../components/service/servicePageLd";
 
@@ -95,6 +95,7 @@ export default async function WeddingVideoPage() {
     getCategories(),
     getServiceContent("eskuvoi_videozas"),
   ]);
+  const poster = await getServicePoster("eskuvoi_videozas");
   const hu = content.hu;
   // Referenciák: az esküvői filmek a portfólió „Események” sorából, a VIDEOS sorrendjében.
   const rows = referenceRows(items, categories, [
@@ -107,7 +108,7 @@ export default async function WeddingVideoPage() {
       <JsonLd data={videoLd} />
       <JsonLd data={breadcrumbLd} />
       <Navbar />
-      <WeddingVideo content={content} packages={packages} reviews={reviews} rows={rows} />
+      <WeddingVideo content={content} poster={poster} packages={packages} reviews={reviews} rows={rows} />
       <ContactInfo />
     </>
   );
