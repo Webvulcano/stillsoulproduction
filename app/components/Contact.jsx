@@ -215,10 +215,10 @@ export default function Contact({ packages = [], defaultCategory }) {
           </form>
           )}
         </div>
-        {/* Mobilon (egy oszlop) a magasság a szélességhez igazodik: a kép teljes magassága (1267×1600 arány)
-            mínusz 200 px, a teteje rögzítve (object-top) → a fejük mindig látszik, alul vágunk.
+        {/* Mobilon (egy oszlop) a magasság a szélességhez igazodik: a kép (1267×1600) alsó 15%-a levágva
+            (1600 × 0,85 = 1360 → aspect 1267/1360), a teteje rögzítve (object-top) → a fejük mindig látszik.
             Desktopon kitölti az oszlopot, szintén felülre igazítva. */}
-        <div className="relative w-full overflow-hidden h-[calc(100vw*1600/1267-200px)] md:h-auto md:min-h-[400px]">
+        <div className="relative w-full overflow-hidden aspect-[1267/1360] md:aspect-auto md:min-h-[400px]">
           <Image
             src={media("/contact.jpg")}
             alt="Kapcsolat"
