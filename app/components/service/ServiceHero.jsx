@@ -33,7 +33,8 @@ export default function ServiceHero({ h, poster, video = null, onQuote, secondar
             <span className="block text-3xl font-semibold uppercase tracking-widest sm:text-4xl md:text-5xl" {...a("title")}>
               {h.title}
             </span>
-            {/* Második sor: a H1 része (városok → SEO), vizuálisan kicsi */}
+            {/* Második sor: a H1 része (városok → SEO), vizuálisan kicsi. A szóköz kell: enélkül a H1 szövege „videósBudapest”. */}
+            {h.titleSub && " "}
             {h.titleSub && (
               <span className="mt-3 block text-sm font-normal tracking-wide text-white/70 md:text-base" {...a("title_sub")}>
                 {h.titleSub}

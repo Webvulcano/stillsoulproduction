@@ -107,6 +107,16 @@ export default function WeddingPhoto({ content, poster, packages = [], reviews =
           </div>
 
 
+          {/* Videó is? — 25% kombó (forrás: fotós PDF); ugyanaz a blokk, mint a videós oldal „Fotó is kell?”-je */}
+          <div className="mt-16">
+            <h3 className={h3Label} {...a("video", "title")}>
+              {p.video.title}
+            </h3>
+            <p className="mt-4 text-sm leading-relaxed text-white/70" {...a("video", "text")}>
+              {p.video.text}
+            </p>
+          </div>
+
           <PriceList packages={packages} t={p.priceList} cms={{ page: CMS, section: "pricing" }} />
         </div>
       </section>

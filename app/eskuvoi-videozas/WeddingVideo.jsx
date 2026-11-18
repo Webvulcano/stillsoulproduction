@@ -195,7 +195,7 @@ export default function WeddingVideo({ content, poster, packages = [], reviews =
             </p>
           </div>
 
-          {/* Fotó is? — átlinkelés az esküvői fotós aloldalra (25% kombó, forrás: fotós PDF) */}
+          {/* Fotó is? — 25% kombó (forrás: fotós PDF) */}
           <div className="mt-16">
             <h3 className={h3Label} {...a("info", "photo_title")}>
               {c.packages.photo.title}
@@ -203,9 +203,6 @@ export default function WeddingVideo({ content, poster, packages = [], reviews =
             <p className="mt-4 text-sm leading-relaxed text-white/70" {...a("info", "photo_text")}>
               {c.packages.photo.text}
             </p>
-            <Link href="/eskuvoi-fotozas" className={`mt-4 inline-block ${textLink}`} {...a("info", "photo_link")}>
-              {c.packages.photo.link}
-            </Link>
           </div>
 
           <PriceList packages={packages} t={c.packages.priceList} cms={{ page: CMS, section: "info" }} />

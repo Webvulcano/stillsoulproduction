@@ -55,6 +55,10 @@ export const content = {
           { price: "+35 000 Ft", text: "Az esküvőtől eltérő napon" },
         ],
       },
+      video: {
+        title: "Videó is kell?",
+        text: "Ha az esküvői videózást is ránk bíznátok, bármelyik videós csomag mellé a fotós csomag árából 25%-ot elengedünk.",
+      },
       priceList: {
         title: "Teljes árlistánk",
         text: "A teljes árlistánk PDF-ben is elérhető. Itt letöltheted az esküvői fotós és videós árajánlatunkat.",
@@ -121,6 +125,10 @@ export const content = {
           { price: "+25 000 HUF", text: "On the wedding day" },
           { price: "+35 000 HUF", text: "On a different day" },
         ],
+      },
+      video: {
+        title: "Need a video too?",
+        text: "If you'd like us to film your wedding as well, we take 25% off the photography package with any video package.",
       },
       priceList: {
         title: "Full price list",

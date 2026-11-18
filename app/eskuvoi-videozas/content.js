@@ -99,7 +99,6 @@ export const content = {
       photo: {
         title: "Fotó is kell?",
         text: "Ha az esküvői fotózást is ránk bíznátok, bármelyik videós csomag mellé a fotós csomag árából 25%-ot elengedünk.",
-        link: "Esküvői fotózás — csomagok és árak →",
       },
       priceList: {
         title: "Teljes árlistánk",
@@ -237,7 +236,6 @@ export const content = {
       photo: {
         title: "Need photos too?",
         text: "If you'd like us to photograph your wedding as well, we take 25% off the photography package with any video package.",
-        link: "Wedding photography — packages & prices →",
       },
       priceList: {
         title: "Full price list",
