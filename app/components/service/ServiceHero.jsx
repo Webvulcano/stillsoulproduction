@@ -30,9 +30,11 @@ export default function ServiceHero({ h, poster, video = null, onQuote, secondar
         <div className={inner}>
           <span className="hidden text-xs uppercase tracking-[0.3em] text-white/60 md:block" {...a("eyebrow")}>{h.eyebrow}</span>
           <h1 className="max-w-4xl md:mt-4">
-            <span className="block text-3xl font-semibold uppercase tracking-widest sm:text-4xl md:text-5xl" {...a("title")}>
+            <span className="block text-2xl font-semibold uppercase tracking-wide hyphens-auto break-words sm:text-4xl sm:tracking-widest md:text-5xl" {...a("title")}>
               {h.title}
             </span>
+            {/* Mobilon kisebb betű + szűkebb betűköz: a hosszú szavak (RENDEZVÉNYFOTÓZÁS) is kiférjenek;
+                nagyon keskeny kijelzőn elválasztás (hyphens-auto, lang="hu"). */}
             {/* Második sor: a H1 része (városok → SEO), vizuálisan kicsi. A szóköz kell: enélkül a H1 szövege „videósBudapest”. */}
             {h.titleSub && " "}
             {h.titleSub && (
