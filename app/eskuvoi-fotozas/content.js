@@ -24,7 +24,9 @@ export const content = {
   hu: {
     hero: {
       eyebrow: "— Esküvői fotózás —",
-      title: "Esküvői fotós Budapesten, Győrben és Esztergomban",
+      title: "Esküvői fotós",
+      // H1 második (kisebb) sora — a városok a H1-ben maradnak (SEO), de a főcím rövid.
+      titleSub: "Budapest · Győr · Esztergom — országos kiszállással",
       sub: "100–500 utómunkázott fotó, 200 000 Ft-tól.",
       cta: "Ajánlatot kérek",
       packagesLink: "Csomagok és árak",
@@ -89,7 +91,9 @@ export const content = {
   en: {
     hero: {
       eyebrow: "— Wedding photography —",
-      title: "Wedding photographer in Budapest, Győr and Esztergom",
+      title: "Wedding photographer",
+      // H1 második (kisebb) sora — a városok a H1-ben maradnak (SEO), de a főcím rövid.
+      titleSub: "Budapest · Győr · Esztergom — travelling nationwide",
       sub: "100–500 edited photos, from 200 000 HUF.",
       cta: "Request a quote",
       packagesLink: "Packages & prices",

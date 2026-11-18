@@ -10,7 +10,9 @@ export const content = {
   hu: {
     hero: {
       eyebrow: "— Portré fotózás —",
-      title: "Portré fotózás Budapesten, Győrben és Esztergomban",
+      title: "Portré fotózás",
+      // H1 második (kisebb) sora — a városok a H1-ben maradnak (SEO), de a főcím rövid.
+      titleSub: "Budapest · Győr · Esztergom — országos kiszállással",
       sub: "Üzleti portré, céges fotózás és kreatív portré, digitálisan vagy analóg filmre.",
       cta: "Ajánlatot kérek",
       packagesLink: "Munkáink",
@@ -51,7 +53,9 @@ export const content = {
   en: {
     hero: {
       eyebrow: "— Portrait photography —",
-      title: "Portrait photographer in Budapest, Győr and Esztergom",
+      title: "Portrait photographer",
+      // H1 második (kisebb) sora — a városok a H1-ben maradnak (SEO), de a főcím rövid.
+      titleSub: "Budapest · Győr · Esztergom — travelling nationwide",
       sub: "Business headshots, corporate shoots and creative portraits — digital or on film.",
       cta: "Request a quote",
       packagesLink: "Our work",

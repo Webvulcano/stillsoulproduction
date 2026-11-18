@@ -46,7 +46,9 @@ export const content = {
   hu: {
     hero: {
       eyebrow: "— Esküvői videózás —",
-      title: "Esküvői videós Budapesten, Győrben és Esztergomban",
+      title: "Esküvői videós",
+      // H1 második (kisebb) sora — a városok a H1-ben maradnak (SEO), de a főcím rövid.
+      titleSub: "Budapest · Győr · Esztergom — országos kiszállással",
       sub: "4K esküvői film ajándék teaser-trailerrel, 225 000 Ft-tól.",
       cta: "Ajánlatot kérek",
       packagesLink: "Csomagok és árak",
@@ -182,7 +184,9 @@ export const content = {
   en: {
     hero: {
       eyebrow: "— Wedding videography —",
-      title: "Wedding videographer in Budapest, Győr and Esztergom",
+      title: "Wedding videographer",
+      // H1 második (kisebb) sora — a városok a H1-ben maradnak (SEO), de a főcím rövid.
+      titleSub: "Budapest · Győr · Esztergom — travelling nationwide",
       sub: "A 4K wedding film with a free teaser trailer, from 225 000 HUF.",
       cta: "Request a quote",
       packagesLink: "Packages & prices",
