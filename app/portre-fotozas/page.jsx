@@ -3,7 +3,7 @@ import ContactInfo from "../components/ContactInfo";
 import JsonLd from "@/components/cms/JsonLd";
 import ServicePage from "../components/service/ServicePage";
 import { serviceMetadata, serviceLd, referenceRows } from "../components/service/servicePageLd";
-import { getReviews, getServiceContent } from "@/lib/cms-dict";
+import { getReviews, getServiceContent, getServicePoster } from "@/lib/cms-dict";
 import { getPortfolioItems, getCategories } from "@/lib/portfolio";
 
 const PATH = "/portre-fotozas";
@@ -32,6 +32,7 @@ export default async function PortraitPage() {
     getReviews(),
     getServiceContent(CMS_PAGE),
   ]);
+  const cmsPoster = await getServicePoster(CMS_PAGE);
   const ld = ldFor(content.hu.faq.items);
   const rows = referenceRows(items, categories, [{ category: "portre", title: null }]);
   return (
@@ -44,7 +45,7 @@ export default async function PortraitPage() {
         content={content}
         cms={CMS_PAGE}
         rows={rows}
-        poster={rows[0]?.items[0]?.image ?? "/logo-og.png"}
+        poster={cmsPoster ?? rows[0]?.items[0]?.image ?? "/logo-og.png"}
         portfolioHref="/portfolio#row-portre"
         quoteCategory={QUOTE_CATEGORY}
         reviews={reviews}

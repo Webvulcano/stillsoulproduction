@@ -39,6 +39,9 @@ export const VIDEOS = {
 
 export const ytThumb = (id) => `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`;
 
+// Hero alap-háttérképe (YouTube-nyitókép) — az Ügyfél Adminban felülírható (hero.poster képhely).
+export const HERO_POSTER_ID = VIDEOS.laura.id;
+
 export const content = {
   hu: {
     hero: {

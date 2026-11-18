@@ -3,7 +3,7 @@ import ContactInfo from "../components/ContactInfo";
 import JsonLd from "@/components/cms/JsonLd";
 import { serviceRobots } from "@/lib/features";
 import { faqLd } from "../components/service/Faq";
-import { getPackages, getReviews, getServiceContent } from "@/lib/cms-dict";
+import { getPackages, getReviews, getServiceContent, getServicePoster } from "@/lib/cms-dict";
 import { priceNumber } from "../components/service/servicePageLd";
 import WeddingPhoto from "./WeddingPhoto";
 import { PACKAGES } from "./content";
@@ -74,6 +74,7 @@ export const revalidate = 3600;
 
 export default async function WeddingPhotoPage() {
   const [packages, reviews, content] = await Promise.all([getPackages(), getReviews(), getServiceContent("eskuvoi_fotozas")]);
+  const poster = await getServicePoster("eskuvoi_fotozas");
   const hu = content.hu;
   return (
     <>
@@ -81,7 +82,7 @@ export default async function WeddingPhotoPage() {
       <JsonLd data={faqLd(hu.faq.items)} />
       <JsonLd data={breadcrumbLd} />
       <Navbar />
-      <WeddingPhoto content={content} packages={packages} reviews={reviews} />
+      <WeddingPhoto content={content} poster={poster} packages={packages} reviews={reviews} />
       <ContactInfo />
     </>
   );

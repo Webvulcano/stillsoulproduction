@@ -9,6 +9,7 @@ import PriceList from "../components/service/PriceList";
 import Faq from "../components/service/Faq";
 import { h2, h3Label, section, inner, lead, panel, cell, cmsAttr } from "../components/service/ui";
 import { ytThumb } from "../eskuvoi-videozas/content";
+import { HERO_POSTER_ID } from "./content";
 
 // CMS page key (lib/service-pages-schema.js)
 const CMS = "eskuvoi_fotozas";
@@ -16,7 +17,7 @@ const a = (sec, field, i, f) => cmsAttr(CMS, sec, field, i, f);
 
 // TODO(hero): esküvői FOTÓ ide (a portfólióban még nincs esküvői fotó). Addig helyőrző:
 // a Laura & Csabi trailer nyitóképe.
-const HERO_POSTER = ytThumb("GTiKqG0dmJo");
+const HERO_POSTER = ytThumb(HERO_POSTER_ID); // tartalék, ha a CMS-ben nincs kép
 
 // Az árajánlat-űrlap előválasztott kategóriája (egyik nyelv CMS-listájában sincs → a lista elejére kerül).
 const QUOTE_CATEGORY = { hu: "Esküvő fotózás", en: "Wedding photography" };
@@ -25,7 +26,7 @@ const QUOTE_CATEGORY = { hu: "Esküvő fotózás", en: "Wedding photography" };
 
 // Az SSR mindig magyar (LanguageProvider kezdő locale = "hu") → a magyar szöveg a HTML-ben van.
 // content = { hu, en } — content.js + CMS-értékek (getServiceContent, szerveren)
-export default function WeddingPhoto({ content, packages = [], reviews = [] }) {
+export default function WeddingPhoto({ content, poster, packages = [], reviews = [] }) {
   const { locale } = useLanguage();
   const c = content[locale] ?? content.hu;
   const onQuote = () => track("Esküvői fotós oldal: ajánlatkérés");
@@ -34,7 +35,7 @@ export default function WeddingPhoto({ content, packages = [], reviews = [] }) {
   return (
     <main className="bg-black text-white">
       {/* 1. Hero */}
-      <ServiceHero h={c.hero} poster={HERO_POSTER} onQuote={onQuote} cms={CMS} />
+      <ServiceHero h={c.hero} poster={poster ?? HERO_POSTER} onQuote={onQuote} cms={CMS} />
 
       {/* 2. Bevezető */}
       <section className={section}>

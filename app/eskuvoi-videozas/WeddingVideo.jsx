@@ -10,7 +10,7 @@ import PriceList from "../components/service/PriceList";
 import Faq from "../components/service/Faq";
 import ReferenceRows from "../components/service/ReferenceRows";
 import { h2, h3Label, section, inner, lead, panel, cell, textLink, cmsAttr } from "../components/service/ui";
-import { VIDEOS, ytThumb } from "./content";
+import { HERO_POSTER_ID, ytThumb } from "./content";
 
 // CMS page key (lib/service-pages-schema.js)
 const CMS = "eskuvoi_videozas";
@@ -19,7 +19,7 @@ const a = (sec, field, i, f) => cmsAttr(CMS, sec, field, i, f);
 // TODO(hero): esküvői klip ide (pl. "/hero/eskuvo.mp4", tömörítve, ~2–3 MB) + saját poster
 // ("/hero/eskuvo-poster.webp"). Amíg null, a hero csak a poszterkép (Laura & Csabi film nyitóképe).
 const HERO_VIDEO = null;
-const HERO_POSTER = ytThumb(VIDEOS.laura.id);
+const HERO_POSTER = ytThumb(HERO_POSTER_ID); // tartalék, ha a CMS-ben nincs kép
 
 // Az árajánlat-űrlap előválasztott kategóriája. A HU a CMS-listában lévő érték;
 // az EN CMS-listában nincs esküvős kategória, ezért ott a lista elejére kerül.
@@ -27,7 +27,7 @@ const QUOTE_CATEGORY = { hu: "Esküvő videózás", en: "Wedding videography" };
 
 // Az SSR mindig magyar (LanguageProvider kezdő locale = "hu") → a magyar szöveg a HTML-ben van.
 // content = { hu, en } — content.js + CMS-értékek (getServiceContent, szerveren)
-export default function WeddingVideo({ content, packages = [], reviews = [], rows = [] }) {
+export default function WeddingVideo({ content, poster, packages = [], reviews = [], rows = [] }) {
   const { locale } = useLanguage();
   const c = content[locale] ?? content.hu;
   const onQuote = () => track("Esküvői oldal: ajánlatkérés");
@@ -35,7 +35,7 @@ export default function WeddingVideo({ content, packages = [], reviews = [], row
   return (
     <main className="bg-black text-white">
       {/* 1. Hero */}
-      <ServiceHero h={c.hero} poster={HERO_POSTER} video={HERO_VIDEO} onQuote={onQuote} cms={CMS} />
+      <ServiceHero h={c.hero} poster={poster ?? HERO_POSTER} video={HERO_VIDEO} onQuote={onQuote} cms={CMS} />
 
       {/* 2. Bevezető */}
       <section className={section}>

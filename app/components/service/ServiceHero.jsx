@@ -9,7 +9,7 @@ import { inner, buttonPrimary, buttonGhost, cmsAttr } from "./ui";
 export default function ServiceHero({ h, poster, video = null, onQuote, secondaryHref = "#csomagok", cms }) {
   const a = (field) => cmsAttr(cms, "hero", field);
   return (
-    <section className="relative flex min-h-[70vh] w-full items-end overflow-hidden md:min-h-screen">
+    <section className="relative flex min-h-[70vh] w-full items-end overflow-hidden md:min-h-screen" {...a("poster")}>
       {video ? (
         <video
           src={video}
