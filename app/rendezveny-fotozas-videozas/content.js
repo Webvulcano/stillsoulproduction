@@ -1,4 +1,5 @@
-// /rendezveny-fotozas-videozas — az aloldal összes szövege (HU + EN). Nem CMS-ből jön.
+// /rendezveny-fotozas-videozas — az aloldal összes szövege (HU + EN) — alapérték, az Ügyfél Adminban
+// szerkeszthető (lib/service-pages-schema.js); a mentett CMS-érték felülírja.
 //
 // FORRÁS: főoldal (szolgáltatások: események/rendezvények; árajánlat-kategóriák: esemény fotózás,
 // esemény videózás), portfólió „Események” sora (X. Bencés Bál 2023, Alexander Trauner Art/Film

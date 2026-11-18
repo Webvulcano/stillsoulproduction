@@ -1,4 +1,5 @@
-// /portre-fotozas — az aloldal összes szövege (HU + EN). Nem CMS-ből jön.
+// /portre-fotozas — az aloldal összes szövege (HU + EN) — alapérték, az Ügyfél Adminban
+// szerkeszthető (lib/service-pages-schema.js); a mentett CMS-érték felülírja.
 //
 // FORRÁS: a főoldal Rólunk-szövege és a szolgáltatás-lista (digitális + analóg fotózás,
 // céges fotózás, magánszemély fotózás), a portfólió „Portré” sora.

@@ -2,11 +2,12 @@
 
 import Image from "next/image";
 import { isCmsUpload } from "@/lib/cms-image";
-import { inner, buttonPrimary, buttonGhost } from "./ui";
+import { inner, buttonPrimary, buttonGhost, cmsAttr } from "./ui";
 
 // Aloldal-hero: videó (ha van) vagy poszterkép, rajta a látható H1 és két gomb.
-// h = { eyebrow, title, sub, cta, packagesLink, posterAlt }
-export default function ServiceHero({ h, poster, video = null, onQuote, secondaryHref = "#csomagok" }) {
+// h = { eyebrow, title, sub, cta, packagesLink, posterAlt }; cms = CMS page key (data-cms jelölőkhöz)
+export default function ServiceHero({ h, poster, video = null, onQuote, secondaryHref = "#csomagok", cms }) {
+  const a = (field) => cmsAttr(cms, "hero", field);
   return (
     <section className="relative flex min-h-[70vh] w-full items-end overflow-hidden md:min-h-screen">
       {video ? (
@@ -26,14 +27,14 @@ export default function ServiceHero({ h, poster, video = null, onQuote, secondar
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/20" />
       <div className="relative w-full px-8 pb-12 pt-32 md:px-16 md:pb-20">
         <div className={inner}>
-          <span className="block text-xs uppercase tracking-[0.3em] text-white/60">{h.eyebrow}</span>
-          <h1 className="mt-4 max-w-4xl text-2xl font-semibold uppercase tracking-widest sm:text-4xl md:text-5xl">{h.title}</h1>
-          <p className="mt-4 max-w-2xl text-sm text-white/70 md:text-base">{h.sub}</p>
+          <span className="block text-xs uppercase tracking-[0.3em] text-white/60" {...a("eyebrow")}>{h.eyebrow}</span>
+          <h1 className="mt-4 max-w-4xl text-2xl font-semibold uppercase tracking-widest sm:text-4xl md:text-5xl" {...a("title")}>{h.title}</h1>
+          <p className="mt-4 max-w-2xl text-sm text-white/70 md:text-base" {...a("sub")}>{h.sub}</p>
           <div className="mt-8 flex flex-wrap gap-4">
-            <a href="#arajanlat" onClick={onQuote} className={buttonPrimary}>
+            <a href="#arajanlat" onClick={onQuote} className={buttonPrimary} {...a("cta")}>
               {h.cta}
             </a>
-            <a href={secondaryHref} className={buttonGhost}>
+            <a href={secondaryHref} className={buttonGhost} {...a("secondary")}>
               {h.packagesLink}
             </a>
           </div>

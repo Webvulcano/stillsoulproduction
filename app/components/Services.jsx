@@ -6,6 +6,7 @@ import { useLanguage } from "../i18n/LanguageProvider";
 import { CATEGORIES } from "../portfolio/categories";
 import { isCmsUpload } from "@/lib/cms-image";
 import { LIVE_SERVICES } from "@/lib/cms-live-snapshot";
+import { SERVICE_PAGES_PUBLIC } from "@/lib/features";
 
 // Csempe → cél URL: a serviceTargets (DB: service_key→mappa-slug) alapján.
 // Ha van hozzárendelt, feltöltött mappa → oda görget (#row-<slug>); különben tetejére.
@@ -89,27 +90,30 @@ export default function Services({ serviceTargets = {}, images = [] }) {
           </Link>
         );
       })}
-      {/* Belső linkek a szolgáltatás-aloldalakra (SEO: enélkül árva oldalak). Szöveg: dict.js services.* */}
-      <div className="px-8 md:px-16 py-12 flex flex-wrap justify-center gap-4">
-        {[
-          { href: "/eskuvoi-videozas", label: t.services.weddingLink },
-          { href: "/eskuvoi-fotozas", label: t.services.weddingPhotoLink },
-          { href: "/portre-fotozas", label: t.services.portraitLink },
-          { href: "/rendezveny-fotozas-videozas", label: t.services.eventLink },
-          { href: "/videoklip-keszites", label: t.services.musicVideoLink },
-          { href: "/reklamfilm-keszites", label: t.services.commercialLink },
-        ]
-          .filter((l) => l.label)
-          .map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className="inline-flex items-center px-8 py-3 text-xs uppercase tracking-widest border border-white/20 hover:bg-white hover:text-black transition-colors duration-300"
-            >
-              {l.label}
-            </Link>
-          ))}
-      </div>
+      {/* Belső linkek a szolgáltatás-aloldalakra (SEO: enélkül árva oldalak). Szöveg: dict.js services.*
+          Csak ha az aloldalak nyilvánosak (lib/features.js). */}
+      {SERVICE_PAGES_PUBLIC && (
+        <div className="px-8 md:px-16 py-12 flex flex-wrap justify-center gap-4">
+          {[
+            { href: "/eskuvoi-videozas", label: t.services.weddingLink },
+            { href: "/eskuvoi-fotozas", label: t.services.weddingPhotoLink },
+            { href: "/portre-fotozas", label: t.services.portraitLink },
+            { href: "/rendezveny-fotozas-videozas", label: t.services.eventLink },
+            { href: "/videoklip-keszites", label: t.services.musicVideoLink },
+            { href: "/reklamfilm-keszites", label: t.services.commercialLink },
+          ]
+            .filter((l) => l.label)
+            .map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                className="inline-flex items-center px-8 py-3 text-xs uppercase tracking-widest border border-white/20 hover:bg-white hover:text-black transition-colors duration-300"
+              >
+                {l.label}
+              </Link>
+            ))}
+        </div>
+      )}
       </div>
     </section>
   );

@@ -1,4 +1,5 @@
-// /reklamfilm-keszites — az aloldal összes szövege (HU + EN). Nem CMS-ből jön.
+// /reklamfilm-keszites — az aloldal összes szövege (HU + EN) — alapérték, az Ügyfél Adminban
+// szerkeszthető (lib/service-pages-schema.js); a mentett CMS-érték felülírja.
 //
 // FORRÁS: főoldal (szolgáltatások: brand-építés & reklámanyag, kreatív tartalomgyártás — social,
 // short video; árajánlat-kategóriák: reklámfilm készítés, social média tartalomgyártás, márka

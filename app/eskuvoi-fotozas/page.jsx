@@ -1,10 +1,12 @@
 import Navbar from "../components/Navbar";
 import ContactInfo from "../components/ContactInfo";
 import JsonLd from "@/components/cms/JsonLd";
+import { serviceRobots } from "@/lib/features";
 import { faqLd } from "../components/service/Faq";
-import { getPackages, getReviews } from "@/lib/cms-dict";
+import { getPackages, getReviews, getServiceContent } from "@/lib/cms-dict";
+import { priceNumber } from "../components/service/servicePageLd";
 import WeddingPhoto from "./WeddingPhoto";
-import { content, PACKAGES } from "./content";
+import { PACKAGES } from "./content";
 
 const BASE_URL = "https://stillsoulproduction.hu";
 const PAGE_URL = `${BASE_URL}/eskuvoi-fotozas`;
@@ -17,6 +19,7 @@ export const metadata = {
   title: TITLE,
   description: DESCRIPTION,
   alternates: { canonical: "/eskuvoi-fotozas" },
+  robots: serviceRobots, // nem nyilvános aloldal → noindex (lib/features.js)
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
@@ -35,10 +38,9 @@ export const metadata = {
   },
 };
 
-// Strukturált adat — csak magyarul (az SSR nyelve).
-const hu = content.hu;
+// Strukturált adat — csak magyarul (az SSR nyelve), a CMS-ben szerkesztett szövegből.
 
-const serviceLd = {
+const serviceLdFor = (hu) => ({
   "@context": "https://schema.org",
   "@type": "Service",
   "@id": `${PAGE_URL}#service`,
@@ -48,15 +50,15 @@ const serviceLd = {
   url: PAGE_URL,
   provider: { "@id": `${BASE_URL}/#business` },
   areaServed: ["Budapest", "Győr", "Esztergom"].map((name) => ({ "@type": "City", name })),
-  offers: PACKAGES.map((p) => ({
+  offers: hu.packages.items.map((p, i) => ({
     "@type": "Offer",
     name: `${p.name} csomag`,
-    description: `${p.photos} db utómunkázott fotó`,
-    price: p.price,
+    description: p.photos,
+    price: priceNumber(p.price, PACKAGES[i]?.price),
     priceCurrency: "HUF",
     url: `${PAGE_URL}#csomagok`,
   })),
-};
+});
 
 const breadcrumbLd = {
   "@context": "https://schema.org",
@@ -71,14 +73,15 @@ const breadcrumbLd = {
 export const revalidate = 3600;
 
 export default async function WeddingPhotoPage() {
-  const [packages, reviews] = await Promise.all([getPackages(), getReviews()]);
+  const [packages, reviews, content] = await Promise.all([getPackages(), getReviews(), getServiceContent("eskuvoi_fotozas")]);
+  const hu = content.hu;
   return (
     <>
-      <JsonLd data={serviceLd} />
+      <JsonLd data={serviceLdFor(hu)} />
       <JsonLd data={faqLd(hu.faq.items)} />
       <JsonLd data={breadcrumbLd} />
       <Navbar />
-      <WeddingPhoto packages={packages} reviews={reviews} />
+      <WeddingPhoto content={content} packages={packages} reviews={reviews} />
       <ContactInfo />
     </>
   );

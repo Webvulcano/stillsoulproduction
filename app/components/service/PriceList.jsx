@@ -2,17 +2,25 @@
 
 import { FiDownload } from "react-icons/fi";
 import { useLanguage } from "../../i18n/LanguageProvider";
-import { h3Label, panel } from "./ui";
+import { h3Label, panel, cmsAttr } from "./ui";
 
 // „Teljes árlistánk” — letölthető PDF-ek az Ügyfél Admin Csomagok moduljából (getPackages).
 // t = { title, text, download }. Nincs csomag → nem jelenik meg.
-export default function PriceList({ packages = [], t }) {
+// cms = { page, section } — data-cms jelölők (price_list_* mezők)
+export default function PriceList({ packages = [], t, cms }) {
+  const a = (field) => cmsAttr(cms?.page, cms?.section, field);
   const { locale } = useLanguage();
   if (!packages.length) return null;
   return (
     <div className="mt-16">
-      <h3 className={h3Label}>{t.title}</h3>
-      <p className="mt-4 text-sm leading-relaxed text-white/70">{t.text}</p>
+      <h3 className={h3Label} {...a("price_list_title")}>
+        {t.title}
+      </h3>
+      {t.text && (
+        <p className="mt-4 text-sm leading-relaxed text-white/70" {...a("price_list_text")}>
+          {t.text}
+        </p>
+      )}
       <ul className={`mt-6 ${panel} sm:grid-cols-2`}>
         {packages.map((p) => (
           <li key={p.id} className="bg-black">

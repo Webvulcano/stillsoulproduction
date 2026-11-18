@@ -14,3 +14,14 @@ export const button =
 export const buttonPrimary = `${button} border-white bg-white text-black hover:bg-transparent hover:text-white`;
 export const buttonGhost = `${button} border-white/40 text-white hover:bg-white hover:text-black`;
 export const textLink = "text-sm text-white/70 underline-offset-4 transition-colors hover:text-white hover:underline";
+
+// data-cms jelölő (Ügyfél Admin élő előnézet): cmsAttr("portre_fotozas", "hero", "title")
+// → { "data-cms": "portre_fotozas.hero.title" }; lista-elemnél i + f is. page nélkül üres.
+export function cmsAttr(page, section, field, i, f) {
+  if (!page) return {};
+  return {
+    "data-cms": `${page}.${section}.${field}`,
+    ...(i != null && { "data-cms-i": i }),
+    ...(f && { "data-cms-f": f }),
+  };
+}

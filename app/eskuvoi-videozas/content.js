@@ -1,10 +1,11 @@
 // /eskuvoi-videozas — az aloldal összes szövege (HU + EN) és ára.
-// Nem CMS-ből jön: az aloldalt nem kell adminból szerkeszteni.
+// Ez az ALAPÉRTÉK: a szövegek az Ügyfél Adminban szerkeszthetők (lib/service-pages-schema.js),
+// a mentett CMS-érték felülírja. Új mezőt a sémába is fel kell venni, különben nem szerkeszthető.
 //
 // FORRÁS az árakhoz és a csomag-tartalomhoz:
 //   PDF „ESKÜVŐ VIDEÓZÁS — Árajánlat” (Ügyfél Admin → Csomagok → „Esküvői videózás”),
 //   CMS ár: „225 000 Ft-tól” / „from 225 000 HUF”, szintek: Alap · Deluxe · Ultra. Átvéve: 2026-11-17.
-// Ha a PDF vagy a CMS ára változik, itt is át kell írni (a PACKAGES tömböt és a szövegeket is).
+// A PACKAGES ár csak tartalék a JSON-LD-hez: az Offer.price a CMS-ben szerkesztett árból jön (priceNumber).
 
 // Csomagok számmal — a JSON-LD (Service → offers) is ezt használja.
 export const PACKAGES = [

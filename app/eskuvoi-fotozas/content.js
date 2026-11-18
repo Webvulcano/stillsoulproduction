@@ -1,5 +1,6 @@
 // /eskuvoi-fotozas — az aloldal összes szövege (HU + EN) és ára.
-// Nem CMS-ből jön: az aloldalt nem kell adminból szerkeszteni.
+// Ez az ALAPÉRTÉK: a szövegek az Ügyfél Adminban szerkeszthetők (lib/service-pages-schema.js),
+// a mentett CMS-érték felülírja. Új mezőt a sémába is fel kell venni, különben nem szerkeszthető.
 //
 // FORRÁS az árakhoz és a csomag-tartalomhoz:
 //   PDF „ESKÜVŐ FOTÓZÁS — Árajánlat” (Ügyfél Admin → Csomagok → „Esküvői fotózás”),
@@ -8,7 +9,7 @@
 //   Kreatív fotózás: esküvő napján 25 000, eltérő napon 35 000 ·
 //   Fotó + videó: bármelyik videós csomag mellé a fotós csomag árából 25% kedvezmény.
 // A PDF-ben NINCS: utazási feltétel, átadási idő, stílus → ezekről az oldal nem állít semmit.
-// Ha a PDF vagy a CMS ára változik, itt is át kell írni (a PACKAGES tömböt és a szövegeket is).
+// A PACKAGES ár csak tartalék a JSON-LD-hez: az Offer.price a CMS-ben szerkesztett árból jön (priceNumber).
 
 export const PACKAGES = [
   { key: "alap", name: "Alap", price: 200000, photos: "100–300" },

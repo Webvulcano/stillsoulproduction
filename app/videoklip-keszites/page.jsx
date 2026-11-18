@@ -3,9 +3,9 @@ import ContactInfo from "../components/ContactInfo";
 import JsonLd from "@/components/cms/JsonLd";
 import ServicePage from "../components/service/ServicePage";
 import { serviceMetadata, serviceLd, referenceRows } from "../components/service/servicePageLd";
-import { getReviews } from "@/lib/cms-dict";
+import { getReviews, getServiceContent } from "@/lib/cms-dict";
 import { getPortfolioItems, getCategories } from "@/lib/portfolio";
-import { content, VIDEOS } from "./content";
+import { VIDEOS } from "./content";
 
 const PATH = "/videoklip-keszites";
 const TITLE = "Videoklip készítés · klipforgatás Budapest | StillSoul";
@@ -14,23 +14,34 @@ const DESCRIPTION =
 
 export const metadata = serviceMetadata({ path: PATH, title: TITLE, description: DESCRIPTION });
 
-const ld = serviceLd({
-  path: PATH,
-  name: "Videoklip készítés",
-  serviceType: "Videoklip készítés",
-  description: DESCRIPTION,
-  faq: content.hu.faq.items,
-  videos: VIDEOS,
-});
+// JSON-LD: a GYIK a CMS-ben szerkesztett (magyar) szövegből.
+const ldFor = (faq) =>
+  serviceLd({
+    path: PATH,
+    name: "Videoklip készítés",
+    serviceType: "Videoklip készítés",
+    description: DESCRIPTION,
+    faq,
+    videos: VIDEOS,
+  });
 
 // ISR: a referenciák (portfólió) és az értékelések az Ügyfél Adminból jönnek.
 export const revalidate = 3600;
 
 // Egyik nyelv CMS-listájában sincs → a lista elejére kerül.
+// CMS page key (lib/service-pages-schema.js)
+const CMS_PAGE = "videoklip";
+
 const QUOTE_CATEGORY = { hu: "Videoklip készítés", en: "Music video" };
 
 export default async function MusicVideoPage() {
-  const [items, categories, reviews] = await Promise.all([getPortfolioItems(), getCategories(), getReviews()]);
+  const [items, categories, reviews, content] = await Promise.all([
+    getPortfolioItems(),
+    getCategories(),
+    getReviews(),
+    getServiceContent(CMS_PAGE),
+  ]);
+  const ld = ldFor(content.hu.faq.items);
   const rows = referenceRows(items, categories, [{ category: "videoklippek-reklamanyagok", youtubeIds: VIDEOS.map((v) => v.id), title: null }]);
   return (
     <>
@@ -40,6 +51,7 @@ export default async function MusicVideoPage() {
       <Navbar />
       <ServicePage
         content={content}
+        cms={CMS_PAGE}
         rows={rows}
         poster={`https://i.ytimg.com/vi/${VIDEOS[0].id}/maxresdefault.jpg`}
         portfolioHref="/portfolio#row-videoklippek-reklamanyagok"

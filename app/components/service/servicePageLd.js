@@ -1,6 +1,7 @@
 // JSON-LD a közös szolgáltatás-aloldalakhoz (ServicePage). Csak magyarul — az SSR nyelve.
 // Ár nincs: ezekre a szolgáltatásokra egyedi árajánlat van, kitalált számot nem teszünk be.
 import { faqLd } from "./Faq";
+import { serviceRobots } from "@/lib/features";
 
 export const BASE_URL = "https://stillsoulproduction.hu";
 
@@ -10,6 +11,7 @@ export function serviceMetadata({ path, title, description }) {
     title,
     description,
     alternates: { canonical: path },
+    robots: serviceRobots, // nem nyilvános aloldal → noindex (lib/features.js)
     openGraph: {
       title,
       description,
@@ -81,4 +83,10 @@ export function referenceRows(items, categories, specs) {
       return { id: `${s.category}${s.youtubeIds ? "-valogatas" : ""}`, title, items: list };
     })
     .filter((r) => r.items.length > 0);
+}
+
+// "225 000 Ft" → 225000 (JSON-LD Offer.price). Ha nincs benne szám (pl. CMS-ben átírták "egyedi"-re): fallback.
+export function priceNumber(text, fallback) {
+  const n = Number(String(text ?? "").replace(/\D/g, ""));
+  return n > 0 ? n : fallback;
 }

@@ -1,4 +1,5 @@
-// /videoklip-keszites — az aloldal összes szövege (HU + EN). Nem CMS-ből jön.
+// /videoklip-keszites — az aloldal összes szövege (HU + EN) — alapérték, az Ügyfél Adminban
+// szerkeszthető (lib/service-pages-schema.js); a mentett CMS-érték felülírja.
 //
 // FORRÁS: főoldal (Rólunk: videoklip; csapat: Fördős Bence rendező-operatőr, Dudás Hédi vágó-
 // forgatókönyvíró; eseti filmes besegítés: világosító, látványtervező, art director), portfólió

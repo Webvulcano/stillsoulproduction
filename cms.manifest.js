@@ -3,10 +3,13 @@
 //   npx tsx scripts/sync-manifest.mjs <this repo>/cms.manifest.js --print-payload
 import { SECTIONS, defaultFor } from "./lib/cms-schema.js";
 import { LIVE_SERVICES } from "./lib/cms-live-snapshot.js";
+import { SERVICE_PAGES } from "./lib/service-pages-schema.js";
 
 const PAGES = [
   { key: "home", label: "Főoldal", path: "/" },
   { key: "portfolio", label: "Portfólió", path: "/portfolio" },
+  // Szolgáltatás-aloldalak — szöveg: lib/service-pages-schema.js (alapérték: az aloldal content.js-e).
+  ...SERVICE_PAGES.map(({ key, label, path }) => ({ key, label, path })),
 ];
 
 export default {
@@ -53,8 +56,8 @@ export default {
         ...(f.help && { help: f.help }),
         ...(f.lines && { lines: true }),
         ...(f.itemFields && { itemFields: f.itemFields }),
-        default: defaultFor("hu", f),
-        translations: { en: defaultFor("en", f) },
+        default: defaultFor("hu", f, section),
+        translations: { en: defaultFor("en", f, section) },
       })),
       images: (section.images ?? []).map((img) => ({
         key: img.key,
